@@ -19,13 +19,13 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "serie")
+@Table(name = "solicitacao")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 @ToString
-public class Serie {
+public class Solicitacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class Serie {
 	@Column(name = "data_inicio", nullable = false)
 	private LocalDate dataInicio;
 
-	@Column(name = "data_fim", nullable = true)
+	@Column(name = "data_fim")
 	private LocalDate dataFim;
 
 	@ManyToOne

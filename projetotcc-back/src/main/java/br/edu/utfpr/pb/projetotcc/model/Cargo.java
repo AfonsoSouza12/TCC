@@ -22,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 @ToString
-public class Genero implements Serializable {
+public class Cargo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

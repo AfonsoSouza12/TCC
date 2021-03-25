@@ -20,12 +20,12 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "episodio")
+@Table(name = "etapa")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
-public class Episodio implements Serializable {
+public class Etapa implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class Episodio implements Serializable {
     @Column(length = 1000, nullable = false)
     private String descricao;
 
-    @Column(length = 1000, nullable = true)
+    @Column(length = 1000)
     private String status;
 
 
