@@ -1,15 +1,16 @@
-package br.edu.utfpr.pb.aula6.service.impl;
+package br.edu.utfpr.pb.projetotcc.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
 
+import br.edu.utfpr.pb.projetotcc.service.CrudService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.edu.utfpr.pb.aula6.service.CrudService;
+import br.edu.utfpr.pb.projetotcc.service.CrudService;
 
 public abstract class CrudServiceImpl 
 		<T, ID extends Serializable> 

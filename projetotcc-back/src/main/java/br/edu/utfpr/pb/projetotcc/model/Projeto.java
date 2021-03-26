@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "produtora")
+@Table(name = "projeto")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,7 +31,7 @@ public class Projeto implements Serializable {
 	@Column(name = "nome", length = 254, nullable = false)
 	private String nome;
 
-	@Column(name = "nome", length = 1000, nullable = false)
+	@Column(name = "descricao", length = 1000, nullable = false)
 	private String descricao;
 
 	@Column(name = "data_inicio", nullable = false)
@@ -48,13 +48,13 @@ public class Projeto implements Serializable {
 			referencedColumnName = "id")
 	private Usuario responsavel;
 
-	@OneToMany(
+	/*@OneToMany(
 			mappedBy = "solicitacao",
 			targetEntity = Solicitacao.class,
 			fetch = FetchType.LAZY,
 			cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE})
 	@JsonIgnore
-	private List<Solicitacao> solicitacoes;
+	private List<Solicitacao> solicitacoes;*/
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Usuario> membros;

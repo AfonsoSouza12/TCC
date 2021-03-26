@@ -1,9 +1,7 @@
 package br.edu.utfpr.pb.projetotcc.controller;
 
 import br.edu.utfpr.pb.projetotcc.model.Usuario;
-import br.edu.utfpr.pb.projetotcc.repository.PapelRepository;
 import br.edu.utfpr.pb.projetotcc.service.CrudService;
-import br.edu.utfpr.pb.projetotcc.service.PapelService;
 import br.edu.utfpr.pb.projetotcc.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

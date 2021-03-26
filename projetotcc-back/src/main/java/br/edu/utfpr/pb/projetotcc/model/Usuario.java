@@ -6,15 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,7 +41,7 @@ public class Usuario implements UserDetails{
 	private String password;
 
 	@Column(length = 512, nullable = false)
-	private String password;
+	private String tipo;
 
 	@OneToOne(optional = true)
 	@JoinColumn(name = "cargo_id", referencedColumnName = "id", nullable = true)

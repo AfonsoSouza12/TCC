@@ -1,12 +1,12 @@
-package br.edu.utfpr.pb.aula6.service.impl;
+package br.edu.utfpr.pb.projetotcc.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import br.edu.utfpr.pb.aula6.model.SubEtapa;
-import br.edu.utfpr.pb.aula6.repository.SubEtapaRepository;
-import br.edu.utfpr.pb.aula6.service.SubEtapaService;
+import br.edu.utfpr.pb.projetotcc.model.SubEtapa;
+import br.edu.utfpr.pb.projetotcc.repository.SubEtapaRepository;
+import br.edu.utfpr.pb.projetotcc.service.SubEtapaService;
 
 @Service
 public class SubEtapaServiceImpl 
