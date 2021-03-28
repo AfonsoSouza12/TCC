@@ -56,5 +56,10 @@ public class Solicitacao {
 			referencedColumnName = "id")
 	private Usuario responsavel;
 
+	@ManyToOne
+	@JoinColumn(name = "sprint_id",
+			referencedColumnName = "id")
+	private Sprint sprint;
+
 }
 
