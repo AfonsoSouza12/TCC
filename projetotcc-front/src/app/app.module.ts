@@ -11,6 +11,10 @@ import {CargoService} from './cargo/cargo.service';
 import {TableModule} from 'primeng/table';
 import { EtapaComponent } from './etapa/etapa.component';
 import {PrincipalComponent} from './principal/principal.component';
+import { SubEtapaComponent } from './sub-etapa/sub-etapa.component';
+import {DialogModule} from 'primeng/dialog';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { UsuarioComponent } from './usuario/usuario/usuario.component';
 
 
 @NgModule({
@@ -18,7 +22,9 @@ import {PrincipalComponent} from './principal/principal.component';
     AppComponent,
     CargoComponent,
     EtapaComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    SubEtapaComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,9 @@ import {PrincipalComponent} from './principal/principal.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    TableModule
+    TableModule,
+    DialogModule,
+    ConfirmDialogModule
   ],
   exports:[AppComponent],
   providers: [CargoService],

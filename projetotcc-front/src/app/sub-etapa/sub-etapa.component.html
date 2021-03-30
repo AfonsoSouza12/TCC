@@ -1,25 +1,25 @@
-
 <div class="container">
-  <h1 class="d-flex">Cadastro de Cargos</h1>
+  <h1 class="d-flex">Cadastro de Gêneros</h1>
   <button class="btn btn-primary" (click)="newEntity()"> Novo</button>
 
-  <p-table [value]="cargos" [paginator]="true" [rows]="5">
+  <p-table [value]="subEtapas" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
-        <th>Descrição</th>
+        <th>Nome</th>
+        <th>Ações</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-cargo>
+    <ng-template pTemplate="body" let-subEtapa>
       <tr>
-        <td>{{cargo.id}}</td>
-        <td>{{cargo.descricao}}</td>
+        <td>{{subEtapa.id}}</td>
+        <td>{{subEtapa.nome}}</td>
         <td>
-          <button type="button" class="btn btn-dark" (click)="edit(cargo)">
+          <button type="button" class="btn btn-dark" (click)="edit(subEtapa)">
             Editar
           </button>
 
-          <button type="button" class="btn btn-danger" (click)="delete(cargo)">
+          <button type="button" class="btn btn-danger" (click)="delete(subEtapa)">
             Remover
           </button>
         </td>
@@ -37,7 +37,7 @@
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" class="form-control"
-                 [(ngModel)]="cargoEdit.descricao">
+                 [(ngModel)]="subEtapaEdit.nome">
         </div>
       </div>
     </div>
