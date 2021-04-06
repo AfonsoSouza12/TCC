@@ -40,8 +40,6 @@ public class Usuario implements UserDetails{
 	@Column(length = 512, nullable = false)
 	private String password;
 
-	@Column(length = 512, nullable = false)
-	private String tipo;
 
 	@OneToOne(optional = true)
 	@JoinColumn(name = "cargo_id", referencedColumnName = "id", nullable = true)
