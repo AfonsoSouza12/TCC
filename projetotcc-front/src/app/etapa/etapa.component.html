@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="d-flex">Cadastro de Gêneros</h1>
+  <h1 class="d-flex">Cadastro de Etapas</h1>
   <button class="btn btn-primary" (click)="newEntity()"> Novo</button>
 
   <p-table [value]="etapas" [paginator]="true" [rows]="5">
@@ -7,19 +7,25 @@
       <tr>
         <th>Código</th>
         <th>Nome</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Responsável</th>
         <th>Ações</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-subEtapa>
+    <ng-template pTemplate="body" let-etapa>
       <tr>
-        <td>{{subEtapa.id}}</td>
-        <td>{{subEtapa.nome}}</td>
+        <td>{{etapa.id}}</td>
+        <td>{{etapa.nome}}</td>
+        <td>{{etapa.descricao}}</td>
+        <td>{{etapa.status}}</td>
+        <td>{{etapa.responsavel.nome}}</td>
         <td>
-          <button type="button" class="btn btn-dark" (click)="edit(subEtapa)">
+          <button type="button" class="btn btn-dark" (click)="edit(etapa)">
             Editar
           </button>
 
-          <button type="button" class="btn btn-danger" (click)="delete(subEtapa)">
+          <button type="button" class="btn btn-danger" (click)="delete(etapa)">
             Remover
           </button>
         </td>
@@ -28,10 +34,10 @@
   </p-table>
 
   <p-confirmDialog></p-confirmDialog>
-  <p-growl [(value)]="msgs"></p-growl>
+<!--  <p-growl [(value)]="msgs"></p-growl>-->
 
   <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
-            [responsive]="true" [width]="500">
+            [responsive]="true" >
     <div class="row">
       <div class="col-sm-12">
         <div class="form-group">

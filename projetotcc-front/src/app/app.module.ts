@@ -14,7 +14,12 @@ import {PrincipalComponent} from './principal/principal.component';
 import { SubEtapaComponent } from './sub-etapa/sub-etapa.component';
 import {DialogModule} from 'primeng/dialog';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import { UsuarioComponent } from './usuario/usuario/usuario.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import {ConfirmationService, FilterService, PrimeNGConfig} from 'primeng/api';
+import {UsuarioService} from './usuario/usuario.service';
+import {SubEtapa} from './model/sub-etapa';
+import {SubEtapaService} from './sub-etapa/sub-etapa.service';
+import {EtapaService} from './etapa/etapa.service';
 
 
 @NgModule({
@@ -37,7 +42,16 @@ import { UsuarioComponent } from './usuario/usuario/usuario.component';
     ConfirmDialogModule
   ],
   exports:[AppComponent],
-  providers: [CargoService],
+  providers: [
+    CargoService,
+    ConfirmationService,
+    UsuarioService,
+    SubEtapaService,
+    EtapaService,
+    FilterService,
+    PrimeNGConfig,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

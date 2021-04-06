@@ -34,6 +34,7 @@ export class EtapaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.findAll();
     this.carregarCombos();
   }
 
@@ -45,7 +46,6 @@ export class EtapaComponent implements OnInit {
   }
 
   findAllPaged(page: number, size: number) {
-    // this.serieService.getTotalRecords().subscribe(e => this.totalRecords = e);
     this.etapaService.findPageable(page, size).subscribe(e => {
       this.etapas = e.content;
       this.totalRecords = e.totalElements;
@@ -87,20 +87,20 @@ export class EtapaComponent implements OnInit {
     this.etapaEdit = new SubEtapa();
   }
 
-  edit(genero: SubEtapa) {
-    // this.etapaEdit = genero;
-    this.etapaEdit = Object.assign({}, genero);
+  edit(etapa: Etapa) {
+    // this.etapaEdit = etapa;
+    this.etapaEdit = Object.assign({}, etapa);
     this.showDialog = true;
   }
 
-  delete(Etapaetapa: Etapa) {
+  delete(etapa: Etapa) {
     this.confirmationService.confirm({
       message: 'Esta ação não poderá ser desfeita!',
       header: 'Deseja remover o registro?',
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.etapaService.delete(Etapaetapa.id).subscribe(() => {
+        this.etapaService.delete(etapa.id).subscribe(() => {
           this.dataTable.reset();
           this.msgs = [{severity: 'success', summary: 'Confirmado',
             detail: 'Registro removido com sucesso!'}];
