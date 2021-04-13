@@ -1,7 +1,7 @@
 
 <div class="container">
   <h1 class="d-flex">Cadastro de Cargos</h1>
-  <button class="btn btn-primary" (click)="newEntity()"> Novo</button>
+  <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
 
   <p-table [value]="cargos" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
@@ -16,11 +16,11 @@
         <td>{{cargo.id}}</td>
         <td>{{cargo.descricao}}</td>
         <td>
-          <button type="button" class="btn btn-dark" (click)="edit(cargo)">
+          <button pButton type="button" (click)="edit(cargo)">
             Editar
           </button>
 
-          <button type="button" class="btn btn-danger" (click)="delete(cargo)">
+          <button pButton type="button" class="p-ml-2" (click)="delete(cargo)">
             Remover
           </button>
         </td>

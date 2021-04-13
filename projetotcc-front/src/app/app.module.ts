@@ -20,6 +20,9 @@ import {UsuarioService} from './usuario/usuario.service';
 import {SubEtapa} from './model/sub-etapa';
 import {SubEtapaService} from './sub-etapa/sub-etapa.service';
 import {EtapaService} from './etapa/etapa.service';
+import {ButtonModule} from 'primeng/button';
+import { MenuComponent } from './menu/menu.component';
+import {MenubarModule} from 'primeng/menubar';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import {EtapaService} from './etapa/etapa.service';
     EtapaComponent,
     PrincipalComponent,
     SubEtapaComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,10 @@ import {EtapaService} from './etapa/etapa.service';
     FormsModule,
     TableModule,
     DialogModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ButtonModule,
+    MenubarModule,
+
   ],
   exports:[AppComponent],
   providers: [
