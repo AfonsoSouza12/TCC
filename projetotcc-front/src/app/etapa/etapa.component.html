@@ -1,6 +1,9 @@
 <div class="container">
-  <h1 class="d-flex">Cadastro de Etapas</h1>
-  <button class="btn btn-primary" (click)="newEntity()"> Novo</button>
+  <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Cadastro de Etapas</h1>
+  <div class="p-d-flex p-jc-end">
+    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  </div>
+
 
   <p-table [value]="etapas" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
@@ -21,11 +24,11 @@
         <td>{{etapa.status}}</td>
         <td>{{etapa.responsavel.nome}}</td>
         <td>
-          <button type="button" class="btn btn-dark" (click)="edit(etapa)">
+          <button pButton type="button" (click)="edit(etapa)">
             Editar
           </button>
 
-          <button type="button" class="btn btn-danger" (click)="delete(etapa)">
+          <button pButton type="button" class="p-ml-2" (click)="delete(etapa)">
             Remover
           </button>
         </td>
