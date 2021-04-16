@@ -23,6 +23,7 @@ import {EtapaService} from './etapa/etapa.service';
 import {ButtonModule} from 'primeng/button';
 import { MenuComponent } from './menu/menu.component';
 import {MenubarModule} from 'primeng/menubar';
+import {PanelModule} from 'primeng/panel';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {MenubarModule} from 'primeng/menubar';
     ConfirmDialogModule,
     ButtonModule,
     MenubarModule,
+    PanelModule,
 
   ],
   exports:[AppComponent],

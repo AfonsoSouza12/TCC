@@ -16,7 +16,9 @@ export class MenuComponent implements OnInit {
         label: 'Cadastros',
         items: [{
           label: 'Cargos', routerLink: "cargo"},
-          {label: 'Etapas',routerLink:"etapa"}
+          {label: 'Etapas', items:[{label: 'Etapas',routerLink:"etapa"},
+              {label:'Sub-Etapas',routerLink:"subEtapa"}]
+            }
         ]
       },
     ];
