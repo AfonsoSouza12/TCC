@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import br.edu.utfpr.pb.projetotcc.model.SubEtapa;
 
 public interface SubEtapaRepository
-			extends JpaRepository<SubEtapa, Integer>{
+			extends JpaRepository<SubEtapa, Long>{
 
 }

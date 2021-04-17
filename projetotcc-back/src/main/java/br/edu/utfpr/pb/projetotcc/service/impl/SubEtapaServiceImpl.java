@@ -10,14 +10,14 @@ import br.edu.utfpr.pb.projetotcc.service.SubEtapaService;
 
 @Service
 public class SubEtapaServiceImpl 
-		extends CrudServiceImpl<SubEtapa, Integer>
+		extends CrudServiceImpl<SubEtapa, Long>
 		implements SubEtapaService{
 
 	@Autowired
 	private SubEtapaRepository subEtapaRepository;
 	
 	@Override
-	protected JpaRepository<SubEtapa, Integer> getRepository() {
+	protected JpaRepository<SubEtapa, Long> getRepository() {
 		return subEtapaRepository;
 	}
 

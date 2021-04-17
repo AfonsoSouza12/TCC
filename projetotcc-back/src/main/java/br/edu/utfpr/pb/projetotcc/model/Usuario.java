@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Table(name = "usuario")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
@@ -41,9 +42,8 @@ public class Usuario implements UserDetails{
 	private String password;
 
 
-	@OneToOne(optional = true)
-	@JoinColumn(name = "cargo_id", referencedColumnName = "id", nullable = true)
-	@JsonIgnore
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "cargo_id", referencedColumnName = "id",nullable = false)
 	private Cargo cargo;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

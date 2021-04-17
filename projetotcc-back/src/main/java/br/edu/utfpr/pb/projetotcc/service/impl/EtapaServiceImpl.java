@@ -10,14 +10,14 @@ import br.edu.utfpr.pb.projetotcc.service.EtapaService;
 
 @Service
 public class EtapaServiceImpl 
-		extends CrudServiceImpl<Etapa, Integer>
+		extends CrudServiceImpl<Etapa, Long>
 		implements EtapaService{
 
 	@Autowired
 	private EtapaRepository etapaRepository;
 	
 	@Override
-	protected JpaRepository<Etapa, Integer> getRepository() {
+	protected JpaRepository<Etapa, Long> getRepository() {
 		return etapaRepository;
 	}
 

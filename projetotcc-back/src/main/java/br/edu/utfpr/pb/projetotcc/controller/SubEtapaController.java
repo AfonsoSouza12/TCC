@@ -14,14 +14,14 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("subEtapa")
 @Api("SubEtapa")
-public class SubEtapaController extends CrudController<SubEtapa, Integer> {
+public class SubEtapaController extends CrudController<SubEtapa, Long> {
 
 	@Autowired
 	private SubEtapaService subEtapaService;
 	
 	@Override
 	@Valid
-	protected CrudService<SubEtapa, Integer> getService() {
+	protected CrudService<SubEtapa, Long> getService() {
 		return subEtapaService;
 	}
 	
