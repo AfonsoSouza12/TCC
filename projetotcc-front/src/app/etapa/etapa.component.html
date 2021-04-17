@@ -39,20 +39,37 @@
   <p-confirmDialog></p-confirmDialog>
 <!--  <p-growl [(value)]="msgs"></p-growl>-->
 
-  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
-            [responsive]="true" >
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" class="form-control"
-                 [(ngModel)]="etapaEdit.nome">
+  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
+        <div class="row">
+          <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input pInputText id="nome" name="nome" type="text" [(ngModel)]="etapaEdit.nome">
+                <label for="nome">Nome</label>
+            </span>
+          </div>
+          <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3">
+                <input pInputText id="descricao" name="descricao" type="text" [(ngModel)]="etapaEdit.descricao">
+                <label for="descricao">Descrição</label>
+            </span>
+          </div>
+          <div class="ui-g-12 ui-fluid p-mb-3">
+            <label class="p-d-block"for="status">Status</label>
+            <p-dropdown class="p-d-block" [options]="statuss" id="status" name="status" ></p-dropdown>
+          </div>
+          <div class="ui-g-12 ui-fluid">
+            <label  for="responsavel">Responsavel</label>
+            <p-dropdown class="p-d-block" id="responsavel" name="responsavel" [options]="responsaveis" [(ngModel)]="etapaEdit.responsavel" optionLabel="nome"></p-dropdown>
+          </div>
+
+
         </div>
-      </div>
-    </div>
+
+
+
     <p-footer>
-      <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
-      <button type="button" class="btn btn-success" (click)="save()">Salvar</button>
+      <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
+      <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>
     </p-footer>
   </p-dialog>
 </div>

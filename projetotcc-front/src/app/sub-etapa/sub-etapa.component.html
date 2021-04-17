@@ -1,12 +1,17 @@
 <div class="container">
-  <h1 class="d-flex">Cadastro de Gêneros</h1>
-  <button class="btn btn-primary" (click)="newEntity()"> Novo</button>
+  <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Cadastro de Sub-Etapas</h1>
+  <div class="p-d-flex p-jc-end">
+    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  </div>
 
   <p-table [value]="subEtapas" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
         <th>Nome</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Etapa</th>
         <th>Ações</th>
       </tr>
     </ng-template>
@@ -14,12 +19,15 @@
       <tr>
         <td>{{subEtapa.id}}</td>
         <td>{{subEtapa.nome}}</td>
+        <td>{{subEtapa.descricao}}</td>
+        <td>{{subEtapa.status}}</td>
+        <td>{{subEtapa.etapa.nome}}</td>
         <td>
-          <button type="button" class="btn btn-dark" (click)="edit(subEtapa)">
+          <button pButton type="button" (click)="edit(subEtapa)">
             Editar
           </button>
 
-          <button type="button" class="btn btn-danger" (click)="delete(subEtapa)">
+          <button pButton type="button" class="p-ml-2" (click)="delete(subEtapa)">
             Remover
           </button>
         </td>
@@ -28,22 +36,35 @@
   </p-table>
 
   <p-confirmDialog></p-confirmDialog>
-<!--  <p-growl [(value)]="msgs"></p-growl>-->
+  <!--  <p-growl [(value)]="msgs"></p-growl>-->
 
-  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
-            [responsive]="true" >
+  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
     <div class="row">
-      <div class="col-sm-12">
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" class="form-control"
-                 [(ngModel)]="subEtapaEdit.nome">
-        </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input pInputText id="nome" name="nome" type="text" [(ngModel)]="subEtapaEdit.nome">
+                <label for="nome">Nome</label>
+            </span>
       </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3">
+                <input pInputText id="descricao" name="descricao" type="text" [(ngModel)]="subEtapaEdit.descricao">
+                <label for="descricao">Descrição</label>
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid p-mb-3">
+        <label class="p-d-block"for="status">Status</label>
+        <p-dropdown class="p-d-block" [options]="statuss" id="status" name="status" ></p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-fluid p-mb-3">
+        <label class="p-d-block"for="etapa">Etapa</label>
+        <p-dropdown class="p-d-block" [options]="etapas" [(ngModel)]="subEtapaEdit.etapa" optionLabel="nome" id="etapa" name="etapa.nome" ></p-dropdown>
+      </div>
+
     </div>
     <p-footer>
-      <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
-      <button type="button" class="btn btn-success" (click)="save()">Salvar</button>
+      <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
+      <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>
     </p-footer>
   </p-dialog>
 </div>

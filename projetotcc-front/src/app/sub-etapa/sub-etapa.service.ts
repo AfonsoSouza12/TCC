@@ -10,6 +10,6 @@ import {CrudService} from '../generic/crud.service';
 export class SubEtapaService extends CrudService<SubEtapa, number>{
 
   constructor(http: HttpClient) {
-    super(environment.api + '/sub-etapa', http);
+    super(environment.api + '/subEtapa', http);
   }
 }

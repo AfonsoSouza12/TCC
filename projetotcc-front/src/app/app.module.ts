@@ -24,6 +24,9 @@ import {ButtonModule} from 'primeng/button';
 import { MenuComponent } from './menu/menu.component';
 import {MenubarModule} from 'primeng/menubar';
 import {PanelModule} from 'primeng/panel';
+import {InputTextModule} from 'primeng/inputtext';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 @NgModule({
@@ -48,6 +51,9 @@ import {PanelModule} from 'primeng/panel';
     ButtonModule,
     MenubarModule,
     PanelModule,
+    InputTextModule,
+    CascadeSelectModule,
+    DropdownModule,
 
   ],
   exports:[AppComponent],

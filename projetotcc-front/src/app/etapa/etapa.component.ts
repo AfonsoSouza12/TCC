@@ -7,6 +7,7 @@ import {EtapaService} from './etapa.service';
 import {Table} from 'primeng/table';
 import {Usuario} from '../model/usuario';
 import {UsuarioService} from '../usuario/usuario.service';
+import {StatusOpt} from '../../shared/consts/StatusOpt';
 
 @Component({
   selector: 'app-etapa',
@@ -17,6 +18,8 @@ export class EtapaComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
 
+  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
+  statusSelcionado: StatusOpt;
   etapas: Etapa[];
   etapaEdit = new Etapa();
   showDialog = false;
@@ -36,6 +39,7 @@ export class EtapaComponent implements OnInit {
   ngOnInit() {
     this.findAll();
     this.carregarCombos();
+
   }
 
   carregarCombos() {
@@ -63,13 +67,13 @@ export class EtapaComponent implements OnInit {
   }
 
   newEntity() {
-    this.etapaEdit = new SubEtapa();
+    this.etapaEdit = new Etapa();
     this.showDialog = true;
   }
 
   save() {
     this.etapaService.save(this.etapaEdit).subscribe( e => {
-        this.etapaEdit = new SubEtapa();
+        this.etapaEdit = new Etapa();
         this.findAll();
         this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
@@ -84,7 +88,7 @@ export class EtapaComponent implements OnInit {
 
   cancel() {
     this.showDialog = false;
-    this.etapaEdit = new SubEtapa();
+    this.etapaEdit = new Etapa();
   }
 
   edit(etapa: Etapa) {
