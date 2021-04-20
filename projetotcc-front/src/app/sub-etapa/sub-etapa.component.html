@@ -54,7 +54,7 @@
       </div>
       <div class="ui-g-12 ui-fluid p-mb-3">
         <label class="p-d-block"for="status">Status</label>
-        <p-dropdown class="p-d-block" [options]="statuss" id="status" name="status" ></p-dropdown>
+        <p-dropdown  class="p-d-block"  [options]="statuss" [(ngModel)]="subEtapaEdit.status" name="status" id="status"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid p-mb-3">
         <label class="p-d-block"for="etapa">Etapa</label>

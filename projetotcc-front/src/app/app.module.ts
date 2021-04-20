@@ -27,6 +27,7 @@ import {PanelModule} from 'primeng/panel';
 import {InputTextModule} from 'primeng/inputtext';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {DropdownModule} from 'primeng/dropdown';
+import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {DropdownModule} from 'primeng/dropdown';
     PrincipalComponent,
     SubEtapaComponent,
     UsuarioComponent,
-    MenuComponent
+    MenuComponent,
+    SolicitacaoComponent
   ],
   imports: [
     BrowserModule,

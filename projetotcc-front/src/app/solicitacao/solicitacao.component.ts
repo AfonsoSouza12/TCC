@@ -1,58 +1,56 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Etapa} from '../model/etapa';
+import {Solicitacao} from '../model/solicitacao';
 import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
-import {SubEtapa} from '../model/sub-etapa';
-import {SubEtapaService} from '../sub-etapa/sub-etapa.service';
-import {EtapaService} from './etapa.service';
-import {Table} from 'primeng/table';
 import {Usuario} from '../model/usuario';
+import {Sprint} from '../model/sprint';
+import {Projeto} from '../model/projeto';
+import {Table} from 'primeng/table';
+import {SolicitacaoService} from './solicitacao.service';
 import {UsuarioService} from '../usuario/usuario.service';
-import {StatusOpt} from '../../shared/consts/StatusOpt';
-import {Dropdown} from 'primeng/dropdown';
 
 @Component({
-  selector: 'app-etapa',
-  templateUrl: './etapa.component.html',
-  styleUrls: ['./etapa.component.css']
+  selector: 'app-solicitacao',
+  templateUrl: './solicitacao.component.html',
+  styleUrls: ['./solicitacao.component.css']
 })
-export class EtapaComponent implements OnInit {
+export class SolicitacaoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
 
-  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
-  // statusSelcionado: StatusOpt;
-  etapas: Etapa[];
-  etapaEdit = new Etapa();
+  solicitacoes: Solicitacao[];
+  solicitacaoEdit = new Solicitacao();
   showDialog = false;
   msgs: Message[] = [];
-
   responsaveis: Usuario[];
+  projetos: Projeto[];
+  sprints: Sprint[];
 
   totalRecords: number;
   maxRecords = 10;
   currentPage = 1;
 
-  constructor(private etapaService: EtapaService,
+  constructor(private solicitacaoService: SolicitacaoService,
               private confirmationService: ConfirmationService,
-              private usuarioService: UsuarioService) {
-  }
+              private usuarioService: UsuarioService
+              ) {
+
+}
 
   ngOnInit() {
-    this.findAll();
     this.carregarCombos();
-
+    this.findAll();
   }
 
   carregarCombos() {
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
-    this.etapaService.findAll().subscribe( e => this.etapas = e);
+    this.solicitacaoService.findAll().subscribe( e => this.solicitacoes = e);
   }
 
   findAllPaged(page: number, size: number) {
-    this.etapaService.findPageable(page, size).subscribe(e => {
-      this.etapas = e.content;
+    this.solicitacaoService.findPageable(page, size).subscribe(e => {
+      this.solicitacoes = e.content;
       this.totalRecords = e.totalElements;
     });
   }
@@ -68,13 +66,13 @@ export class EtapaComponent implements OnInit {
   }
 
   newEntity() {
-    this.etapaEdit = new Etapa();
+    this.solicitacaoEdit = new Solicitacao();
     this.showDialog = true;
   }
 
   save() {
-    this.etapaService.save(this.etapaEdit).subscribe( e => {
-        this.etapaEdit = new Etapa();
+    this.solicitacaoService.save(this.solicitacaoEdit).subscribe( e => {
+        this.solicitacaoEdit = new Solicitacao();
         this.findAll();
         this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
@@ -89,23 +87,22 @@ export class EtapaComponent implements OnInit {
 
   cancel() {
     this.showDialog = false;
-    this.etapaEdit = new Etapa();
+    this.solicitacaoEdit = new Solicitacao();
   }
 
-  edit(etapa: Etapa) {
-    // this.etapaEdit = etapa;
-    this.etapaEdit = Object.assign({}, etapa);
+  edit(solicitacao: Solicitacao) {
+    this.solicitacaoEdit = Object.assign({}, solicitacao);
     this.showDialog = true;
   }
 
-  delete(etapa: Etapa) {
+  delete(solicitacao: Solicitacao) {
     this.confirmationService.confirm({
       message: 'Esta ação não poderá ser desfeita!',
       header: 'Deseja remover o registro?',
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.etapaService.delete(etapa.id).subscribe(() => {
+        this.solicitacaoService.delete(solicitacao.id).subscribe(() => {
           this.dataTable.reset();
           this.msgs = [{severity: 'success', summary: 'Confirmado',
             detail: 'Registro removido com sucesso!'}];
@@ -115,11 +112,6 @@ export class EtapaComponent implements OnInit {
         });
       }
     });
-  }
-  teste(dropdown: Dropdown){
-    // var valor = document.getElementById('dd');
-    // console.log(valor.textContent);
-    console.log(dropdown.selectedOption.valueOf());
   }
 
 }
