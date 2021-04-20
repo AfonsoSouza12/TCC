@@ -40,7 +40,7 @@ public class Projeto implements Serializable {
 	@Column(name = "data_limite", nullable = false)
 	private LocalDate dataLimite;
 
-	@Column(name = "data_fim", nullable = false)
+	@Column(name = "data_fim")
 	private LocalDate dataFim;
 
 	@ManyToOne

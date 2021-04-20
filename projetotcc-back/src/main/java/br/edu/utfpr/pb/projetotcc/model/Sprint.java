@@ -26,8 +26,6 @@ public class Sprint implements Serializable {
 	@Column(name = "nome", length = 254, nullable = false)
 	private String nome;
 
-	@Column(name = "descricao", length = 1000, nullable = false)
-	private String descricao;
 
 	@Column(name = "data_inicio", nullable = false)
 	private LocalDate dataInicio;
@@ -35,7 +33,7 @@ public class Sprint implements Serializable {
 	@Column(name = "data_limite", nullable = false)
 	private LocalDate dataLimite;
 
-	@Column(name = "data_fim", nullable = false)
+	@Column(name = "data_fim")
 	private LocalDate dataFim;
 
 	@ManyToOne
@@ -43,6 +41,12 @@ public class Sprint implements Serializable {
 			referencedColumnName = "id")
 	private Projeto projeto;
 
+	@ManyToOne
+	@JoinColumn(name = "usuario_id",
+			referencedColumnName = "id")
+	private Usuario responsavel;
 
-	
+
+
+
 }

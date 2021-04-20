@@ -37,18 +37,18 @@ public class Solicitacao {
 	@Column(name = "descricao", length = 1024, nullable = false)
 	private String descricao;
 
-	@Column(name = "data_inicio", nullable = false)
+	@Column(name = "data_inicio")
 	private LocalDate dataInicio;
 
 	@Column(name = "data_fim")
 	private LocalDate dataFim;
 
 	@ManyToOne
-	@JoinColumn(name = "projeto_id", nullable = false, referencedColumnName = "id")
+	@JoinColumn(name = "projeto_id", referencedColumnName = "id")
 	private Projeto projeto;
 
 	@ManyToOne
-	@JoinColumn(name = "etapa_id", nullable = false, referencedColumnName = "id")
+	@JoinColumn(name = "etapa_id", referencedColumnName = "id")
 	private Etapa etapa;
 
 	@ManyToOne
