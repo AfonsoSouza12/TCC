@@ -8,7 +8,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import br.edu.utfpr.pb.projetotcc.config.CustomAuthorityDeserializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,7 +48,7 @@ public class Usuario implements UserDetails{
 	@JoinColumn(name = "cargo_id", referencedColumnName = "id",nullable = false)
 	private Cargo cargo;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
 	private Set<Permissao> permissoes;
 	
 	public void addPermissao(Permissao permissao) {
@@ -65,6 +67,7 @@ public class Usuario implements UserDetails{
 	
 
 	@Override
+	@JsonDeserialize(using = CustomAuthorityDeserializer.class)
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.addAll(permissoes);
