@@ -69,6 +69,7 @@ export class EtapaComponent implements OnInit {
 
   newEntity() {
     this.etapaEdit = new Etapa();
+    this.etapaEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
   }
 
@@ -106,6 +107,7 @@ export class EtapaComponent implements OnInit {
       rejectLabel: 'Cancelar',
       accept: () => {
         this.etapaService.delete(etapa.id).subscribe(() => {
+          this.findAll();
           this.dataTable.reset();
           this.msgs = [{severity: 'success', summary: 'Confirmado',
             detail: 'Registro removido com sucesso!'}];

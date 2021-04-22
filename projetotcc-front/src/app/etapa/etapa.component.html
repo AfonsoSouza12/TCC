@@ -5,7 +5,7 @@
   </div>
 
 
-  <p-table [value]="etapas" [paginator]="true" [rows]="5">
+  <p-table #dt [value]="etapas" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
@@ -57,10 +57,11 @@
             <label class="p-d-block"for="status">Status</label>
             <p-dropdown  class="p-d-block"  [options]="statuss" [(ngModel)]="etapaEdit.status" name="status" id="status"></p-dropdown>
           </div>
-          <div class="ui-g-12 ui-fluid">
+          <div class="ui-g-12 ui-fluid" >
             <label  for="responsavel">Responsavel</label>
-            <p-dropdown #dd class="p-d-block" (click)="teste(dd)" [options]="responsaveis" [(ngModel)]="etapaEdit.responsavel" optionLabel="nome"></p-dropdown>
+            <p-dropdown #dd class="p-d-block"  (click)="teste(dd)" [options]="responsaveis" [(ngModel)]="etapaEdit.responsavel" optionLabel="nome"></p-dropdown>
           </div>
+          <h2>{{etapaEdit.responsavel}}</h2>
 
 
         </div>
