@@ -1,57 +1,67 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Solicitacao} from '../model/solicitacao';
+import {Table} from 'primeng/table';
+import {Projeto} from '../model/projeto';
 import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
 import {Usuario} from '../model/usuario';
-import {Sprint} from '../model/sprint';
-import {Projeto} from '../model/projeto';
-import {Table} from 'primeng/table';
-import {SolicitacaoService} from './solicitacao.service';
+import {ProjetoService} from '../projeto/projeto.service';
 import {UsuarioService} from '../usuario/usuario.service';
 
 @Component({
-  selector: 'app-solicitacao',
-  templateUrl: './solicitacao.component.html',
-  styleUrls: ['./solicitacao.component.css']
+  selector: 'app-projeto',
+  templateUrl: './projeto.component.html',
+  styleUrls: ['./projeto.component.css']
 })
-export class SolicitacaoComponent implements OnInit {
+export class ProjetoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
 
-  solicitacoes: Solicitacao[];
-  solicitacaoEdit = new Solicitacao();
+  projetos: Projeto[];
+  projetoEdit = new Projeto();
   showDialog = false;
   msgs: Message[] = [];
+
   responsaveis: Usuario[];
-  projetos: Projeto[];
-  sprints: Sprint[];
 
   totalRecords: number;
   maxRecords = 10;
   currentPage = 1;
 
-  constructor(private solicitacaoService: SolicitacaoService,
+  br: any;
+  today: number = Date.now();
+
+  constructor(private projetoService: ProjetoService,
               private confirmationService: ConfirmationService,
-              private usuarioService: UsuarioService,
-
-              ) {
-
-}
+              private usuarioService: UsuarioService) {
+  }
 
   ngOnInit() {
-    this.carregarCombos();
     this.findAll();
+    this.carregarCombos();
+    this.br = {
+      firstDayOfWeek: 1,
+      dayNames: [ 'domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado' ],
+      dayNamesShort: [ 'dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb' ],
+      dayNamesMin: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+      monthNames: [ 'Janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
+        'agosto', 'setembro', 'outubro', 'novembro', 'dezembro' ],
+      monthNamesShort: [ 'jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set',
+        'out', 'nov', 'dez' ],
+      today: 'Hoje',
+      clear: 'Limpar'
+    }
+
   }
 
   carregarCombos() {
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
-    this.solicitacaoService.findAll().subscribe( e => this.solicitacoes = e);
+    this.projetoService.findAll().subscribe( e => this.projetos = e);
   }
 
   findAllPaged(page: number, size: number) {
-    this.solicitacaoService.findPageable(page, size).subscribe(e => {
-      this.solicitacoes = e.content;
+    this.projetoService.findPageable(page, size).subscribe(e => {
+      this.projetos = e.content;
       this.totalRecords = e.totalElements;
     });
   }
@@ -67,13 +77,15 @@ export class SolicitacaoComponent implements OnInit {
   }
 
   newEntity() {
-    this.solicitacaoEdit = new Solicitacao();
+    this.today = Date.now();
+    this.projetoEdit = new Projeto();
+    this.projetoEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
   }
 
   save() {
-    this.solicitacaoService.save(this.solicitacaoEdit).subscribe( e => {
-        this.solicitacaoEdit = new Solicitacao();
+    this.projetoService.save(this.projetoEdit).subscribe( e => {
+        this.projetoEdit = new Projeto();
         this.findAll();
         this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
@@ -88,22 +100,24 @@ export class SolicitacaoComponent implements OnInit {
 
   cancel() {
     this.showDialog = false;
-    this.solicitacaoEdit = new Solicitacao();
+    this.projetoEdit = new Projeto();
   }
 
-  edit(solicitacao: Solicitacao) {
-    this.solicitacaoEdit = Object.assign({}, solicitacao);
+  edit(projeto: Projeto) {
+    this.today = Date.now();
+    this.projetoEdit = Object.assign({}, projeto);
     this.showDialog = true;
   }
 
-  delete(solicitacao: Solicitacao) {
+  delete(projeto: Projeto) {
     this.confirmationService.confirm({
       message: 'Esta ação não poderá ser desfeita!',
       header: 'Deseja remover o registro?',
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.solicitacaoService.delete(solicitacao.id).subscribe(() => {
+        this.projetoService.delete(projeto.id).subscribe(() => {
+          this.findAll();
           this.dataTable.reset();
           this.msgs = [{severity: 'success', summary: 'Confirmado',
             detail: 'Registro removido com sucesso!'}];
@@ -114,5 +128,6 @@ export class SolicitacaoComponent implements OnInit {
       }
     });
   }
+
 
 }

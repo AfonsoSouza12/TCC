@@ -28,6 +28,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {CascadeSelectModule} from 'primeng/cascadeselect';
 import {DropdownModule} from 'primeng/dropdown';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
+import { ProjetoComponent } from './projeto/projeto.component';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
     SubEtapaComponent,
     UsuarioComponent,
     MenuComponent,
-    SolicitacaoComponent
+    SolicitacaoComponent,
+    ProjetoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
     InputTextModule,
     CascadeSelectModule,
     DropdownModule,
+    CalendarModule,
 
   ],
   exports:[AppComponent],

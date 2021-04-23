@@ -55,6 +55,7 @@ export class SubEtapaComponent implements OnInit {
 
   newEntity() {
     this.subEtapaEdit = new SubEtapa();
+    this.subEtapaEdit.etapa = this.etapas[0];
     this.showDialog = true;
   }
   carregarCombos() {

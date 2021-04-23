@@ -14,11 +14,12 @@ export class MenuComponent implements OnInit {
     this.items = [
       {
         label: 'Cadastros',
-        items: [{
-          label: 'Cargos', routerLink: "cargo"},
+        items: [
+          {label: 'Cargos', routerLink: "cargo"},
           {label: 'Etapas', items:[{label: 'Etapas',routerLink:"etapa"},
-              {label:'Sub-Etapas',routerLink:"subEtapa"}]
-            }
+              {label:'Sub-Etapas',routerLink:"subEtapa"}]},
+          {label: 'Projetos', routerLink: 'projeto'},
+          {label: 'Solicitações', routerLink: 'solicitacao'},
         ]
       },
     ];
