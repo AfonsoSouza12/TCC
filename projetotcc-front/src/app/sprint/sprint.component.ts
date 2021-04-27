@@ -1,24 +1,25 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Table} from 'primeng/table';
-import {Projeto} from '../model/projeto';
+import {Calendar} from 'primeng/calendar';
+import {Sprint} from '../model/sprint';
 import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
 import {Usuario} from '../model/usuario';
-import {ProjetoService} from '../projeto/projeto.service';
+import {SprintService} from '../sprint/sprint.service';
 import {UsuarioService} from '../usuario/usuario.service';
-import {Calendar} from 'primeng/calendar';
 
 @Component({
-  selector: 'app-projeto',
-  templateUrl: './projeto.component.html',
-  styleUrls: ['./projeto.component.css']
+  selector: 'app-sprint',
+  templateUrl: './sprint.component.html',
+  styleUrls: ['./sprint.component.css']
 })
-export class ProjetoComponent implements OnInit {
+export class SprintComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
   @ViewChild('cal', null) calendarFrom: Calendar;
 
-  projetos: Projeto[];
-  projetoEdit = new Projeto();
+
+  sprints: Sprint[];
+  sprintEdit = new Sprint();
   showDialog = false;
   msgs: Message[] = [];
 
@@ -30,7 +31,7 @@ export class ProjetoComponent implements OnInit {
 
   br: any;
 
-  constructor(private projetoService: ProjetoService,
+  constructor(private sprintService: SprintService,
               private confirmationService: ConfirmationService,
               private usuarioService: UsuarioService) {
   }
@@ -57,12 +58,12 @@ export class ProjetoComponent implements OnInit {
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
-    this.projetoService.findAll().subscribe( e => this.projetos = e);
+    this.sprintService.findAll().subscribe( e => this.sprints = e);
   }
 
   findAllPaged(page: number, size: number) {
-    this.projetoService.findPageable(page, size).subscribe(e => {
-      this.projetos = e.content;
+    this.sprintService.findPageable(page, size).subscribe(e => {
+      this.sprints = e.content;
       this.totalRecords = e.totalElements;
     });
   }
@@ -78,14 +79,14 @@ export class ProjetoComponent implements OnInit {
   }
 
   newEntity() {
-    this.projetoEdit = new Projeto();
-    this.projetoEdit.responsavel = this.responsaveis[0];
+    this.sprintEdit = new Sprint();
+    this.sprintEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
   }
 
   save() {
-    this.projetoService.save(this.projetoEdit).subscribe( e => {
-        this.projetoEdit = new Projeto();
+    this.sprintService.save(this.sprintEdit).subscribe( e => {
+        this.sprintEdit = new Sprint();
         this.findAll();
         this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
@@ -100,42 +101,40 @@ export class ProjetoComponent implements OnInit {
 
   cancel() {
     this.showDialog = false;
-    this.projetoEdit = new Projeto();
+    this.sprintEdit = new Sprint();
   }
 
-  edit(projeto: Projeto) {
-    this.projetoEdit = Object.assign({}, projeto);
+  edit(sprint: Sprint) {
+    this.sprintEdit = Object.assign({}, sprint);
 
-    let dataString = this.projetoEdit.dataInicio;
+    let dataString = this.sprintEdit.dataInicio;
     let newDate = new Date(dataString);
-    this.projetoEdit.dataInicio = newDate;
+    this.sprintEdit.dataInicio = newDate;
 
-    let dataString2 = this.projetoEdit.dataLimite
+    let dataString2 = this.sprintEdit.dataLimite
     let newDate2 = new Date(dataString2);
-    this.projetoEdit.dataLimite = newDate2;
+    this.sprintEdit.dataLimite = newDate2;
 
-    if(this.projetoEdit.dataFim == null){
+    if(this.sprintEdit.dataFim == null){
       this.calendarFrom.value = null;
       this.calendarFrom.updateInputfield();
     }else{
-      let dataString3 = this.projetoEdit.dataFim
+      let dataString3 = this.sprintEdit.dataFim
       let newDate3 = new Date(dataString3);
-      this.projetoEdit.dataFim = newDate3;
+      this.sprintEdit.dataFim = newDate3;
     }
 
-
-    console.log(this.projetoEdit);
     this.showDialog = true;
   }
 
-  delete(projeto: Projeto) {
+  delete(sprint: Sprint) {
     this.confirmationService.confirm({
       message: 'Esta ação não poderá ser desfeita!',
       header: 'Deseja remover o registro?',
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.projetoService.delete(projeto.id).subscribe(() => {
+        this.sprintService.delete(sprint.id).subscribe(() => {
           this.findAll();
           this.dataTable.reset();
           this.msgs = [{severity: 'success', summary: 'Confirmado',

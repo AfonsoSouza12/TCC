@@ -32,7 +32,11 @@ export class EtapaComponent implements OnInit {
   maxRecords = 10;
   currentPage = 1;
 
+  filtroEtapa: any;
+  subEtapas: SubEtapa[];
+
   constructor(private etapaService: EtapaService,
+              private subEtapaService: SubEtapaService,
               private confirmationService: ConfirmationService,
               private usuarioService: UsuarioService) {
   }
@@ -118,10 +122,18 @@ export class EtapaComponent implements OnInit {
       }
     });
   }
-  teste(dropdown: Dropdown){
-    // var valor = document.getElementById('dd');
-    // console.log(valor.textContent);
-    console.log(dropdown.selectedOption.valueOf());
+
+  findSubEtapas(id: number){
+      this.subEtapaService.findByEtapa(id).subscribe(e =>{this.subEtapas = e; console.log(e)} );
+    // this.subEtapaService.teste();
+  }
+
+  onRowSelect(etapa: Etapa) {
+    this.filtroEtapa = etapa.id;
+    this.findSubEtapas(etapa.id);
+
+    console.log(this.filtroEtapa);
+
   }
 
 }

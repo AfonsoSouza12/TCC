@@ -30,6 +30,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 import {CalendarModule} from 'primeng/calendar';
+import { SprintComponent } from './sprint/sprint.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import {CalendarModule} from 'primeng/calendar';
     UsuarioComponent,
     MenuComponent,
     SolicitacaoComponent,
-    ProjetoComponent
+    ProjetoComponent,
+    SprintComponent
   ],
   imports: [
     BrowserModule,
