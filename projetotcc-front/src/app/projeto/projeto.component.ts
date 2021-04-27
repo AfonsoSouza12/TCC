@@ -5,6 +5,8 @@ import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
 import {Usuario} from '../model/usuario';
 import {ProjetoService} from '../projeto/projeto.service';
 import {UsuarioService} from '../usuario/usuario.service';
+import {stringify} from 'querystring';
+import {Calendar} from 'primeng/calendar';
 
 @Component({
   selector: 'app-projeto',
@@ -14,6 +16,7 @@ import {UsuarioService} from '../usuario/usuario.service';
 export class ProjetoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
+  @ViewChild('cal', null) calendarFrom: Calendar;
 
   projetos: Projeto[];
   projetoEdit = new Projeto();
@@ -27,7 +30,6 @@ export class ProjetoComponent implements OnInit {
   currentPage = 1;
 
   br: any;
-  today: number = Date.now();
 
   constructor(private projetoService: ProjetoService,
               private confirmationService: ConfirmationService,
@@ -77,7 +79,6 @@ export class ProjetoComponent implements OnInit {
   }
 
   newEntity() {
-    this.today = Date.now();
     this.projetoEdit = new Projeto();
     this.projetoEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
@@ -104,8 +105,27 @@ export class ProjetoComponent implements OnInit {
   }
 
   edit(projeto: Projeto) {
-    this.today = Date.now();
     this.projetoEdit = Object.assign({}, projeto);
+
+    let dataString = this.projetoEdit.dataInicio;
+    let newDate = new Date(dataString);
+    this.projetoEdit.dataInicio = newDate;
+
+    let dataString2 = this.projetoEdit.dataLimite
+    let newDate2 = new Date(dataString2);
+    this.projetoEdit.dataLimite = newDate2;
+
+    if(this.projetoEdit.dataFim == null){
+      this.calendarFrom.value = null;
+      this.calendarFrom.updateInputfield();
+    }else{
+      let dataString3 = this.projetoEdit.dataFim
+      let newDate3 = new Date(dataString3);
+      this.projetoEdit.dataFim = newDate3;
+    }
+
+
+    console.log(this.projetoEdit);
     this.showDialog = true;
   }
 

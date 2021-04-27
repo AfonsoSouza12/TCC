@@ -62,20 +62,21 @@
       </div>
       <div class="ui-g-12 ui-fluid">
         <label class="p-d-block" for="dataInicio">Data Início</label>
-        <p-calendar appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy" dataType="string" [(ngModel)]="projetoEdit.dataInicio"></p-calendar>
+        <p-calendar appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="projetoEdit.dataInicio"></p-calendar>
       </div>
       <div class="ui-g-12 ui-fluid">
-        <label class="p-d-block" for="dataLimite">Data Início</label>
-        <p-calendar appendTo="body" class="p-d-block" id="dataLimite" [showIcon]="true" dateFormat="dd/mm/yy" dataType="string" [(ngModel)]="projetoEdit.dataLimite"></p-calendar>
+        <label class="p-d-block" for="dataLimite">Data Limite</label>
+        <p-calendar  appendTo="body" class="p-d-block" id="dataLimite" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="projetoEdit.dataLimite"></p-calendar>
       </div>
       <div class="ui-g-12 ui-fluid">
-        <label class="p-d-block" for="dataFim">Data Início</label>
-        <p-calendar appendTo="body" class="p-d-block" id="dataFim" [showIcon]="true" dateFormat="dd/mm/yy" dataType="string" [(ngModel)]="projetoEdit.dataFim"></p-calendar>
+        <label class="p-d-block" for="dataFim">Data Fim</label>
+        <p-calendar #cal appendTo="body" class="p-d-block" id="dataFim" [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="projetoEdit.dataFim"></p-calendar>
       </div>
       <div class="ui-g-12 ui-fluid" >
         <label class="p-d-block" >Responsavel</label>
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="responsaveis" [(ngModel)]="projetoEdit.responsavel" optionLabel="nome"></p-dropdown>
       </div>
+      <h2>{{projetoEdit.dataInicio}}</h2>
 
 
     </div>
