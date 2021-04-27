@@ -8,6 +8,8 @@ import br.edu.utfpr.pb.projetotcc.model.SubEtapa;
 import br.edu.utfpr.pb.projetotcc.repository.SubEtapaRepository;
 import br.edu.utfpr.pb.projetotcc.service.SubEtapaService;
 
+import java.util.List;
+
 @Service
 public class SubEtapaServiceImpl 
 		extends CrudServiceImpl<SubEtapa, Long>
@@ -21,4 +23,8 @@ public class SubEtapaServiceImpl
 		return subEtapaRepository;
 	}
 
+	@Override
+	public List<SubEtapa> findAllByEtapaIdOrderByNome(Integer etapaId) {
+		return subEtapaRepository.findByEtapaIdOrderByNome(etapaId);
+	}
 }

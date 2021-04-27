@@ -13,7 +13,10 @@ INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
 INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
 
 INSERT INTO etapa (nome, descricao,status,usuario_id) VALUES ('BACKLOG', 'Lista de tarefas pendentes','TO DO', 1)
+INSERT INTO etapa (nome, descricao,status,usuario_id) VALUES ('2BACKLOG2', 'Lista de tarefas pendentes','TO DO', 1)
+
 INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('IMPORTANTES', 'Urgências','TO DO', 1)
+-- INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('NORMAIS', 'Normal','TO DO', 1)
 
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO TCC','CONTROLE DE PROJETOS','2021-01-01','2021-08-01',null,1)
 

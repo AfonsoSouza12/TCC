@@ -4,7 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.edu.utfpr.pb.projetotcc.model.SubEtapa;
 
-public interface SubEtapaRepository
-			extends JpaRepository<SubEtapa, Long>{
+import java.util.List;
 
+public interface SubEtapaRepository	extends JpaRepository<SubEtapa, Long>{
+	List<SubEtapa> findByEtapaIdOrderByNome(Integer etapaId);
 }
