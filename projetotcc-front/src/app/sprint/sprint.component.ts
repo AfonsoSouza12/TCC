@@ -6,6 +6,8 @@ import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
 import {Usuario} from '../model/usuario';
 import {SprintService} from '../sprint/sprint.service';
 import {UsuarioService} from '../usuario/usuario.service';
+import {ProjetoService} from '../projeto/projeto.service';
+import {Projeto} from '../model/projeto';
 
 @Component({
   selector: 'app-sprint',
@@ -23,6 +25,7 @@ export class SprintComponent implements OnInit {
   showDialog = false;
   msgs: Message[] = [];
 
+  projetos: Projeto[];
   responsaveis: Usuario[];
 
   totalRecords: number;
@@ -33,6 +36,7 @@ export class SprintComponent implements OnInit {
 
   constructor(private sprintService: SprintService,
               private confirmationService: ConfirmationService,
+              private projetoService: ProjetoService,
               private usuarioService: UsuarioService) {
   }
 
@@ -55,6 +59,7 @@ export class SprintComponent implements OnInit {
   }
 
   carregarCombos() {
+    this.projetoService.findAll().subscribe(e => this.projetos  = e );
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
@@ -80,6 +85,7 @@ export class SprintComponent implements OnInit {
 
   newEntity() {
     this.sprintEdit = new Sprint();
+    this.sprintEdit.projeto = this.projetos[0];
     this.sprintEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
   }

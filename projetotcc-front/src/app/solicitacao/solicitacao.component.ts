@@ -7,6 +7,10 @@ import {Projeto} from '../model/projeto';
 import {Table} from 'primeng/table';
 import {SolicitacaoService} from './solicitacao.service';
 import {UsuarioService} from '../usuario/usuario.service';
+import {ProjetoService} from '../projeto/projeto.service';
+import {EtapaService} from '../etapa/etapa.service';
+import {Etapa} from '../model/etapa';
+import {SprintService} from '../sprint/sprint.service';
 
 @Component({
   selector: 'app-solicitacao',
@@ -23,6 +27,7 @@ export class SolicitacaoComponent implements OnInit {
   msgs: Message[] = [];
   responsaveis: Usuario[];
   projetos: Projeto[];
+  etapas: Etapa[];
   sprints: Sprint[];
 
   totalRecords: number;
@@ -31,6 +36,9 @@ export class SolicitacaoComponent implements OnInit {
 
   constructor(private solicitacaoService: SolicitacaoService,
               private confirmationService: ConfirmationService,
+              private projetoService: ProjetoService,
+              private etapaService: EtapaService,
+              private sprintService: SprintService,
               private usuarioService: UsuarioService,
 
               ) {
@@ -43,6 +51,9 @@ export class SolicitacaoComponent implements OnInit {
   }
 
   carregarCombos() {
+    this.projetoService.findAll().subscribe(e => this.projetos  = e );
+    this.etapaService.findAll().subscribe(e => this.etapas  = e );
+    this.sprintService.findAll().subscribe(e => this.sprints  = e );
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
@@ -68,6 +79,10 @@ export class SolicitacaoComponent implements OnInit {
 
   newEntity() {
     this.solicitacaoEdit = new Solicitacao();
+    this.solicitacaoEdit.projeto = this.projetos[0];
+    this.solicitacaoEdit.sprint = this.sprints[0];
+    this.solicitacaoEdit.etapa = this.etapas[0];
+    this.solicitacaoEdit.responsavel = this.responsaveis[0];
     this.showDialog = true;
   }
 

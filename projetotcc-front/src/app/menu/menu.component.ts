@@ -20,6 +20,7 @@ export class MenuComponent implements OnInit {
               {label:'Sub-Etapas',routerLink:"subEtapa"}]},
           {label: 'Projetos', routerLink: 'projeto'},
           {label: 'Solicitações', routerLink: 'solicitacao'},
+          {label: 'Sprints', routerLink: 'sprint'},
         ]
       },
     ];

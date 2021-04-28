@@ -8,6 +8,7 @@ import {EtapaComponent} from './etapa/etapa.component';
 import {SubEtapaComponent} from './sub-etapa/sub-etapa.component';
 import {ProjetoComponent} from './projeto/projeto.component';
 import {SolicitacaoComponent} from './solicitacao/solicitacao.component';
+import {SprintComponent} from './sprint/sprint.component';
 
 const routes: Routes = [
   {path: '', component: PrincipalComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'subEtapa', component: SubEtapaComponent},
   {path: 'projeto', component: ProjetoComponent},
   {path: 'solicitacao', component: SolicitacaoComponent},
+  {path: 'sprint', component: SprintComponent},
   {path: 'usuario', component: UsuarioComponent}
 ];
 

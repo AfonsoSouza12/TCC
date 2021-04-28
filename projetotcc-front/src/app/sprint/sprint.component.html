@@ -1,1 +1,89 @@
-<p>sprint works!</p>
+<div class="container">
+  <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Cadastro de Sprints</h1>
+  <div class="p-d-flex p-jc-end">
+    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  </div>
+
+
+  <p-table #dt [value]="sprints" [paginator]="true" [rows]="5"
+           [rowsPerPageOptions]="[5,10,20]"
+           [lazy]="true" [totalRecords]="totalRecords"
+           (onLazyLoad)="lazyLoad($event)">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Data Início</th>
+        <th>Data Limite</th>
+        <th>Data Fim</th>
+        <th>Projeto</th>
+        <th>Responsável</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-sprint>
+      <tr>
+        <td>{{sprint.id}}</td>
+        <td>{{sprint.nome}}</td>
+        <td>{{sprint.dataInicio | date: 'dd/MM/yyyy'}}</td>
+        <td>{{sprint.dataLimite | date: 'dd/MM/yyyy'}}</td>
+        <td>{{sprint.dataFim | date: 'dd/MM/yyyy'}}</td>
+        <td>{{sprint.projeto.nome}}</td>
+        <td>{{sprint.responsavel.nome}}</td>
+        <td>
+          <button pButton type="button" (click)="edit(sprint)">
+            Editar
+          </button>
+
+          <button pButton type="button" class="p-ml-2" (click)="delete(sprint)">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" class="p-text-center">Nenhuma sprint cadastrada</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-confirmDialog></p-confirmDialog>
+  <!--  <p-growl [(value)]="msgs"></p-growl>-->
+
+  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
+    <div class="row">
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="sprintEdit.nome">
+                <label for="nome">Nome</label>
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label class="p-d-block" for="dataInicio">Data Início</label>
+        <p-calendar required appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataInicio"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label class="p-d-block" for="dataLimite">Data Limite</label>
+        <p-calendar  required appendTo="body" class="p-d-block" id="dataLimite" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataLimite"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label class="p-d-block" for="dataFim">Data Fim</label>
+        <p-calendar #cal  appendTo="body" class="p-d-block" id="dataFim" [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataFim"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-fluid" >
+        <label class="p-d-block" >Projeto</label>
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="projetos" [(ngModel)]="sprintEdit.projeto" optionLabel="nome"></p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-fluid" >
+        <label class="p-d-block" >Responsavel</label>
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="responsaveis" [(ngModel)]="sprintEdit.responsavel" optionLabel="nome"></p-dropdown>
+      </div>
+    </div>
+
+    <p-footer>
+      <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
+      <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>
+    </p-footer>
+  </p-dialog>
+</div>

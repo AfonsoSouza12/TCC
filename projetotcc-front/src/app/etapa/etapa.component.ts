@@ -26,6 +26,8 @@ export class EtapaComponent implements OnInit {
   showDialog = false;
   msgs: Message[] = [];
 
+  etapaTeste: Etapa;
+
   responsaveis: Usuario[];
 
   totalRecords: number;
@@ -34,6 +36,7 @@ export class EtapaComponent implements OnInit {
 
   filtroEtapa: any;
   subEtapas: SubEtapa[];
+
 
   constructor(private etapaService: EtapaService,
               private subEtapaService: SubEtapaService,
@@ -44,10 +47,13 @@ export class EtapaComponent implements OnInit {
   ngOnInit() {
     this.findAll();
     this.carregarCombos();
+    // this.subEtapas.push(subetapaf);
 
   }
 
   carregarCombos() {
+    this.subEtapas = [];
+    this.subEtapaService.findOne(1).subscribe(e=> this.subEtapas[0]=e);
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
@@ -124,16 +130,22 @@ export class EtapaComponent implements OnInit {
   }
 
   findSubEtapas(id: number){
+    this.subEtapas = [];
       this.subEtapaService.findByEtapa(id).subscribe(e =>{this.subEtapas = e; console.log(e)} );
-    // this.subEtapaService.teste();
-  }
-
-  onRowSelect(etapa: Etapa) {
-    this.filtroEtapa = etapa.id;
-    this.findSubEtapas(etapa.id);
-
-    console.log(this.filtroEtapa);
 
   }
 
+  onRowSelect(id: number) {
+    // this.filtroEtapa = etapa.id;
+    this.findSubEtapas(id);
+
+    // console.log(this.filtroEtapa);
+
+  }
+
+  teste() {
+    // this.etapaService.findOne(1).subscribe(e => this.etapaTeste = e);
+    // console.log('uauauauauau  -  ' + this.etapaTeste.nome);
+    this.subEtapaService.findByEtapa(2).subscribe(e =>{this.subEtapas = e; console.log(e[0].nome)} );
+  }
 }

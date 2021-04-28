@@ -31,6 +31,8 @@ import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
 import { ProjetoComponent } from './projeto/projeto.component';
 import {CalendarModule} from 'primeng/calendar';
 import { SprintComponent } from './sprint/sprint.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+
 
 
 @NgModule({
@@ -62,6 +64,7 @@ import { SprintComponent } from './sprint/sprint.component';
     CascadeSelectModule,
     DropdownModule,
     CalendarModule,
+    InputTextareaModule,
 
   ],
   exports:[AppComponent],

@@ -1,8 +1,9 @@
 
 <div class="container">
-  <h1 class="d-flex">Cadastro de Cargos</h1>
-  <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
-
+  <h1 class="d-flex p-text-center" >Cadastro de Cargos</h1>
+  <div class="p-d-flex p-jc-end">
+    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  </div>
   <p-table [value]="cargos" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
@@ -26,6 +27,11 @@
         </td>
       </tr>
     </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" class="p-text-center">Nenhum cargo cadastrado</td>
+      </tr>
+    </ng-template>
   </p-table>
 
   <p-confirmDialog></p-confirmDialog>
@@ -34,12 +40,11 @@
   <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
             [responsive]="true" >
     <div class="row">
-      <div class="col-sm-12">
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" class="form-control"
-                 [(ngModel)]="cargoEdit.descricao">
-        </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input required="true" pInputText id="descricao" name="descricao" type="text" [(ngModel)]="cargoEdit.descricao">
+                <label for="descricao">Descrição</label>
+            </span>
       </div>
     </div>
     <p-footer>
