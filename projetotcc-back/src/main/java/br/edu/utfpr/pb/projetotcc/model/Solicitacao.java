@@ -48,7 +48,7 @@ public class Solicitacao {
 	private Projeto projeto;
 
 	@ManyToOne
-	@JoinColumn(name = "etapa_id", referencedColumnName = "id")
+	@JoinColumn(name = "etapa_id", referencedColumnName = "id", nullable = false)
 	private Etapa etapa;
 
 	@ManyToOne

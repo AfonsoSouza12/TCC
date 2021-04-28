@@ -16,7 +16,8 @@ INSERT INTO etapa (nome, descricao,status,usuario_id) VALUES ('BACKLOG', 'Lista 
 INSERT INTO etapa (nome, descricao,status,usuario_id) VALUES ('2BACKLOG2', 'Lista de tarefas pendentes','TO DO', 1)
 
 INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('IMPORTANTES', 'Urgências','TO DO', 1)
--- INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('NORMAIS', 'Normal','TO DO', 1)
+INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('NORMAIS', 'Normal','TO DO', 1)
+INSERT INTO sub_etapa (nome, descricao,status,etapa_id) VALUES ('subetapa com etapa 2', 'Normal3','TO DO', 2)
 
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO TCC','CONTROLE DE PROJETOS','2021-01-01','2021-08-01',null,1)
 
