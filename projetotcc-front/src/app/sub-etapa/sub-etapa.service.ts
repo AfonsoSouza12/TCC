@@ -18,12 +18,6 @@ export class SubEtapaService extends CrudService<SubEtapa, number>{
 
 
   findByEtapa(etapa: number): Observable<SubEtapa[]>{
-    return this.http.get<SubEtapa[]>(environment.api + '/subEtapa/' + etapa);
-    // return this.http
-    //   .get<SubEtapa[]>(`${environment.api + '/subEtapa/' + etapa}`)
-    //   .pipe(
-    //     map(res => res['content']) //pegando o array no HttpResponse
-    //   );
-
-  }
+    return this.http.get<SubEtapa[]>(`${this.getUrl()}/etapa?etapa=${etapa}`);
+     }
 }

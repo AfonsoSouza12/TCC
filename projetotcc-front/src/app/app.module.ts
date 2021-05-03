@@ -15,7 +15,7 @@ import { SubEtapaComponent } from './sub-etapa/sub-etapa.component';
 import {DialogModule} from 'primeng/dialog';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { UsuarioComponent } from './usuario/usuario.component';
-import {ConfirmationService, FilterService, PrimeNGConfig} from 'primeng/api';
+import {ConfirmationService, FilterService, MessageService, PrimeNGConfig} from 'primeng/api';
 import {UsuarioService} from './usuario/usuario.service';
 import {SubEtapa} from './model/sub-etapa';
 import {SubEtapaService} from './sub-etapa/sub-etapa.service';
@@ -32,6 +32,11 @@ import { ProjetoComponent } from './projeto/projeto.component';
 import {CalendarModule} from 'primeng/calendar';
 import { SprintComponent } from './sprint/sprint.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {LoginComponent} from './login/login.component';
+import {LoginService} from './login/login.service';
+import {ProjetoService} from './projeto/projeto.service';
+import {SolicitacaoService} from './solicitacao/solicitacao.service';
+import {LoginModule} from './login/login.module';
 
 
 
@@ -49,6 +54,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     SprintComponent
   ],
   imports: [
+    LoginModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -74,6 +80,10 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     UsuarioService,
     SubEtapaService,
     EtapaService,
+    ProjetoService,
+    SolicitacaoService,
+    LoginService,
+    MessageService,
     FilterService,
     PrimeNGConfig,
 

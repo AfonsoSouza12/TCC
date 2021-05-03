@@ -34,11 +34,19 @@
         </td>
       </tr>
     </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" class="p-text-center">Nenhuma etapa cadastrada.</td>
+      </tr>
+    </ng-template>
   </p-table>
 
   <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Sub-Etapas</h1>
 <!--  <h2>{{selectedName}}</h2>-->
 
+  <div class="p-d-flex p-jc-end">
+    <button pButton type="button" class="p-mb-2" (click)="newSubEtapa()"> Novo</button>
+  </div>
   <p-table [value]="subEtapas" [paginator]="true" [rows]="5">
     <ng-template pTemplate="header">
       <tr>
@@ -56,11 +64,11 @@
         <td>{{subEtapa.descricao}}</td>
         <td>{{subEtapa.status}}</td>
         <td>
-          <button pButton type="button" (click)="edit(subEtapa)">
+          <button pButton type="button" (click)="editSubEtapa(subEtapa)">
             Editar
           </button>
 
-          <button pButton type="button" class="p-ml-2" (click)="delete(subEtapa)">
+          <button pButton type="button" class="p-ml-2" (click)="deleteSubEtapa(subEtapa)">
             Remover
           </button>
         </td>
@@ -68,7 +76,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8" class="p-text-center">Nenhuma etapa cadastrada</td>
+        <td colspan="8" class="p-text-center">Nenhuma sub-etapa cadastrada para essa etapa.</td>
       </tr>
     </ng-template>
   </p-table>
@@ -108,5 +116,35 @@
       <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>
     </p-footer>
   </p-dialog>
-  <button pButton type="button" class="p-ml-2" (click)="teste()">TESTE</button>
+
+  <p-dialog header="Editar Sub-Etapa" [(visible)]="showDialogSub" modal="modal" [responsive]="true">
+    <div class="row">
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input pInputText id="nomeSub" name="nomeSub" type="text" [(ngModel)]="subEtapaEdit.nome">
+                <label for="nome">Nome</label>
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3">
+                <textarea rows="5" cols="30" pInputTextarea id="descricaoSub" name="descricaoSub" [(ngModel)]="subEtapaEdit.descricao"></textarea>
+                <label for="descricao">Descrição</label>
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid p-mb-3">
+        <label class="p-d-block"for="status">Status</label>
+        <p-dropdown appendTo="body" class="p-d-block"  [options]="statuss" [(ngModel)]="subEtapaEdit.status" name="statusSub" id="statusSub"></p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-fluid p-mb-3">
+        <label class="p-d-block"for="etapa">Etapa</label>
+        <p-dropdown appendTo="body" class="p-d-block" [options]="etapas" [(ngModel)]="subEtapaEdit.etapa" optionLabel="nome" id="etapa" name="etapa.nome" ></p-dropdown>
+      </div>
+
+    </div>
+    <p-footer>
+      <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
+      <button pButton type="button" class="p-ml-2" (click)="saveSubEtapa()">Salvar</button>
+    </p-footer>
+  </p-dialog>
+
 </div>

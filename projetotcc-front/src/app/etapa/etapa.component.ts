@@ -9,6 +9,8 @@ import {Usuario} from '../model/usuario';
 import {UsuarioService} from '../usuario/usuario.service';
 import {StatusOpt} from '../../shared/consts/StatusOpt';
 import {Dropdown} from 'primeng/dropdown';
+import {AppRoutingModule} from '../app-routing.module';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-etapa',
@@ -20,13 +22,12 @@ export class EtapaComponent implements OnInit {
   @ViewChild('dt', null) dataTable: Table;
 
   statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
-  // statusSelcionado: StatusOpt;
   etapas: Etapa[];
   etapaEdit = new Etapa();
+  subEtapaEdit = new SubEtapa();
   showDialog = false;
+  showDialogSub = false;
   msgs: Message[] = [];
-
-  etapaTeste: Etapa;
 
   responsaveis: Usuario[];
 
@@ -34,14 +35,14 @@ export class EtapaComponent implements OnInit {
   maxRecords = 10;
   currentPage = 1;
 
-  filtroEtapa: any;
   subEtapas: SubEtapa[];
 
 
   constructor(private etapaService: EtapaService,
               private subEtapaService: SubEtapaService,
               private confirmationService: ConfirmationService,
-              private usuarioService: UsuarioService) {
+              private usuarioService: UsuarioService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -53,7 +54,7 @@ export class EtapaComponent implements OnInit {
 
   carregarCombos() {
     this.subEtapas = [];
-    this.subEtapaService.findOne(1).subscribe(e=> this.subEtapas[0]=e);
+    this.subEtapaService.findByEtapa(1).subscribe(e=> this.subEtapas = e);
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
   findAll() {
@@ -80,6 +81,7 @@ export class EtapaComponent implements OnInit {
   newEntity() {
     this.etapaEdit = new Etapa();
     this.etapaEdit.responsavel = this.responsaveis[0];
+    this.etapaEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }
 
@@ -128,6 +130,50 @@ export class EtapaComponent implements OnInit {
       }
     });
   }
+  newSubEtapa(){
+    this.router.navigate(['subEtapa']);
+  }
+
+  saveSubEtapa() {
+    this.subEtapaService.save(this.subEtapaEdit).subscribe( e => {
+      let id = this.subEtapaEdit.etapa.id;
+      console.log('o id loco é ' + id);
+      this.subEtapaEdit = new SubEtapa();
+        this.findSubEtapas(id);
+        this.showDialogSub = false;
+        this.msgs = [{severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'}];
+      },
+      error => {
+        this.msgs = [{severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'}];
+      }
+    );
+  }
+  editSubEtapa(subEtapa: SubEtapa) {
+    // this.etapaEdit = etapa;
+    this.subEtapaEdit = Object.assign({}, subEtapa);
+    this.showDialogSub = true;
+  }
+
+  deleteSubEtapa(subEtapa: SubEtapa) {
+    this.confirmationService.confirm({
+      message: 'Esta ação não poderá ser desfeita!',
+      header: 'Deseja remover o registro?',
+      acceptLabel: 'Confirmar',
+      rejectLabel: 'Cancelar',
+      accept: () => {
+        this.subEtapaService.delete(subEtapa.id).subscribe(() => {
+          this.findSubEtapas(subEtapa.etapa.id);
+          this.msgs = [{severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'}];
+        }, error => {
+          this.msgs = [{severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'}];
+        });
+      }
+    });
+  }
 
   findSubEtapas(id: number){
     this.subEtapas = [];
@@ -144,8 +190,6 @@ export class EtapaComponent implements OnInit {
   }
 
   teste() {
-    // this.etapaService.findOne(1).subscribe(e => this.etapaTeste = e);
-    // console.log('uauauauauau  -  ' + this.etapaTeste.nome);
-    this.subEtapaService.findByEtapa(2).subscribe(e =>{this.subEtapas = e; console.log(e[0].nome)} );
+
   }
 }

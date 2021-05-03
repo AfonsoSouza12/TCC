@@ -5,6 +5,9 @@ import {SubEtapaService} from './sub-etapa.service';
 import {Etapa} from '../model/etapa';
 import {EtapaService} from '../etapa/etapa.service';
 import {StatusOpt} from '../../shared/consts/StatusOpt';
+import {NavigationEnd, Router} from '@angular/router';
+import {findAll} from '@angular/compiler-cli/ngcc/src/utils';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sub-etapa',
@@ -26,11 +29,25 @@ export class SubEtapaComponent implements OnInit {
 
   constructor(private subEtapaService: SubEtapaService,
               private etapaService: EtapaService,
+              private router: Router,
               private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.findAll();
     this.carregarCombos();
+
+
+  this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd)
+    )
+    .subscribe((event: NavigationEnd) => {
+      console.log('Got the Event URL as ', event.url);
+      this.newEntity();
+      // if(event.urlAfterRedirects.includes('cargo')) {
+      //   console.log('This was redirected to the cargo Component');
+      // }
+    })
   }
 
   findAll() {
@@ -56,6 +73,7 @@ export class SubEtapaComponent implements OnInit {
   newEntity() {
     this.subEtapaEdit = new SubEtapa();
     this.subEtapaEdit.etapa = this.etapas[0];
+    this.subEtapaEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }
   carregarCombos() {
