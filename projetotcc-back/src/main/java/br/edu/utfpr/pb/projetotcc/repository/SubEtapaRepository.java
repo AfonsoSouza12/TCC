@@ -7,5 +7,5 @@ import br.edu.utfpr.pb.projetotcc.model.SubEtapa;
 import java.util.List;
 
 public interface SubEtapaRepository	extends JpaRepository<SubEtapa, Long>{
-	List<SubEtapa> findByEtapaIdOrderByNome(Integer etapaId);
+	List<SubEtapa> findByEtapaIdOrderByNome(Long etapaId);
 }

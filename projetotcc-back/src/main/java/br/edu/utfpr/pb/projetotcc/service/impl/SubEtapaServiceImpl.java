@@ -24,7 +24,7 @@ public class SubEtapaServiceImpl
 	}
 
 	@Override
-	public List<SubEtapa> findAllByEtapaIdOrderByNome(Integer etapaId) {
+	public List<SubEtapa> findAllByEtapaIdOrderByNome(Long etapaId) {
 		return subEtapaRepository.findByEtapaIdOrderByNome(etapaId);
 	}
 }

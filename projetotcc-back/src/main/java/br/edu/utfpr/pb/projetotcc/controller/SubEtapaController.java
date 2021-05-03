@@ -30,7 +30,7 @@ public class SubEtapaController extends CrudController<SubEtapa, Long> {
 	}
 
 	@GetMapping("etapa")
-	public List<SubEtapa> findAllByEtapaIdOrderByNome(@RequestParam("etapa") Integer etapaId) {
+	public List<SubEtapa> findAllByEtapaIdOrderByNome(@RequestParam("etapa") Long etapaId) {
 		return subEtapaService.findAllByEtapaIdOrderByNome(etapaId);
 	}
 }
