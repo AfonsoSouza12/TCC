@@ -25,7 +25,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				// .apis(RequestHandlerSelectors.any()) 
-				.apis( RequestHandlerSelectors.basePackage("br.edu.utfpr.pb.aula5"))
+				.apis( RequestHandlerSelectors.basePackage("br.edu.utfpr.pb.projetotcc"))
 				// .paths(PathSelectors.ant("/genero/**"))
 				.paths(PathSelectors.any())
 				.build()
@@ -34,12 +34,12 @@ public class SwaggerConfig extends WebMvcConfigurationSupport{
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-					.title("PW26S - Aula 5")
+					.title("Projeto TCC")
 					.description("Spring Boot REST API - Controle de Séries")
 					.version("0.0.1")
 					.license("Apache License Version 2.0")
 					.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0")
-					.contact(new Contact("João das Neves", "www.jsnow.com", "joao@snow.com"))
+					.contact(new Contact("AH", "n/a", "a@a.com"))
 					.build();
 	}
 	

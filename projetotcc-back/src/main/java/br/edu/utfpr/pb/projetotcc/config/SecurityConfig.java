@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.userDetailsService(userDetailsService)
-			.passwordEncoder(new BCryptPasswordEncoder(10));
+			.passwordEncoder(new BCryptPasswordEncoder());
 	}
 	
 	@Override
@@ -33,12 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return super.authenticationManagerBean();
 	}
 	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.requestMatchers()
-			.antMatchers("/oauth/authorize", "/oauth/confirm_access")
-			.and().authorizeRequests()
-			.anyRequest().authenticated()
-			.and().csrf().disable();
-	}
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http.requestMatchers()
+//			.antMatchers("/oauth/authorize", "/oauth/confirm_access")
+//			.and().authorizeRequests()
+//			.anyRequest().authenticated()
+//			.and().csrf().disable();
+//	}
 }
