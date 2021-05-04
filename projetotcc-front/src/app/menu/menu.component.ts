@@ -24,12 +24,19 @@ export class MenuComponent implements OnInit {
           {label: 'Projetos', routerLink: 'projeto'},
           {label: 'Solicitações', routerLink: 'solicitacao'},
           {label: 'Sprints', routerLink: 'sprint'},
+
         ]
+
       },
+      {label: 'teste', command: this.teste},
     ];
   }
   hasRole(permissao: string): boolean {
     return this.loginService.hasRole(permissao);
+  }
+
+  teste(){
+    console.log(this.loginService.getUserInfo());
   }
 
 }

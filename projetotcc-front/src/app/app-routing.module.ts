@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PrincipalComponent} from './principal/principal.component';
 import {CargoComponent} from './cargo/cargo.component';
@@ -16,6 +15,7 @@ import {AuthGuard} from './auth-guard.service';
 const routes: Routes = [
   {
     path: '', canActivate: [LoginService], children: [
+      { path: 'principal', component: PrincipalComponent },
       {path: 'cargo', component: CargoComponent},
       {path: 'etapa', component: EtapaComponent},
       {path: 'subEtapa', component: SubEtapaComponent},

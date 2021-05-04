@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }, error => {
       this.messageService.add({severity: 'error', summary: 'Error',
-                    detail: 'Usuário e/ou senha incorreto(s)!'});
+        detail: 'Usuário e/ou senha incorreto(s)!'});
     });
   }
 

@@ -18,17 +18,17 @@ export class LoginService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const url = `${environment.api}/user-info`;
     return this.http.get(url)
-          .pipe(
-            map(e => {
-              this.userInfo = e;
-              this.isAuthenticated.next(true);
-              return true;
-            }),
-            catchError(err => {
-              this.logout();
-              return throwError(new Error('O usuário não está autenticado!'));
-            })
-          );
+      .pipe(
+        map(e => {
+          this.userInfo = e;
+          this.isAuthenticated.next(true);
+          return true;
+        }),
+        catchError(err => {
+          this.logout();
+          return throwError(new Error('O usuário não está autenticado!'));
+        })
+      );
   }
 
   getUserInfo(): any {
@@ -38,7 +38,7 @@ export class LoginService implements CanActivate {
   hasRole(role: string): boolean {
     if (this.getUserInfo() && this.getUserInfo().authorities) {
       return this.getUserInfo().authorities.filter(
-                e => e.authority === 'ROLE_' + role).length > 0;
+        e => e.authority === 'ROLE_' + role).length > 0;
     }
     return false;
   }
