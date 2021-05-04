@@ -36,18 +36,9 @@ export class SubEtapaComponent implements OnInit {
     this.findAll();
     this.carregarCombos();
 
-
-  this.router.events
-    .pipe(
-      filter(event => event instanceof NavigationEnd)
-    )
-    .subscribe((event: NavigationEnd) => {
-      console.log('Got the Event URL as ', event.url);
+    if(this.router.url.includes('/subEtapa/novo')){
       this.newEntity();
-      // if(event.urlAfterRedirects.includes('cargo')) {
-      //   console.log('This was redirected to the cargo Component');
-      // }
-    })
+    }
   }
 
   findAll() {
@@ -72,7 +63,7 @@ export class SubEtapaComponent implements OnInit {
 
   newEntity() {
     this.subEtapaEdit = new SubEtapa();
-    this.subEtapaEdit.etapa = this.etapas[0];
+    // this.subEtapaEdit.etapa = this.etapas[0];
     this.subEtapaEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }

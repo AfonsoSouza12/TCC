@@ -19,6 +19,7 @@ const routes: Routes = [
       {path: 'cargo', component: CargoComponent},
       {path: 'etapa', component: EtapaComponent},
       {path: 'subEtapa', component: SubEtapaComponent},
+      {path: 'subEtapa/novo', component: SubEtapaComponent},
       {path: 'projeto', component: ProjetoComponent},
       {path: 'solicitacao', component: SolicitacaoComponent,
         canActivate: [AuthGuard],

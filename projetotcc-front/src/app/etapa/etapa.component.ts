@@ -131,7 +131,7 @@ export class EtapaComponent implements OnInit {
     });
   }
   newSubEtapa(){
-    this.router.navigate(['subEtapa']);
+    this.router.navigate(['subEtapa', 'novo']);
   }
 
   saveSubEtapa() {
