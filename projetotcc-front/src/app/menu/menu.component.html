@@ -1,2 +1,6 @@
-<p-menubar [model]="items"></p-menubar>
+<p-menubar [model]="items">
+  <ng-template pTemplate="end">
+    <button pButton type="button" class="p-mb-2" (click)="logout()">Logout</button>
+  </ng-template>
+</p-menubar>
 

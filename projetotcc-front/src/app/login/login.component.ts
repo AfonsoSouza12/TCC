@@ -5,7 +5,7 @@ import { Message, MessageService } from 'primeng/api';
 
 @Component({
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 

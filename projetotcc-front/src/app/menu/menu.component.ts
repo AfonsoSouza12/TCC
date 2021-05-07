@@ -28,15 +28,15 @@ export class MenuComponent implements OnInit {
         ]
 
       },
-      {label: 'teste', command: this.teste},
     ];
   }
   hasRole(permissao: string): boolean {
     return this.loginService.hasRole(permissao);
   }
 
-  teste(){
-    console.log(this.loginService.getUserInfo());
+  logout(){
+    console.log(localStorage.getItem('usuario'));
+    this.loginService.logout();
   }
 
 }

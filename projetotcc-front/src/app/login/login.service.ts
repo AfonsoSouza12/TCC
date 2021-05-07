@@ -20,6 +20,7 @@ export class LoginService implements CanActivate {
     return this.http.get(url)
       .pipe(
         map(e => {
+          localStorage.setItem('usuario', JSON.stringify(e));
           this.userInfo = e;
           this.isAuthenticated.next(true);
           return true;
@@ -32,19 +33,24 @@ export class LoginService implements CanActivate {
   }
 
   getUserInfo(): any {
-    return this.userInfo;
+    // return this.userInfo;
+    return JSON.parse(localStorage.getItem('usuario'));
   }
 
   hasRole(role: string): boolean {
     if (this.getUserInfo() && this.getUserInfo().authorities) {
       return this.getUserInfo().authorities.filter(
-        e => e.authority === 'ROLE_' + role).length > 0;
+        e => e.authority === role).length > 0;
     }
     return false;
   }
 
   logout() {
-    Object.keys(new AccessToken()).forEach(key => localStorage.removeItem(key));
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("usuario");
+    this.isAuthenticated.next(false);
+    console.log(localStorage.getItem('usuario'));
+    this.router.navigate(['/cargo']);
   }
 
   login(username: string, password: string): Observable<AccessToken> {

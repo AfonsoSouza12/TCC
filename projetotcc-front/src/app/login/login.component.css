@@ -1,0 +1,12 @@
+#mydiv {
+  top: 15vh;
+  left: 60%;
+  width: 80%;
+  position: fixed;
+}
+
+.p-card{
+  top: 15vh;
+  left: 50%;
+  width: 80%;
+}

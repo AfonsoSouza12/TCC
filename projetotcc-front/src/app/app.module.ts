@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { CargoComponent } from './cargo/cargo.component';
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {CargoService} from './cargo/cargo.service';
@@ -37,6 +37,7 @@ import {LoginService} from './login/login.service';
 import {ProjetoService} from './projeto/projeto.service';
 import {SolicitacaoService} from './solicitacao/solicitacao.service';
 import {LoginModule} from './login/login.module';
+import {HttpClientInterceptor} from './http-client-interceptor';
 
 
 
@@ -86,6 +87,11 @@ import {LoginModule} from './login/login.module';
     MessageService,
     FilterService,
     PrimeNGConfig,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpClientInterceptor,
+      multi: true
+    },
 
   ],
   bootstrap: [AppComponent]
