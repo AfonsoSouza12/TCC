@@ -7,6 +7,20 @@ import {RouterModule} from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import {PasswordModule} from 'primeng/password';
 import {PanelModule} from 'primeng/panel';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppRoutingModule} from '../app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import {TableModule} from 'primeng/table';
+import {DialogModule} from 'primeng/dialog';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ButtonModule} from 'primeng/button';
+import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule} from 'primeng/inputtext';
+import {CascadeSelectModule} from 'primeng/cascadeselect';
+import {DropdownModule} from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 @NgModule({
   imports: [
@@ -15,7 +29,23 @@ import {PanelModule} from 'primeng/panel';
     RouterModule,
     ToastModule,
     PasswordModule,
-    PanelModule
+    PanelModule,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    TableModule,
+    DialogModule,
+    ConfirmDialogModule,
+    ButtonModule,
+    MenubarModule,
+    PanelModule,
+    InputTextModule,
+    CascadeSelectModule,
+    DropdownModule,
+    CalendarModule,
+    InputTextareaModule,
   ],
   declarations: [
     LoginComponent

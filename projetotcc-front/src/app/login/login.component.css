@@ -1,12 +1,12 @@
-#mydiv {
-  top: 15vh;
-  left: 60%;
-  width: 80%;
-  position: fixed;
-}
 
-.p-card{
-  top: 15vh;
-  left: 50%;
-  width: 80%;
-}
+/*.p-card{*/
+/*    width: 50%;*/
+/*}*/
+
+/*.p-grid{*/
+/*  width:100%;*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  transform: translateY(-50%);*/
+/*}*/
+

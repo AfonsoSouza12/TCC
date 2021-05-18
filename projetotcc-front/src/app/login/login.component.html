@@ -33,19 +33,30 @@
 <!--  </div>-->
 <!--</div>-->
 <!--<p-toast position="top-center"></p-toast>-->
-<div class="p-grid">
-<div class="p-card p-shadow-5  p-offset-3" >
-  <div class="p-fluid">
-    <div class="p-field">
-      <label for="username" class="p-col-fixed" style="width:100px">Usuário</label>
-      <div class="p-col">
-        <input id="username" type="text" pInputText>
-      </div>
-    </div>
-    <div class="p-field">
-      <label for="password" class="p-col-fixed" style="width:100px">Senha</label>
-        <p-password id='password'[(ngModel)]="password" [toggleMask]="true"></p-password>
-    </div>
+
+<!--<div class="p-grid p-ai-center vertical-container">-->
+<!--  <div class="p-card  p-shadow-5 p-col-6 p-offset-3" styleclass="cardLogin">-->
+<!--    <div class="p-fluid">-->
+<!--      <div class="p-field">-->
+<!--        <label for="username" >Usuário</label>-->
+<!--        <input id="username" type="text" pInputText>-->
+<!--      </div>-->
+<!--      <div class="p-field">-->
+<!--        <label for="password" class="p-col-fixed" style="width:100px">Senha</label>-->
+<!--          <p-password id='password'[(ngModel)]="password" [toggleMask]="true"></p-password>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="p-formgroup-inline">
+  <div class="p-field">
+    <label for="firstname" class="p-sr-only">Firstname</label>
+    <input id="firstname" type="text" pInputText placeholder="Firstname">
   </div>
-</div>
+  <div class="p-field">
+    <label for="lastname" class="p-sr-only">Lastname</label>
+    <input id="lastname" type="text" pInputText placeholder="Lastname">
+  </div>
+  <button pButton type="button" label="Submit"></button>
 </div>
