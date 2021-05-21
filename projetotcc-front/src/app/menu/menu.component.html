@@ -1,6 +1,24 @@
 <p-menubar [model]="items">
   <ng-template pTemplate="end">
-    <button pButton type="button" class="p-mb-2" (click)="logout()">Logout</button>
+    <div class="p-grid p-ai-center vertical-container">
+      <div class="p-col">
+        <div class="p-grid p-ai-center vertical-container">
+          <div class="p-col " style="height: 10px">
+            <h5 >Logado como:</h5>
+          </div>
+          <div class="p-col" >
+            <h5 style="width: 100px;font-style: italic; font-family: 'Arial Black'">{{usuario}}</h5>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="p-col">
+        <button pButton type="button" class="p-mb-2" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+
   </ng-template>
 </p-menubar>
 

@@ -10,10 +10,13 @@ import {Usuario} from '../model/usuario';
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[];
-
-  constructor(private loginService: LoginService) { }
+  usuario:  any;
+  constructor(private loginService: LoginService) {
+    this.usuario =  JSON.parse(localStorage.getItem('usuario')).principal.nome;
+  }
 
   ngOnInit() {
+    // this.usuario =  JSON.parse(localStorage.getItem('usuario')).principal.nome;
     this.items = [
       {
         label: 'Cadastros',
@@ -29,13 +32,19 @@ export class MenuComponent implements OnInit {
 
       },
     ];
+
   }
   hasRole(permissao: string): boolean {
+    console.log(this.loginService.getUserInfo());
     return this.loginService.hasRole(permissao);
+
+  }
+
+  teste(){
+    console.log(this.usuario);
   }
 
   logout(){
-    console.log(localStorage.getItem('usuario'));
     this.loginService.logout();
   }
 

@@ -1,62 +1,18 @@
-<!--<div class="mydiv">-->
-<!--  <div class="container-fluid">-->
-<!--    <div class="row justify-content-center">-->
-<!--      <div id="login"-->
-<!--           class="login loginpage col-lg-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-0 col-xs-12 col-sm-6 col-lg-4">-->
-<!--        <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>-->
-
-<!--        <form #form="ngForm" (submit)="login()">-->
-<!--          <p>-->
-<!--            <label for="user_login">Usuário<br/>-->
-<!--              <input [(ngModel)]="username" type="text" name="username" id="user_login" class="input"/>-->
-<!--            </label>-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            <label for="user_pass">Senha<br/>-->
-<!--              <input [(ngModel)]="password" type="password" name="password" id="user_pass" class="input"/>-->
-<!--            </label>-->
-<!--          </p>-->
-
-<!--          <p class="submit">-->
-<!--            <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-primary btn-block"-->
-<!--                   value="Entrar" [disabled]="!form.form.valid"/>-->
-<!--          </p>-->
-<!--        </form>-->
-
-<!--        <p id="nav">-->
-<!--          <a class="pull-left" href="#" title="Recuperar a senha">Esqueceu a senha?</a>-->
-<!--          <a class="pull-right" href="#" title="Registrar-se">Registrar-se</a>-->
-<!--        </p>-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-<!--<p-toast position="top-center"></p-toast>-->
-
-<!--<div class="p-grid p-ai-center vertical-container">-->
-<!--  <div class="p-card  p-shadow-5 p-col-6 p-offset-3" styleclass="cardLogin">-->
-<!--    <div class="p-fluid">-->
-<!--      <div class="p-field">-->
-<!--        <label for="username" >Usuário</label>-->
-<!--        <input id="username" type="text" pInputText>-->
-<!--      </div>-->
-<!--      <div class="p-field">-->
-<!--        <label for="password" class="p-col-fixed" style="width:100px">Senha</label>-->
-<!--          <p-password id='password'[(ngModel)]="password" [toggleMask]="true"></p-password>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-<div class="p-formgroup-inline">
-  <div class="p-field">
-    <label for="firstname" class="p-sr-only">Firstname</label>
-    <input id="firstname" type="text" pInputText placeholder="Firstname">
+<div class="p-grid " >
+  <div class="p-card  p-shadow-5 p-col-6 p-offset-3" >
+      <div class="p-fluid">
+        <div class="p-field">
+          <label for="username" >Usuário</label>
+          <input id="username" type="text" pInputText [(ngModel)]="username">
+        </div>
+        <div class="p-field">
+          <label for="password" class="p-col-fixed" >Senha</label>
+          <p-password id='password'[(ngModel)]="password" [toggleMask]="true" [feedback]="false"></p-password>
+        </div>
+      </div>
+      <div class="p-d-flex p-jc-end p-mt-5">
+        <button pButton type="button" class="p-mb-2" (click)="login()"> login</button>
+      </div>
   </div>
-  <div class="p-field">
-    <label for="lastname" class="p-sr-only">Lastname</label>
-    <input id="lastname" type="text" pInputText placeholder="Lastname">
-  </div>
-  <button pButton type="button" label="Submit"></button>
 </div>
+<p-toast position="top-center"></p-toast>

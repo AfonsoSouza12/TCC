@@ -49,8 +49,7 @@ export class LoginService implements CanActivate {
     localStorage.removeItem("access_token");
     localStorage.removeItem("usuario");
     this.isAuthenticated.next(false);
-    console.log(localStorage.getItem('usuario'));
-    this.router.navigate(['/cargo']);
+    this.router.navigate(['/login']);
   }
 
   login(username: string, password: string): Observable<AccessToken> {
