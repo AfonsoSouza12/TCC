@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^8.2.14",
-    "@angular/cdk": "^11.2.6",
+    "@angular/cdk": "^11.2.13",
     "@angular/common": "^8.2.14",
     "@angular/compiler": "^8.2.14",
     "@angular/core": "^8.2.14",
@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
+    "bulma": "^0.9.3",
     "primeflex": "^2.0.0",
     "primeicons": "^4.1.0",
     "primeng": "^11.3.2",

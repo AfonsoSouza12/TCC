@@ -11,22 +11,24 @@ import {SprintComponent} from './sprint/sprint.component';
 import {LoginService} from './login/login.service';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth-guard.service';
+import {QuadroComponent} from './quadro/quadro.component';
 
 const routes: Routes = [
   {
     path: '', canActivate: [LoginService], children: [
-      { path: 'principal', component: PrincipalComponent },
+      {path: 'principal', component: PrincipalComponent },
       {path: 'cargo', component: CargoComponent},
       {path: 'etapa', component: EtapaComponent},
       {path: 'subEtapa', component: SubEtapaComponent},
       {path: 'subEtapa/novo', component: SubEtapaComponent},
       {path: 'projeto', component: ProjetoComponent},
-      {path: 'solicitacao', component: SolicitacaoComponent,
-        canActivate: [AuthGuard],
-        data: { roles: ['ROLE_ADMIN', 'ROLE_USER']}
+      {path: 'solicitacao', component: SolicitacaoComponent
+        //canActivate: [AuthGuard],
+       // data: { roles: ['ROLE_ADMIN', 'ROLE_USER']}
        },
       {path: 'sprint', component: SprintComponent},
-      {path: 'usuario', component: UsuarioComponent}
+      {path: 'usuario', component: UsuarioComponent},
+      {path: 'quadro', component: QuadroComponent},
     ]
   },
   { path: 'login', component: LoginComponent }

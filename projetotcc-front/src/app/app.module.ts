@@ -38,6 +38,10 @@ import {ProjetoService} from './projeto/projeto.service';
 import {SolicitacaoService} from './solicitacao/solicitacao.service';
 import {LoginModule} from './login/login.module';
 import {HttpClientInterceptor} from './http-client-interceptor';
+import { QuadroComponent } from './quadro/quadro.component';
+import {DragDropModule, DragDropRegistry} from '@angular/cdk/drag-drop';
+import {ScrollDispatcher, ViewportRuler} from '@angular/cdk/overlay';
+import {Platform} from '@angular/cdk/platform';
 
 
 
@@ -52,7 +56,8 @@ import {HttpClientInterceptor} from './http-client-interceptor';
     MenuComponent,
     SolicitacaoComponent,
     ProjetoComponent,
-    SprintComponent
+    SprintComponent,
+    QuadroComponent
   ],
   imports: [
     LoginModule,
@@ -72,6 +77,7 @@ import {HttpClientInterceptor} from './http-client-interceptor';
     DropdownModule,
     CalendarModule,
     InputTextareaModule,
+    DragDropModule,
 
   ],
   exports:[AppComponent],
@@ -87,6 +93,11 @@ import {HttpClientInterceptor} from './http-client-interceptor';
     MessageService,
     FilterService,
     PrimeNGConfig,
+    ViewportRuler,
+    Platform,
+    DragDropModule,
+    DragDropRegistry,
+    ScrollDispatcher,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpClientInterceptor,

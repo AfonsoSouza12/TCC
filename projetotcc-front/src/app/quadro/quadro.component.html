@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <h3>TO DO</h3>
+  </div>
+
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let solicitacao of solicitacoes" cdkDrag>{{solicitacao.nome}}</div>
+  </div>
+
+</div>
+
+
