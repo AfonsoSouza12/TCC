@@ -137,7 +137,7 @@ export class EtapaComponent implements OnInit {
   saveSubEtapa() {
     this.subEtapaService.save(this.subEtapaEdit).subscribe( e => {
       let id = this.subEtapaEdit.etapa.id;
-      console.log('o id loco é ' + id);
+      //console.log('o id loco é ' + id);
       this.subEtapaEdit = new SubEtapa();
         this.findSubEtapas(id);
         this.showDialogSub = false;

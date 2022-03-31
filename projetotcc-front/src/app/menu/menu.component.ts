@@ -24,18 +24,20 @@ export class MenuComponent implements OnInit {
           {label: 'Cargos', visible: this.hasRole('ADMIN'), routerLink: "cargo"},
           {label: 'Etapas', items:[{label: 'Etapas',routerLink:"etapa"},
               {label:'Sub-Etapas',routerLink:"subEtapa"}]},
-          {label: 'Projetos', routerLink: 'projeto'},
+          {label: 'Projetos',visible: this.hasRole('ADMIN'), routerLink: 'projeto'},
           {label: 'Solicitações', routerLink: 'solicitacao'},
           {label: 'Sprints', routerLink: 'sprint'},
 
         ]
-
+      },
+      {
+        label: 'Quadro', routerLink:"quadro"
       },
     ];
 
   }
   hasRole(permissao: string): boolean {
-    console.log(this.loginService.getUserInfo());
+    //console.log(this.loginService.getUserInfo());
     return this.loginService.hasRole(permissao);
 
   }
