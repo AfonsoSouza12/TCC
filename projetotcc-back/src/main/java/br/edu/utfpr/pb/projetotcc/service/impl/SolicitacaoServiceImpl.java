@@ -9,6 +9,8 @@ import br.edu.utfpr.pb.projetotcc.model.Solicitacao;
 import br.edu.utfpr.pb.projetotcc.repository.SolicitacaoRepository;
 import br.edu.utfpr.pb.projetotcc.service.SolicitacaoService;
 
+import java.util.List;
+
 @Service
 public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> implements SolicitacaoService{
 
@@ -18,6 +20,11 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 	@Override
 	protected JpaRepository<Solicitacao, Long> getRepository() {
 		return solicitacaoRepository;
+	}
+
+	@Override
+	public List<Solicitacao> findAllByEtapaIdOrderByNome(Long etapaId) {
+		return solicitacaoRepository.findByEtapaIdOrderByNome(etapaId);
 	}
 
 }
