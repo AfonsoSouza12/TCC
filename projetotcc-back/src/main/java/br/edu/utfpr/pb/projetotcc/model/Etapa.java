@@ -39,9 +39,6 @@ public class Etapa implements Serializable {
     @Column(length = 1000, nullable = false)
     private String descricao;
 
-    @Column(length = 1000)
-    private String status;
-
     @ManyToOne
     @JoinColumn(name = "usuario_id",
             referencedColumnName = "id")

@@ -39,9 +39,6 @@ public class SubEtapa implements Serializable {
     @Column(length = 1000, nullable = false)
     private String descricao;
 
-    @Column(length = 1000)
-    private String status;
-
     @ManyToOne
     @JoinColumn(name = "etapa_id", nullable = false, referencedColumnName = "id")
     private Etapa etapa;

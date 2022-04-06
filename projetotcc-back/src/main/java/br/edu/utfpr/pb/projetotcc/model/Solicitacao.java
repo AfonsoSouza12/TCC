@@ -43,6 +43,9 @@ public class Solicitacao {
 	@Column(name = "data_fim")
 	private LocalDate dataFim;
 
+	@Column(length = 1000)
+	private String status;
+
 	@ManyToOne
 	@JoinColumn(name = "projeto_id", referencedColumnName = "id")
 	private Projeto projeto;
