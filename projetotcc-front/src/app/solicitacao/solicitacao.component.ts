@@ -11,6 +11,7 @@ import {ProjetoService} from '../projeto/projeto.service';
 import {EtapaService} from '../etapa/etapa.service';
 import {Etapa} from '../model/etapa';
 import {SprintService} from '../sprint/sprint.service';
+import {StatusOpt} from '../../shared/consts/StatusOpt';
 
 @Component({
   selector: 'app-solicitacao',
@@ -20,7 +21,7 @@ import {SprintService} from '../sprint/sprint.service';
 export class SolicitacaoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
-
+  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
   solicitacoes: Solicitacao[];
   solicitacaoEdit = new Solicitacao();
   showDialog = false;
@@ -83,6 +84,7 @@ export class SolicitacaoComponent implements OnInit {
     this.solicitacaoEdit.sprint = this.sprints[0];
     this.solicitacaoEdit.etapa = this.etapas[0];
     this.solicitacaoEdit.responsavel = this.responsaveis[0];
+    this.solicitacaoEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }
 

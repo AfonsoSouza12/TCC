@@ -9,6 +9,7 @@ export class Solicitacao {
   descricao: string;
   dataInicio: Date;
   dataFim: Date;
+  status: string;
   responsavel: Usuario;
   projeto: Projeto;
   etapa: Etapa;

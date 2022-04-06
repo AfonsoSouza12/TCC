@@ -21,7 +21,6 @@ export class EtapaComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
 
-  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
   etapas: Etapa[];
   etapaEdit = new Etapa();
   subEtapaEdit = new SubEtapa();
@@ -81,7 +80,6 @@ export class EtapaComponent implements OnInit {
   newEntity() {
     this.etapaEdit = new Etapa();
     this.etapaEdit.responsavel = this.responsaveis[0];
-    this.etapaEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }
 

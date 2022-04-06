@@ -16,6 +16,7 @@
         <th>Descrição</th>
         <th>Data Início</th>
         <th>Data Fim</th>
+        <th>Status</th>
         <th>Projeto</th>
         <th>Sprint</th>
         <th>Etapa</th>
@@ -30,6 +31,7 @@
         <td>{{solicitacao.descricao}}</td>
         <td>{{solicitacao.dataInicio | date: 'dd/MM/yyyy'}}</td>
         <td>{{solicitacao.dataFim | date: 'dd/MM/yyyy'}}</td>
+        <td>{{solicitacao.status}}</td>
         <td>{{solicitacao?.projeto?.nome || '-'}}</td>
         <td>{{solicitacao?.sprint?.nome || '-'}}</td>
         <td>{{solicitacao.etapa.nome}}</td>
@@ -76,6 +78,10 @@
       <div class="ui-g-12 ui-fluid">
         <label class="p-d-block" for="dataFim">Data Fim</label>
         <p-calendar #cal  appendTo="body" class="p-d-block" id="dataFim" [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="solicitacaoEdit.dataFim"></p-calendar>
+      </div>
+      <div class="ui-g-12 ui-fluid p-mb-3">
+        <label class="p-d-block"for="status">Status</label>
+        <p-dropdown appendTo="body" class="p-d-block"  [options]="statuss" [(ngModel)]="solicitacaoEdit.status" name="status" id="status"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid" >
         <label class="p-d-block" >Projeto</label>

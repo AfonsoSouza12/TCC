@@ -10,7 +10,6 @@
         <th>Código</th>
         <th>Nome</th>
         <th>Descrição</th>
-        <th>Status</th>
         <th>Etapa</th>
         <th>Ações</th>
       </tr>
@@ -20,7 +19,6 @@
         <td>{{subEtapa.id}}</td>
         <td>{{subEtapa.nome}}</td>
         <td>{{subEtapa.descricao}}</td>
-        <td>{{subEtapa.status}}</td>
         <td>{{subEtapa.etapa.nome}}</td>
         <td>
           <button pButton type="button" (click)="edit(subEtapa)">
@@ -56,10 +54,6 @@
                 <textarea rows="5" cols="30" pInputTextarea id="descricao" name="descricao" [(ngModel)]="subEtapaEdit.descricao"></textarea>
                 <label for="descricao">Descrição</label>
             </span>
-      </div>
-      <div class="ui-g-12 ui-fluid p-mb-3">
-        <label class="p-d-block"for="status">Status</label>
-        <p-dropdown appendTo="body" class="p-d-block"  [options]="statuss" [(ngModel)]="subEtapaEdit.status" name="status" id="status"></p-dropdown>
       </div>
       <div class="ui-g-12 ui-fluid p-mb-3">
         <label class="p-d-block"for="etapa">Etapa</label>

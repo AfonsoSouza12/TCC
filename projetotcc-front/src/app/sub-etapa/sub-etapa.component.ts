@@ -16,7 +16,6 @@ import {filter} from 'rxjs/operators';
 })
 export class SubEtapaComponent implements OnInit {
 
-  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
   subEtapas: SubEtapa[];
   subEtapaEdit = new SubEtapa();
   showDialog = false;
@@ -64,7 +63,6 @@ export class SubEtapaComponent implements OnInit {
   newEntity() {
     this.subEtapaEdit = new SubEtapa();
     // this.subEtapaEdit.etapa = this.etapas[0];
-    this.subEtapaEdit.status = this.statuss[0].value;
     this.showDialog = true;
   }
   carregarCombos() {
