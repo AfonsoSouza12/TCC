@@ -9,4 +9,83 @@
 
 </div>
 
+<div class="board">
 
+  <div class="board-bar">
+    <p class="board-name">QUADRO SCRUM</p>
+  </div>
+
+  <div class="board-wrapper">
+
+    <div class="board-columns" cdkDropListGroup>
+      <div class="board-column">
+        <div class="column-title">
+         BACKLOG
+        </div>
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="solicitacoesBacklog"
+             (cdkDropListDropped)="drop($event)">
+          <div class="task" *ngFor="let solicitacao of solicitacoesBacklog" cdkDrag>
+            {{ solicitacao.nome}}
+          </div>
+        </div>
+      </div>
+      <div class="board-column">
+        <div class="column-title">
+          TO DO
+        </div>
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="solicitacoesTodo"
+             (cdkDropListDropped)="drop($event)">
+          <div class="task" *ngFor="let solicitacao of solicitacoesTodo" cdkDrag>
+            {{ solicitacao.nome}}
+          </div>
+        </div>
+      </div>
+      <div class="board-column">
+        <div class="column-title">
+          DOING
+        </div>
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="solicitacoesDoing"
+             (cdkDropListDropped)="drop($event)">
+          <div class="task" *ngFor="let solicitacao of solicitacoesDoing" cdkDrag>
+            {{ solicitacao.nome}}
+          </div>
+        </div>
+      </div>
+      <div class="board-column">
+        <div class="column-title">
+          TEST
+        </div>
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="solicitacoesTest"
+             (cdkDropListDropped)="drop($event)">
+          <div class="task" *ngFor="let solicitacao of solicitacoesTest" cdkDrag>
+            {{ solicitacao.nome}}
+          </div>
+        </div>
+      </div>
+      <div class="board-column">
+        <div class="column-title">
+          DONE
+        </div>
+        <div class="tasks-container"
+             cdkDropList
+             [cdkDropListData]="solicitacoesDone"
+             (cdkDropListDropped)="drop($event)">
+          <div class="task" *ngFor="let solicitacao of solicitacoesDone" cdkDrag>
+            {{ solicitacao.nome}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
