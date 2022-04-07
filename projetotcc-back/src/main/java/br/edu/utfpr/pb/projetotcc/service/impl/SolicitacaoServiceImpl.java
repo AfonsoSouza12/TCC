@@ -27,4 +27,10 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 		return solicitacaoRepository.findByEtapaIdOrderByNome(etapaId);
 	}
 
+	@Override
+	public List<Solicitacao> findByStatus(String status) {
+		return solicitacaoRepository.findByStatus(status);
+	}
+
+
 }

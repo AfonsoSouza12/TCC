@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SolicitacaoService extends CrudService<Solicitacao, Long>{
     List<Solicitacao> findAllByEtapaIdOrderByNome(Long etapaId);
+    List<Solicitacao> findByStatus(String status);
 }

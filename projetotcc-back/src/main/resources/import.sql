@@ -23,7 +23,8 @@ INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) 
 
 INSERT INTO sprint(nome,data_inicio,data_limite,data_fim,projeto_id,usuario_id)VALUES ('Sprint01','2021-01-01','2021-02-01',null,1,1)
 
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Planejamento','Planejar como será o projeto', '2021-01-01','2021-02-01','TO-DO',1,1,1)
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 2','blablabla2', null,null,'TO-DO',1,1,1)
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 3','blablabla3', null,null,'TO-DO',1,1,1)
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 4','blablabla4', null,null,'TO-DO',1,1,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Planejamento','Planejar como será o projeto', '2021-01-01','2021-02-01','Backlog',1,1,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 2','blablabla2', null,null,'To Do',1,1,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 3','blablabla3', null,null,'Doing',1,1,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 4','blablabla4', null,null,'Test',1,1,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,sprint_id) VALUES ('Solicitação 5','blablabla5', null,null,'Done',1,1,1)

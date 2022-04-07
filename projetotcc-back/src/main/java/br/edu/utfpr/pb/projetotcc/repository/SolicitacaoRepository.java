@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Long>{
     List<Solicitacao> findByEtapaIdOrderByNome(Long etapaId);
+
+    List<Solicitacao>findByStatus(String status);
 }
