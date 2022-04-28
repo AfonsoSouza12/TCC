@@ -12,8 +12,7 @@ import {StatusOpt} from '../../shared/consts/StatusOpt';
 export class QuadroComponent implements OnInit {
 
   statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
-  solicitacoes: Solicitacao[] = [];
-
+  solicitacoes: Solicitacao[] = []
   solicitacoesBacklog: Solicitacao[];
   solicitacoesTodo: Solicitacao[];
   solicitacoesDoing: Solicitacao[];
@@ -23,7 +22,6 @@ export class QuadroComponent implements OnInit {
 
   ngOnInit() {
     this.findSolicitacoes();
-
   }
 
   findSolicitacoes() {
@@ -49,5 +47,8 @@ export class QuadroComponent implements OnInit {
         event.currentIndex,
       );
     }
+    console.log("DATADATADATADASDSADSDSADSDSADAS");
+    console.log(event.container.data);
   }
 }
+
