@@ -21,7 +21,7 @@ import {StatusOpt} from '../../shared/consts/StatusOpt';
 export class SolicitacaoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
-  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
+  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: StatusOpt[key] }));
   solicitacoes: Solicitacao[];
   solicitacaoEdit = new Solicitacao();
   showDialog = false;

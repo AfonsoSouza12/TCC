@@ -3,6 +3,7 @@ import {Solicitacao} from '../model/solicitacao';
 import {SolicitacaoService} from '../solicitacao/solicitacao.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {StatusOpt} from '../../shared/consts/StatusOpt';
+import {Message} from 'primeng/api';
 
 @Component({
   selector: 'app-quadro',
@@ -18,6 +19,9 @@ export class QuadroComponent implements OnInit {
   solicitacoesDoing: Solicitacao[];
   solicitacoesTest: Solicitacao[];
   solicitacoesDone: Solicitacao[];
+  solicitacaoEdit = new Solicitacao();
+  idsol: number;
+  msgs: Message[] = [];
   constructor(private solicitacaoService: SolicitacaoService) { }
 
   ngOnInit() {
@@ -49,6 +53,29 @@ export class QuadroComponent implements OnInit {
     }
     console.log("DATADATADATADASDSADSDSADSDSADAS");
     console.log(event.container.data);
+    console.log(event.container.data[event.currentIndex]['id']);
+    console.log(this.solicitacoes.filter(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']));
+    //this.solicitacaoEdit = Object.assign({},this.solicitacoes.filter(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']))
+
+    //this.edit(event.container.data[event.currentIndex]);
+  }
+
+  edit(solicitacao: Solicitacao) {
+    this.solicitacaoEdit = Object.assign({}, solicitacao);
+  }
+
+  save() {
+    this.solicitacaoService.save(this.solicitacaoEdit).subscribe( e => {
+        this.solicitacaoEdit = new Solicitacao();
+        this.findSolicitacoes();
+        this.msgs = [{severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'}];
+      },
+      error => {
+        this.msgs = [{severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'}];
+      }
+    );
   }
 }
 
