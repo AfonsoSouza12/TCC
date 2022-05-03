@@ -42,6 +42,7 @@ import { QuadroComponent } from './quadro/quadro.component';
 import {DragDropModule, DragDropRegistry} from '@angular/cdk/drag-drop';
 import {ScrollDispatcher, ViewportRuler} from '@angular/cdk/overlay';
 import {Platform} from '@angular/cdk/platform';
+import {CardModule} from 'primeng/card';
 
 
 
@@ -78,6 +79,7 @@ import {Platform} from '@angular/cdk/platform';
     CalendarModule,
     InputTextareaModule,
     DragDropModule,
+    CardModule,
 
   ],
   exports:[AppComponent],

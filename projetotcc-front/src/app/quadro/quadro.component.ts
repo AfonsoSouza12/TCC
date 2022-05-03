@@ -3,7 +3,15 @@ import {Solicitacao} from '../model/solicitacao';
 import {SolicitacaoService} from '../solicitacao/solicitacao.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {StatusOpt} from '../../shared/consts/StatusOpt';
-import {Message} from 'primeng/api';
+import {ConfirmationService, Message} from 'primeng/api';
+import {Usuario} from '../model/usuario';
+import {Projeto} from '../model/projeto';
+import {Etapa} from '../model/etapa';
+import {Sprint} from '../model/sprint';
+import {ProjetoService} from '../projeto/projeto.service';
+import {EtapaService} from '../etapa/etapa.service';
+import {SprintService} from '../sprint/sprint.service';
+import {UsuarioService} from '../usuario/usuario.service';
 
 @Component({
   selector: 'app-quadro',
@@ -12,7 +20,7 @@ import {Message} from 'primeng/api';
 })
 export class QuadroComponent implements OnInit {
 
-  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: key }));
+  statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: StatusOpt[key] }));
   solicitacoes: Solicitacao[] = []
   solicitacoesBacklog: Solicitacao[];
   solicitacoesTodo: Solicitacao[];
@@ -20,12 +28,29 @@ export class QuadroComponent implements OnInit {
   solicitacoesTest: Solicitacao[];
   solicitacoesDone: Solicitacao[];
   solicitacaoEdit = new Solicitacao();
-  idsol: number;
   msgs: Message[] = [];
-  constructor(private solicitacaoService: SolicitacaoService) { }
+  showDialog = false;
+  responsaveis: Usuario[];
+  projetos: Projeto[];
+  etapas: Etapa[];
+  sprints: Sprint[];
+  containerStatus: string;
+  constructor(private solicitacaoService: SolicitacaoService,
+              private confirmationService: ConfirmationService,
+              private projetoService: ProjetoService,
+              private etapaService: EtapaService,
+              private sprintService: SprintService,
+              private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.findSolicitacoes();
+    this.carregarCombos();
+  }
+  carregarCombos() {
+    this.projetoService.findAll().subscribe(e => this.projetos  = e );
+    this.etapaService.findAll().subscribe(e => this.etapas  = e );
+    this.sprintService.findAll().subscribe(e => this.sprints  = e );
+    this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
 
   findSolicitacoes() {
@@ -51,23 +76,28 @@ export class QuadroComponent implements OnInit {
         event.currentIndex,
       );
     }
-    console.log("DATADATADATADASDSADSDSADSDSADAS");
-    console.log(event.container.data);
+    console.log("-----------------------------------------------------------------");
+    this.containerStatus = event.container.element.nativeElement.getAttribute('id');
+    console.log(event.container.id);
+    console.log(this.containerStatus);
     console.log(event.container.data[event.currentIndex]['id']);
-    console.log(this.solicitacoes.filter(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']));
-    //this.solicitacaoEdit = Object.assign({},this.solicitacoes.filter(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']))
+    this.solicitacaoEdit = Object.assign({},this.solicitacoes.find(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']))
 
-    //this.edit(event.container.data[event.currentIndex]);
+    this.solicitacaoEdit.status = this.containerStatus;
+
+    this.save();
   }
 
   edit(solicitacao: Solicitacao) {
     this.solicitacaoEdit = Object.assign({}, solicitacao);
+    this.showDialog = true;
   }
 
   save() {
     this.solicitacaoService.save(this.solicitacaoEdit).subscribe( e => {
         this.solicitacaoEdit = new Solicitacao();
         this.findSolicitacoes();
+        this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
           detail: 'Registro salvo com sucesso!'}];
       },
@@ -76,6 +106,10 @@ export class QuadroComponent implements OnInit {
           detail: 'Falha ao salvar o registro!'}];
       }
     );
+  }
+  cancel() {
+    this.showDialog = false;
+    this.solicitacaoEdit = new Solicitacao();
   }
 }
 
