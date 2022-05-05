@@ -3,12 +3,27 @@
   <div class="board-bar">
     <p class="board-name">QUADRO SCRUM</p>
   </div>
+  <div class="board-filters">
+    <div class="p-d-flex p-jc-between">
+      <div class="p-d-flex">
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-mr-4" [style]="{width: '200px'}"
+                    placeholder="Projeto" [options]="projetos" optionLabel="nome"></p-dropdown>
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-ml-4 p-mr-4" [style]="{width: '200px'}"
+                    placeholder="Sprint" [options]="sprints" optionLabel="nome"></p-dropdown>
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-ml-4 p-mr-4" [style]="{width: '200px'}"
+                    placeholder="Responsável" [options]="responsaveis" optionLabel="nome"></p-dropdown>
+      </div>
+     <div  class="p-mt-2">
+        <p-button label="Pesquisar" icon="pi pi-search"></p-button>
+     </div>
+    </div>
+  </div>
 
   <div class="board-wrapper">
 
     <div class="board-columns" cdkDropListGroup>
       <div class="board-column">
-        <div class="column-title">
+        <div class="column-title" [ngStyle]="{backgroundColor:'var(--blue-600)'}" >
          BACKLOG
         </div>
         <div class="tasks-container"
@@ -17,21 +32,27 @@
              [cdkDropListData]="solicitacoesBacklog"
              (cdkDropListDropped)="drop($event)">
           <p-card *ngFor="let solicitacao of solicitacoesBacklog" cdkDrag
-                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}} [style]="{width: '240px'}" styleClass="p-card-shadow p-mb-5">
+                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}}
+                  [style]="{width: '240px'}" styleClass="p-card p-mb-5" >
             <p>Etapa: {{solicitacao.etapa.nome}}</p>
             <div class="container">
               <p class="d-flex" >Responsável: </p>
               <p class="d-flex"  *ngIf="solicitacao.responsavel">{{solicitacao.responsavel.nome}}</p>
             </div>
-
-            <ng-template pTemplate="footer">
-              <p-button  label="View" icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button>
+            <ng-template pTemplate="footer"  >
+              <div class="p-d-flex p-jc-between">
+                <div><p-button  icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button></div>
+                <div class="p-d-flex p-flex-column p-text-right">
+                  <div class="fontemenor p-mt-sm-1 "><p class="p-m-auto">Projeto: {{solicitacao.projeto.id}}</p></div>
+                  <div class="fontemenor"><p class="p-m-auto">Sprint: {{solicitacao.sprint.nome}}</p></div>
+                </div>
+              </div>
             </ng-template>
           </p-card>
         </div>
       </div>
       <div class="board-column">
-        <div class="column-title">
+        <div class="column-title" [ngStyle]="{backgroundColor:'var(--purple-600)'}">
           TO DO
         </div>
         <div class="tasks-container"
@@ -40,20 +61,27 @@
              [cdkDropListData]="solicitacoesTodo"
              (cdkDropListDropped)="drop($event)">
           <p-card *ngFor="let solicitacao of solicitacoesTodo" cdkDrag
-                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}} [style]="{width: '240px'}" styleClass="p-card-shadow p-mb-5">
+                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}}
+                  [style]="{width: '240px'}" styleClass="p-card p-mb-5" >
             <p>Etapa: {{solicitacao.etapa.nome}}</p>
             <div class="container">
               <p class="d-flex" >Responsável: </p>
               <p class="d-flex"  *ngIf="solicitacao.responsavel">{{solicitacao.responsavel.nome}}</p>
             </div>
-            <ng-template pTemplate="footer">
-              <p-button  label="View" icon="pi pi-eye" (click)="edit(solicitacao)"></p-button>
+            <ng-template pTemplate="footer"  >
+              <div class="p-d-flex p-jc-between">
+                <div><p-button  icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button></div>
+                <div class="p-d-flex p-flex-column p-text-right">
+                  <div class="fontemenor p-mt-sm-1 "><p class="p-m-auto">Projeto: {{solicitacao.projeto.id}}</p></div>
+                  <div class="fontemenor"><p class="p-m-auto">Sprint: {{solicitacao.sprint.nome}}</p></div>
+                </div>
+              </div>
             </ng-template>
           </p-card>
         </div>
       </div>
       <div class="board-column">
-        <div class="column-title">
+        <div class="column-title" [ngStyle]="{backgroundColor:'var(--yellow-600)'}">
           DOING
         </div>
         <div class="tasks-container"
@@ -61,23 +89,28 @@
              cdkDropList
              [cdkDropListData]="solicitacoesDoing"
              (cdkDropListDropped)="drop($event)">
-<!--          <div class="task" *ngFor="let solicitacao of solicitacoesDoing" cdkDrag>-->
-<!--            {{ solicitacao.nome}}-->
-<!--          </div>-->
           <p-card *ngFor="let solicitacao of solicitacoesDoing" cdkDrag
-            header={{solicitacao.nome}} subheader={{solicitacao.descricao}} [style]="{width: '240px'}" styleClass="p-card-shadow p-mb-5">
+                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}}
+                  [style]="{width: '240px'}" styleClass="p-card p-mb-5" >
+            <p>Etapa: {{solicitacao.etapa.nome}}</p>
             <div class="container">
               <p class="d-flex" >Responsável: </p>
               <p class="d-flex"  *ngIf="solicitacao.responsavel">{{solicitacao.responsavel.nome}}</p>
             </div>
-            <ng-template pTemplate="footer">
-              <p-button  label="View" icon="pi pi-eye"></p-button>
+            <ng-template pTemplate="footer"  >
+              <div class="p-d-flex p-jc-between">
+                <div><p-button  icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button></div>
+                <div class="p-d-flex p-flex-column p-text-right">
+                  <div class="fontemenor p-mt-sm-1 "><p class="p-m-auto">Projeto: {{solicitacao.projeto.id}}</p></div>
+                  <div class="fontemenor"><p class="p-m-auto">Sprint: {{solicitacao.sprint.nome}}</p></div>
+                </div>
+              </div>
             </ng-template>
           </p-card>
         </div>
       </div>
       <div class="board-column">
-        <div class="column-title">
+        <div class="column-title" [ngStyle]="{backgroundColor:'var(--orange-600)'}">
           TEST
         </div>
         <div class="tasks-container"
@@ -86,19 +119,27 @@
              [cdkDropListData]="solicitacoesTest"
              (cdkDropListDropped)="drop($event)">
           <p-card *ngFor="let solicitacao of solicitacoesTest" cdkDrag
-                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}} [style]="{width: '240px'}" styleClass="p-card-shadow p-mb-5">
+                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}}
+                  [style]="{width: '240px'}" styleClass="p-card p-mb-5" >
+            <p>Etapa: {{solicitacao.etapa.nome}}</p>
             <div class="container">
               <p class="d-flex" >Responsável: </p>
               <p class="d-flex"  *ngIf="solicitacao.responsavel">{{solicitacao.responsavel.nome}}</p>
             </div>
-            <ng-template pTemplate="footer">
-              <p-button  label="View" icon="pi pi-eye"></p-button>
+            <ng-template pTemplate="footer"  >
+              <div class="p-d-flex p-jc-between">
+                <div><p-button  icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button></div>
+                <div class="p-d-flex p-flex-column p-text-right">
+                  <div class="fontemenor p-mt-sm-1 "><p class="p-m-auto">Projeto: {{solicitacao.projeto.id}}</p></div>
+                  <div class="fontemenor"><p class="p-m-auto">Sprint: {{solicitacao.sprint.nome}}</p></div>
+                </div>
+              </div>
             </ng-template>
           </p-card>
         </div>
       </div>
       <div class="board-column">
-        <div class="column-title">
+        <div class="column-title" [ngStyle]="{backgroundColor:'var(--green-600)'}">
           DONE
         </div>
         <div class="tasks-container"
@@ -107,13 +148,21 @@
              [cdkDropListData]="solicitacoesDone"
              (cdkDropListDropped)="drop($event)">
           <p-card *ngFor="let solicitacao of solicitacoesDone" cdkDrag
-                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}} [style]="{width: '240px'}" styleClass="p-card-shadow p-mb-5">
+                  header={{solicitacao.nome}} subheader={{solicitacao.descricao}}
+                  [style]="{width: '240px'}" styleClass="p-card p-mb-5" >
+            <p>Etapa: {{solicitacao.etapa.nome}}</p>
             <div class="container">
               <p class="d-flex" >Responsável: </p>
               <p class="d-flex"  *ngIf="solicitacao.responsavel">{{solicitacao.responsavel.nome}}</p>
             </div>
-            <ng-template pTemplate="footer">
-              <p-button  label="View" icon="pi pi-eye"></p-button>
+            <ng-template pTemplate="footer"  >
+              <div class="p-d-flex p-jc-between">
+                <div><p-button  icon="pi pi-eye"  (click)="edit(solicitacao)"></p-button></div>
+                <div class="p-d-flex p-flex-column p-text-right">
+                  <div class="fontemenor p-mt-sm-1 "><p class="p-m-auto">Projeto: {{solicitacao.projeto.id}}</p></div>
+                  <div class="fontemenor"><p class="p-m-auto">Sprint: {{solicitacao.sprint.nome}}</p></div>
+                </div>
+              </div>
             </ng-template>
           </p-card>
         </div>
@@ -125,23 +174,23 @@
 
 </div>
 
-<p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
+<p-dialog [style]="{width: '700px'}" header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
   <div class="row">
     <div class="ui-g-12 ui-fluid">
             <span class="p-float-label p-mb-3 p-mt-3">
-                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="solicitacaoEdit.nome">
+                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="solicitacaoEdit.nome" style="width:350px">
                 <label for="nome">Nome</label>
             </span>
     </div>
     <div class="ui-g-12 ui-fluid">
             <span class="p-float-label p-mb-3">
-                <textarea rows="5" cols="30" pInputTextarea id="descricao" name="descricao" [(ngModel)]="solicitacaoEdit.descricao"></textarea>
+                <textarea rows="5" cols="30" pInputTextarea id="descricao" name="descricao" [(ngModel)]="solicitacaoEdit.descricao" style="width:350px"></textarea>
                 <label for="descricao">Descrição</label>
             </span>
     </div>
     <div class="ui-g-12 ui-fluid">
       <label class="p-d-block" for="dataInicio">Data Início</label>
-      <p-calendar required appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="solicitacaoEdit.dataInicio"></p-calendar>
+      <p-calendar required appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="solicitacaoEdit.dataInicio" ></p-calendar>
     </div>
     <div class="ui-g-12 ui-fluid">
       <label class="p-d-block" for="dataFim">Data Fim</label>

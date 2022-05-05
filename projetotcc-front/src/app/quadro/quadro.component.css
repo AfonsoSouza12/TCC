@@ -12,15 +12,19 @@
     background: rgba(0, 0, 0.5, 0);
     padding: 8px 15px;
     text-align: center;
+
   }
 
   .board-name {
     font-size: 40px;
     font-weight: bold;
-    color: black;
+    color: white;
     font-family: Calibri;
     margin-left: auto;
     margin-right: auto;
+  }
+  .board-filters{
+    margin-left: 50px;
   }
 
   .board-wrapper {
@@ -39,13 +43,10 @@
       flex-direction: column;
       flex-grow: 1;
       flex-basis: 0;
-
       margin: 50px;
       padding: 25px;
-
       border-radius: 4px;
-
-      background-color: rgba(255,255,255,0.5);
+      background-color: gray;
     }
 
   .column-title {
@@ -54,7 +55,8 @@
     font-family: 'Lato', sans-serif;
     text-transform: uppercase;
     margin-bottom: 20px;
-    color: black;
+    color: white;
+    text-align: center;
   }
 
 .tasks-container {
@@ -77,4 +79,9 @@
   0 3px 14px 2px rgba(0, 0, 0, 0.05);
 }
 
+.fontemenor{
+  font-size: smaller;
+  padding: 0;
+  margin: 0;
+}
 
