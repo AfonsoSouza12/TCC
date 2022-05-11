@@ -8,6 +8,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import br.edu.utfpr.pb.projetotcc.model.Projeto;
+import br.edu.utfpr.pb.projetotcc.model.Sprint;
+import br.edu.utfpr.pb.projetotcc.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +39,13 @@ public class SolicitacaoController extends CrudController<Solicitacao, Long> {
 	@GetMapping("busca-status/{status}")
 	public List<Solicitacao> findAllByStatus(@PathVariable("status") String status) {
 		return solicitacaoService.findByStatus(status);
+	}
+
+	@GetMapping("filtra-quadro/{projeto}-{sprint}-{responsavel}")
+	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
+			@PathVariable("projeto") Projeto projeto, @PathVariable("projeto") Sprint sprint,
+			@PathVariable("responsavel") Usuario responsavel) {
+		return solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projeto,sprint,responsavel);
 	}
 
 }

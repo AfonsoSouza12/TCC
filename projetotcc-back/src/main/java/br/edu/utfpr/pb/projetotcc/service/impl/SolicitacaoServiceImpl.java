@@ -1,6 +1,6 @@
 package br.edu.utfpr.pb.projetotcc.service.impl;
 
-import br.edu.utfpr.pb.projetotcc.model.Solicitacao;
+import br.edu.utfpr.pb.projetotcc.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -32,5 +32,9 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 		return solicitacaoRepository.findByStatus(status);
 	}
 
+	@Override
+	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(Projeto projeto, Sprint sprint, Usuario responsavel){
+		return solicitacaoRepository.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projeto, sprint, responsavel);
+	}
 
 }
