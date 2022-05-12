@@ -7,14 +7,17 @@
     <div class="p-d-flex p-jc-between">
       <div class="p-d-flex">
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-mr-4" [style]="{width: '200px'}"
-                    placeholder="Projeto" [options]="projetos" optionLabel="nome"></p-dropdown>
+                    placeholder="Projeto" [options]="projetos" optionLabel="nome" [(ngModel)]="selectedProjeto" ></p-dropdown>
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-ml-4 p-mr-4" [style]="{width: '200px'}"
-                    placeholder="Sprint" [options]="sprints" optionLabel="nome"></p-dropdown>
+                    placeholder="Sprint" [options]="sprints" optionLabel="nome" [(ngModel)]="selectedSprint"></p-dropdown>
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-ml-4 p-mr-4" [style]="{width: '200px'}"
-                    placeholder="Responsável" [options]="responsaveis" optionLabel="nome"></p-dropdown>
+                    placeholder="Responsável" [options]="responsaveis" optionLabel="nome" [(ngModel)]="selectedResponsavel" ></p-dropdown>
+      </div>
+      <div  class="p-mt-2">
+        <p-button label="Limpar Filtros" icon="pi pi-times" (click)="findSolicitacoes()"></p-button>
       </div>
      <div  class="p-mt-2">
-        <p-button label="Pesquisar" icon="pi pi-search"></p-button>
+        <p-button label="Pesquisar" icon="pi pi-search" (click)="findSolicitacoesFiltrado(selectedProjeto, selectedSprint, selectedResponsavel)"></p-button>
      </div>
     </div>
   </div>
