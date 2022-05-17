@@ -117,27 +117,17 @@ export class QuadroComponent implements OnInit {
     this.solicitacaoEdit = new Solicitacao();
   }
 
-  findSolicitacoesFiltrado(projeto: Projeto, sprint: Sprint, responsavel: Usuario){
+  findSolicitacoesFiltrado(projetoId: number, sprintId: number, responsavelId: number){
     console.log('--------------------------------');
-    this.solicitacaoService.findFiltro(projeto,sprint,responsavel).subscribe( e => {
+    this.solicitacaoService.findFiltro(projetoId,sprintId,responsavelId).subscribe( e => {
        this.solicitacoes = e;
       console.log(this.solicitacoes);
-      // if(projeto !== null){
-      //     this.solicitacoes = this.solicitacoes.filter(solicitacao => solicitacao.projeto === projeto);
-      //   }
-      // if(sprint !== null){
-      //   this.solicitacoes = this.solicitacoes.filter(solicitacao => solicitacao.sprint === sprint);
-      // }
-      // if(responsavel !== null){
-      //   this.solicitacoes = this.solicitacoes.filter(solicitacao => solicitacao.responsavel === responsavel);
-      // }
-      //
-      //
-      // this.solicitacoesBacklog = this.solicitacoes.filter(solicitacao => solicitacao.status === "Backlog");
-      // this.solicitacoesTodo = this.solicitacoes.filter(solicitacao => solicitacao.status === "To Do");
-      // this.solicitacoesDoing = this.solicitacoes.filter(solicitacao => solicitacao.status === "Doing");
-      // this.solicitacoesTest = this.solicitacoes.filter(solicitacao => solicitacao.status === "Test");
-      // this.solicitacoesDone = this.solicitacoes.filter(solicitacao => solicitacao.status === "Done");
+
+       this.solicitacoesBacklog = this.solicitacoes.filter(solicitacao => solicitacao.status === "Backlog");
+       this.solicitacoesTodo = this.solicitacoes.filter(solicitacao => solicitacao.status === "To Do");
+       this.solicitacoesDoing = this.solicitacoes.filter(solicitacao => solicitacao.status === "Doing");
+       this.solicitacoesTest = this.solicitacoes.filter(solicitacao => solicitacao.status === "Test");
+       this.solicitacoesDone = this.solicitacoes.filter(solicitacao => solicitacao.status === "Done");
       }
     );
 

@@ -20,10 +20,10 @@ export class SolicitacaoService extends CrudService<Solicitacao, number>{
   }
 
   findByStatus(status: string): Observable<Solicitacao[]>{
-    return this.http.get<Solicitacao[]>(`${this.getUrl()}/solicitacao/busca-status/${status}`);
+    return this.http.get<Solicitacao[]>(`${this.getUrl()}/busca-status/${status}`);
   }
 
-  findFiltro(projeto: Projeto, sprint: Sprint, responsavel: Usuario){
-    return this.http.get<Solicitacao[]>(`${this.getUrl()}/solicitacao/filtra-quadro/${projeto}-${sprint}-${responsavel}`);
+  findFiltro(projetoId: number, sprintId: number, responsavelId: number){
+    return this.http.get<Solicitacao[]>(`${this.getUrl()}/filtra-quadro/${projetoId}/${sprintId}/${responsavelId}`);
   }
 }
