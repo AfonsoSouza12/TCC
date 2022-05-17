@@ -26,7 +26,7 @@ public class Projeto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "nome", length = 254, nullable = false)
 	private String nome;

@@ -33,8 +33,8 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 	}
 
 	@Override
-	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(Projeto projeto, Sprint sprint, Usuario responsavel){
-		return solicitacaoRepository.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projeto, sprint, responsavel);
+	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(Long projetoId, Long sprintId, Long responsavelId){
+		return solicitacaoRepository.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId, sprintId, responsavelId);
 	}
 
 }

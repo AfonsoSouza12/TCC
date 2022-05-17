@@ -16,12 +16,12 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Long>{
 
     List<Solicitacao>findByStatus(String status);
 
-    @Query("SELECT s FROM Solicitacao s WHERE (:projeto is null or s.projeto = :projeto) and (:sprint is null"
-            + " or s.sprint = :sprint) and (:responsavel is null or s.responsavel = :responsavel)")
+    @Query("SELECT s FROM Solicitacao s WHERE (:projetoId is null or s.projeto.id = :projetoId) and (:sprintId is null"
+            + " or s.sprint.id = :sprintId) and (:responsavelId is null or s.responsavel.id = :responsavelId)")
     List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
-            @Param("projeto") Projeto projeto,
-            @Param("sprint") Sprint sprint,
-            @Param("responsavel") Usuario responsavel);
+            @Param("projetoId") Long projetoId,
+            @Param("sprintId") Long sprintId,
+            @Param("responsavelId") Long responsavelId);
 
 
 }

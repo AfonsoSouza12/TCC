@@ -13,14 +13,14 @@ import br.edu.utfpr.pb.projetotcc.service.CargoService;
 
 @Service
 public class CargoServiceImpl 
-		extends CrudServiceImpl<Cargo, Integer>
+		extends CrudServiceImpl<Cargo, Long>
 		implements CargoService {
 
 	@Autowired
 	private CargoRepository cargoRepository;
 	
 	@Override
-	protected JpaRepository<Cargo, Integer> getRepository() {
+	protected JpaRepository<Cargo, Long> getRepository() {
 		return cargoRepository;
 	}
 

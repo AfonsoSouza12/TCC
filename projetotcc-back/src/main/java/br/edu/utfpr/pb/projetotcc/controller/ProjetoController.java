@@ -12,14 +12,14 @@ import br.edu.utfpr.pb.projetotcc.service.ProjetoService;
 
 @RestController
 @RequestMapping("projeto")
-public class ProjetoController extends CrudController<Projeto, Integer>{
+public class ProjetoController extends CrudController<Projeto, Long>{
 
 	@Autowired
 	private ProjetoService projetoService;
 	
 	@Override
 	@Valid
-	protected CrudService<Projeto, Integer> getService() {
+	protected CrudService<Projeto, Long> getService() {
 		return projetoService;
 	}
 

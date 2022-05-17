@@ -41,11 +41,11 @@ public class SolicitacaoController extends CrudController<Solicitacao, Long> {
 		return solicitacaoService.findByStatus(status);
 	}
 
-	@GetMapping("filtra-quadro/{projeto}-{sprint}-{responsavel}")
+	@GetMapping("filtra-quadro/{projetoId}/{sprintId}/{responsavelId}")
 	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
-			@PathVariable("projeto") Projeto projeto, @PathVariable("projeto") Sprint sprint,
-			@PathVariable("responsavel") Usuario responsavel) {
-		return solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projeto,sprint,responsavel);
+			@PathVariable("projetoId") Long projetoId, @PathVariable("sprintId") Long sprintId,
+			@PathVariable("responsavelId") Long responsavelId) {
+		return solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId,sprintId,responsavelId);
 	}
 
 }

@@ -9,14 +9,14 @@ import br.edu.utfpr.pb.projetotcc.repository.ProjetoRepository;
 import br.edu.utfpr.pb.projetotcc.service.ProjetoService;
 
 @Service
-public class ProjetoServiceImpl extends CrudServiceImpl<Projeto, Integer>
+public class ProjetoServiceImpl extends CrudServiceImpl<Projeto, Long>
 																implements ProjetoService{
 
 	@Autowired
 	private ProjetoRepository projetoRepository;
 	
 	@Override
-	protected JpaRepository<Projeto, Integer> getRepository() {
+	protected JpaRepository<Projeto, Long> getRepository() {
 		return projetoRepository;
 	}
 	

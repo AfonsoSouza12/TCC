@@ -14,14 +14,14 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("cargo")
 @Api("Cargo")
-public class CargoController extends CrudController<Cargo, Integer> {
+public class CargoController extends CrudController<Cargo, Long> {
 
 	@Autowired
 	private CargoService cargoService;
 	
 	@Override
 	@Valid
-	protected CrudService<Cargo, Integer> getService() {
+	protected CrudService<Cargo, Long> getService() {
 		return cargoService;
 	}
 	
