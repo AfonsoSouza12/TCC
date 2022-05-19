@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Solicitacao} from '../model/solicitacao';
 import {SolicitacaoService} from '../solicitacao/solicitacao.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
@@ -12,6 +12,8 @@ import {ProjetoService} from '../projeto/projeto.service';
 import {EtapaService} from '../etapa/etapa.service';
 import {SprintService} from '../sprint/sprint.service';
 import {UsuarioService} from '../usuario/usuario.service';
+import {Dropdown} from 'primeng/dropdown';
+import {clearElement} from '@angular/cdk/testing/testbed/fake-events';
 
 @Component({
   selector: 'app-quadro',
@@ -35,6 +37,7 @@ export class QuadroComponent implements OnInit {
   etapas: Etapa[];
   sprints: Sprint[];
   containerStatus: string;
+  @ViewChild('projetoDrop', { static: true }) projetoDrop: Dropdown;
 
   selectedProjeto= new Projeto();
   selectedSprint= new Sprint();
@@ -132,6 +135,11 @@ export class QuadroComponent implements OnInit {
     );
 
 
+  }
+  limparFiltros(){
+    console.log("limpando");
+      this.projetoDrop.updateSelectedOption(null);
+      this.findSolicitacoes();
   }
 }
 

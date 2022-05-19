@@ -24,19 +24,27 @@ export class SolicitacaoService extends CrudService<Solicitacao, number>{
     return this.http.get<Solicitacao[]>(`${this.getUrl()}/busca-status/${status}`);
   }
 
-  findFiltro(projetoId: number, sprintId: number, responsavelId: number){
-    //return this.http.get<Solicitacao[]>(`${this.getUrl()}/filtra-quadro/${projetoId}/${sprintId}/${responsavelId}`);
-    return this.http.get<Solicitacao[]>(`${this.getUrl()}/filtra-quadro/projetoId=${projetoId}&sprintId=${sprintId}&responsavelId=${responsavelId}`);
-  }
+  findFiltro(projetoId: number, sprintId: number, responsavelId: number) {
+    let url = `${this.getUrl()}/filtra-quadro`;
+    if (projetoId != null) {
+      url += `?projetoId=${projetoId}`;
+    }
+    if (projetoId == null && sprintId != null) {
+      url += `?sprintId=${sprintId}`;
+    }
+    else if(sprintId != null){
+      url += `&sprintId=${sprintId}`;
+    }
+    if (projetoId == null && sprintId == null && responsavelId != null) {
+      url += `?responsavelId=${responsavelId}`;
+    }
+    else if(responsavelId != null){
+      url += `&responsavelId=${responsavelId}`;
+    }
+    if(projetoId == null && sprintId == null && responsavelId == null){
+      return this.findAll();
+    }
 
-  // findFiltrado(projetoId: number, sprintId: number, responsavelId: number) {
-  //   let url = `${this.getUrl()}/filtra-quadro/projeto=${projetoId}&sprint=${sprintId}&responsavel=${responsavelId}`;
-  //   // if (order) {
-  //   //   url += `&order=${order}`;
-  //   // }
-  //   // if (asc !== undefined) {
-  //   //   url += `&asc=${asc}`;
-  //   // }
-  //   return this.http.get<Solicitacao[]>(url);
-  //}
+    return this.http.get<Solicitacao[]>(url);
+  }
 }
