@@ -1,8 +1,5 @@
 package br.edu.utfpr.pb.projetotcc.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +10,6 @@ import br.edu.utfpr.pb.projetotcc.model.Sprint;
 import br.edu.utfpr.pb.projetotcc.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.utfpr.pb.projetotcc.model.Solicitacao;
 import br.edu.utfpr.pb.projetotcc.service.CrudService;
@@ -41,22 +37,22 @@ public class SolicitacaoController extends CrudController<Solicitacao, Long> {
 		return solicitacaoService.findByStatus(status);
 	}
 
-	@GetMapping("filtra-quadro/projetoId={projetoId}&sprintId={sprintId}&responsavelId={responsavelId}")
-	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
-			@PathVariable("projetoId") Long projetoId, @PathVariable("sprintId") Long sprintId,
-			@PathVariable("responsavelId") Long responsavelId) {
-		return solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId,sprintId,responsavelId);
-	}
-
-//	@GetMapping("")
-//	public List<Solicitacao> findAll(@RequestParam(required = false) Long projetoId,
-//						  			@RequestParam(required = false) Long sprintId,
-//									@RequestParam(required = false) Long responsavelId){
+//	@GetMapping("filtra-quadro/projetoId={projetoId}&sprintId={sprintId}&responsavelId={responsavelId}")
+//	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
+//			@PathVariable("projetoId") Long projetoId, @PathVariable("sprintId") Long sprintId,
+//			@PathVariable("responsavelId") Long responsavelId) {
 //
-//		if (projetoId != null ) {
-//
-//		}
-//		return ();
+//		System.out.println(projetoId  +"-" + sprintId + " - "+ responsavelId);
+//		return solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId,sprintId,responsavelId);
 //	}
+
+	@GetMapping("filtra-quadro")
+	public List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(
+									@RequestParam(required = false) Long projetoId,
+						  			@RequestParam(required = false) Long sprintId,
+									@RequestParam(required = false) Long responsavelId){
+
+			return (solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId,sprintId,responsavelId));
+	}
 
 }
