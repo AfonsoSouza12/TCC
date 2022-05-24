@@ -43,7 +43,7 @@
       flex-direction: column;
       flex-grow: 1;
       flex-basis: 0;
-      margin: 50px;
+      margin: 30px;
       padding: 25px;
       border-radius: 4px;
       background-color: gray;
@@ -62,7 +62,7 @@
 .tasks-container {
   flex-grow: 1;
   overflow-y: auto;
-  min-width: 250px;
+  min-width: 240px;
 }
 
 .task {

@@ -7,7 +7,7 @@
         </div>
         <div class="p-field">
           <label for="password" class="p-col-fixed" >Senha</label>
-          <p-password id='password'[(ngModel)]="password" [toggleMask]="true" [feedback]="false"></p-password>
+          <p-password id='password'[(ngModel)]="password" [toggleMask]="true" [feedback]="false" (keyup.enter)="login()"></p-password>
         </div>
       </div>
       <div class="p-d-flex p-jc-end p-mt-5">

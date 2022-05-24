@@ -138,8 +138,13 @@ export class QuadroComponent implements OnInit {
   }
   limparFiltros(){
     console.log("limpando");
-      this.projetoDrop.updateSelectedOption(null);
+      this.selectedProjeto = null;
+      this.selectedSprint = null;
+      this.selectedResponsavel = null;
+      this.carregarCombos();
       this.findSolicitacoes();
+
   }
+
 }
 

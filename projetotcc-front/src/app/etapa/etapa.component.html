@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Cadastro de Etapas</h1>
+  <h1 class="d-flex p-text-center title-name" >Cadastro de Etapas</h1>
   <div class="p-d-flex p-jc-end">
     <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
   </div>
@@ -39,7 +39,7 @@
     </ng-template>
   </p-table>
 
-  <h1 class="d-flex p-text-center" [ngStyle]="{'color':'blue'}" >Sub-Etapas</h1>
+  <h1 class="d-flex p-text-center title-name" >Sub-Etapas</h1>
 <!--  <h2>{{selectedName}}</h2>-->
 
   <div class="p-d-flex p-jc-end">
@@ -83,9 +83,9 @@
   <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
         <div class="row">
 
-          <div class="ui-g-12 ui-fluid">
+          <div class="ui-g-12 ui-fluid ">
             <span class="p-float-label p-mb-3 p-mt-3">
-                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="etapaEdit.nome">
+                <input class="formTeste" required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="etapaEdit.nome">
                 <label for="nome">Nome</label>
             </span>
           </div>

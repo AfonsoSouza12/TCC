@@ -1,18 +1,56 @@
 <div class="container">
-  <h1>Usuários Cadastrados</h1>
+  <h1 class="d-flex p-text-center title-name" >Usuários Cadastrados</h1>
   <p-table [value]="usuarios" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]">
     <ng-template pTemplate="header">
       <tr>
-        <th width="30%">Nome</th>
+        <th>Código</th>
+        <th>Nome</th>
         <th>Cargo</th>
-
+        <th>Ações</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-usuario>
       <tr>
-        <td>{{ usuario.nome }}</td>
-        <td>{{ usuario.cargo }}</td>
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.nome}}</td>
+        <td>{{usuario.cargo.descricao}}</td>
+        <td>
+          <button pButton type="button" (click)="edit(usuario)">
+            Editar
+          </button>
+
+          <button pButton type="button" class="p-ml-2" (click)="delete(usuario)">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" class="p-text-center">Nenhum cargo cadastrado</td>
       </tr>
     </ng-template>
   </p-table>
+
+  <p-confirmDialog></p-confirmDialog>
+
+  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
+            [responsive]="true" >
+    <div class="row">
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-float-label p-mb-3 p-mt-3">
+                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="usuarioEdit.nome">
+                <label for="nome">Nome</label>
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid" >
+        <label class="p-d-block" >Cargo</label>
+        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="cargos" [(ngModel)]="usuarioEdit.cargo" optionLabel="descricao"></p-dropdown>
+      </div>
+    </div>
+    <p-footer>
+      <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
+      <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>
+    </p-footer>
+  </p-dialog>
 </div>

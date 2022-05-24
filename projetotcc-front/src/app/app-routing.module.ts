@@ -21,7 +21,9 @@ const routes: Routes = [
       {path: 'etapa', component: EtapaComponent},
       {path: 'subEtapa', component: SubEtapaComponent},
       {path: 'subEtapa/novo', component: SubEtapaComponent},
-      {path: 'projeto', component: ProjetoComponent},
+      {path: 'projeto', component: ProjetoComponent,
+       canActivate: [AuthGuard],
+      data: { roles: ['ADMIN']}},
       {path: 'solicitacao', component: SolicitacaoComponent
         //canActivate: [AuthGuard],
        // data: { roles: ['ROLE_ADMIN', 'ROLE_USER']}
