@@ -4,6 +4,7 @@ import {UsuarioService} from './usuario.service';
 import {ConfirmationService, Message} from 'primeng/api';
 import {CargoService} from '../cargo/cargo.service';
 import {Cargo} from '../model/cargo';
+import {Permissao} from '../model/permissao';
 
 @Component({
   selector: 'app-usuario',
@@ -23,8 +24,10 @@ export class UsuarioComponent implements OnInit {
               private cargoService: CargoService) { }
 
   ngOnInit() {
+
     this.findAll();
     this.carregarCombos();
+
   }
   carregarCombos() {
     this.cargoService.findAll().subscribe(e => this.cargos  = e );

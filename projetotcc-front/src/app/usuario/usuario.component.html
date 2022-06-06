@@ -48,6 +48,27 @@
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="cargos" [(ngModel)]="usuarioEdit.cargo" optionLabel="descricao"></p-dropdown>
       </div>
     </div>
+    <div class="row p-mt-5">
+      <p-table [value]="usuarioEdit.permissoes" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Código</th>
+            <th>Permissão</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-permissao>
+          <tr>
+            <td>{{permissao.id}}</td>
+            <td>{{permissao.nome}}</td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8" class="p-text-center">Nenhuma permissao cadastrada</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
     <p-footer>
       <button pButton type="button" class="p-ml-2" (click)="cancel()">Cancelar</button>
       <button pButton type="button" class="p-ml-2" (click)="save()">Salvar</button>

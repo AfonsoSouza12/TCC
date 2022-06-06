@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
           {label: 'Projetos',visible: this.hasRole('ADMIN'), routerLink: 'projeto'},
           {label: 'Solicitações', routerLink: 'solicitacao'},
           {label: 'Sprints', routerLink: 'sprint'},
-          {label: 'Usuários', routerLink: 'usuarios'},
+          {label: 'Usuários', routerLink: 'usuario'},
 
         ]
       },
