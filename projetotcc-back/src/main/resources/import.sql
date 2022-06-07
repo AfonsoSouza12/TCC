@@ -9,7 +9,7 @@ INSERT INTO usuario(nome, username, password, cargo_id) VALUES ('Administrador',
 INSERT INTO usuario(nome, username, password,cargo_id) VALUES ('Teste', 'teste','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',2);
 
 INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
-INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
+--INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
 INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
 
 INSERT INTO etapa (nome, descricao,usuario_id) VALUES ('BACKLOG', 'Lista de tarefas pendentes', 1);
