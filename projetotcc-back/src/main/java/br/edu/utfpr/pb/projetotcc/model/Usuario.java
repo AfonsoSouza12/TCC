@@ -50,6 +50,12 @@ public class Usuario implements UserDetails{
 	
 	@ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
 	private Set<Permissao> permissoes;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "projeto_membro",
+			joinColumns = { @JoinColumn(name = "usuario_id") },
+			inverseJoinColumns = { @JoinColumn(name = "projeto_id") })
+	private Set<Projeto> projetos;
 	
 	public void addPermissao(Permissao permissao) {
 		if (permissoes == null) {

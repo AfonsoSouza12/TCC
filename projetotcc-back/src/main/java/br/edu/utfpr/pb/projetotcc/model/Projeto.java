@@ -57,6 +57,9 @@ public class Projeto implements Serializable {
 	private List<Solicitacao> solicitacoes;*/
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<Usuario> membros;
+	@JoinTable(name = "projeto_membro",
+			joinColumns = { @JoinColumn(name = "projeto_id") },
+			inverseJoinColumns = { @JoinColumn(name = "usuario_id") })
+	private Set<Usuario> membro;
 	
 }

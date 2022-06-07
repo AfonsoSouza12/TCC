@@ -12,6 +12,8 @@ import br.edu.utfpr.pb.projetotcc.model.Usuario;
 import br.edu.utfpr.pb.projetotcc.repository.UsuarioRepository;
 import br.edu.utfpr.pb.projetotcc.service.UsuarioService;
 
+import java.util.List;
+
 @Service
 public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long> 
 	implements UsuarioService, UserDetailsService{
@@ -32,4 +34,8 @@ public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long>
 			   );
 	}
 
+	@Override
+	public List<Usuario> findAllByProjeto(Long projetoId) {
+		return this.usuarioRepository.findAllByProjeto(projetoId);
+	}
 }

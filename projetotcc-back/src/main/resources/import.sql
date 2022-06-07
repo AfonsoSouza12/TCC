@@ -7,6 +7,8 @@ INSERT INTO permissao (nome) values('USER');
 
 INSERT INTO usuario(nome, username, password, cargo_id) VALUES ('Administrador', 'admin','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',1);
 INSERT INTO usuario(nome, username, password,cargo_id) VALUES ('Teste', 'teste','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',2);
+INSERT INTO usuario(nome, username, password,cargo_id) VALUES ('Usuário 1', 'user1','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',2);
+INSERT INTO usuario(nome, username, password,cargo_id) VALUES ('Usuário 2', 'user2','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',2);
 
 INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
 --INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
@@ -21,6 +23,12 @@ INSERT INTO sub_etapa (nome, descricao,etapa_id) VALUES ('subetapa com etapa 2',
 
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO 01','CONTROLE DE PROJETOS','2021-01-01','2021-08-01',null,1)
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO 02','CONTROLE DE PROJETOS 2','2021-01-01','2021-08-01',null,2)
+
+INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,1);
+INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(2,1);
+INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,2);
+INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,3);
+INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,4);
 
 INSERT INTO sprint(nome,data_inicio,data_limite,data_fim,projeto_id,usuario_id)VALUES ('Sprint01','2021-01-01','2021-02-01',null,1,1)
 INSERT INTO sprint(nome,data_inicio,data_limite,data_fim,projeto_id,usuario_id)VALUES ('Sprint02','2021-01-01','2021-02-01',null,2,2)
