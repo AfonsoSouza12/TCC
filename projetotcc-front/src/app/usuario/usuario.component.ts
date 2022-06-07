@@ -16,12 +16,20 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuario[];
   usuarioEdit = new Usuario();
   showDialog = false;
+  showDialogPermissao = false;
   msgs: Message[] = [];
   cargos: Cargo[];
+  permissoes: Permissao[];
+  selectedPermissao = new Permissao();
 
   constructor(private usuarioService: UsuarioService,
               private confirmationService : ConfirmationService,
-              private cargoService: CargoService) { }
+              private cargoService: CargoService) {
+    this.permissoes = [
+      {id: 1, nome: "ADMIN"},
+      {id: 2, nome: "USER"}
+    ]
+  }
 
   ngOnInit() {
 
@@ -85,5 +93,19 @@ export class UsuarioComponent implements OnInit {
         });
       }
     });
+  }
+
+  addPermissao(permissao: Permissao) {
+    for(let value of this.usuarioEdit.permissoes){
+      if(value == permissao){
+        return;
+      }
+    }
+    this.usuarioEdit.permissoes.push(permissao);
+  }
+
+
+  deletePermissao(permissaoRemove: Permissao) {
+    this.usuarioEdit.permissoes = this.usuarioEdit.permissoes.filter(permissao => permissao.nome != permissaoRemove.nome)
   }
 }

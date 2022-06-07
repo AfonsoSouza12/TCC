@@ -84,15 +84,9 @@ export class QuadroComponent implements OnInit {
         event.currentIndex,
       );
     }
-    console.log("-----------------------------------------------------------------");
     this.containerStatus = event.container.element.nativeElement.getAttribute('id');
-    console.log(event.container.id);
-    console.log(this.containerStatus);
-    console.log(event.container.data[event.currentIndex]['id']);
     this.solicitacaoEdit = Object.assign({},this.solicitacoes.find(solicitacao => solicitacao.id === event.container.data[event.currentIndex]['id']))
-
     this.solicitacaoEdit.status = this.containerStatus;
-
     this.save();
   }
 
@@ -121,10 +115,8 @@ export class QuadroComponent implements OnInit {
   }
 
   findSolicitacoesFiltrado(projetoId: number, sprintId: number, responsavelId: number){
-    console.log('--------------------------------');
     this.solicitacaoService.findFiltro(projetoId,sprintId,responsavelId).subscribe( e => {
        this.solicitacoes = e;
-      console.log(this.solicitacoes);
 
        this.solicitacoesBacklog = this.solicitacoes.filter(solicitacao => solicitacao.status === "Backlog");
        this.solicitacoesTodo = this.solicitacoes.filter(solicitacao => solicitacao.status === "To Do");
