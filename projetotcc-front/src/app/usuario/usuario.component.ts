@@ -96,12 +96,22 @@ export class UsuarioComponent implements OnInit {
   }
 
   addPermissao(permissao: Permissao) {
-    for(let value of this.usuarioEdit.permissoes){
-      if(value == permissao){
-        return;
-      }
+    console.log(this.usuarioEdit);
+    // for(let value of this.usuarioEdit.permissoes){
+    //   if(permissao === null){
+    //     break;
+    //   }
+    //   else if(value.nome === permissao.nome){
+    //     break;
+    //   }
+    //   else{
+    //     this.usuarioEdit.permissoes.push(permissao);
+    //   }
+    // }
+
+    if(this.usuarioEdit.permissoes.includes(permissao) == false){
+      this.usuarioEdit.permissoes.push(permissao);
     }
-    this.usuarioEdit.permissoes.push(permissao);
   }
 
 

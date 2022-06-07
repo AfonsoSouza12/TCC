@@ -23,6 +23,7 @@ export class ProjetoComponent implements OnInit {
   msgs: Message[] = [];
 
   responsaveis: Usuario[];
+  projetoMembros: Usuario[];
 
   totalRecords: number;
   maxRecords = 10;
