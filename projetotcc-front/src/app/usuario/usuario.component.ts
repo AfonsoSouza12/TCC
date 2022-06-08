@@ -16,7 +16,6 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuario[];
   usuarioEdit = new Usuario();
   showDialog = false;
-  showDialogPermissao = false;
   msgs: Message[] = [];
   cargos: Cargo[];
   permissoes: Permissao[];
@@ -35,6 +34,7 @@ export class UsuarioComponent implements OnInit {
 
     this.findAll();
     this.carregarCombos();
+    this.selectedPermissao = this.permissoes[0];
 
   }
   carregarCombos() {
@@ -66,8 +66,9 @@ export class UsuarioComponent implements OnInit {
     );
   }
   cancel() {
-    this.showDialog = false;
     this.usuarioEdit = new Usuario();
+    this.showDialog = false;
+
   }
 
   edit(usuario: Usuario) {
@@ -96,20 +97,13 @@ export class UsuarioComponent implements OnInit {
   }
 
   addPermissao(permissao: Permissao) {
-    console.log(this.usuarioEdit);
-    // for(let value of this.usuarioEdit.permissoes){
-    //   if(permissao === null){
-    //     break;
-    //   }
-    //   else if(value.nome === permissao.nome){
-    //     break;
-    //   }
-    //   else{
-    //     this.usuarioEdit.permissoes.push(permissao);
-    //   }
-    // }
-
-    if(this.usuarioEdit.permissoes.includes(permissao) == false){
+    var temPermissao = false;
+    for(let value of this.usuarioEdit.permissoes){
+      if(value.nome === permissao.nome){
+        temPermissao = true;
+      }
+    }
+    if(temPermissao === false){
       this.usuarioEdit.permissoes.push(permissao);
     }
   }

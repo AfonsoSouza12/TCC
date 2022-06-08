@@ -52,7 +52,7 @@
         <label class="p-d-block" >Adicionar Permissão</label>
         <div class="p-d-flex p-mt-1">
           <p-dropdown  class="p-d-block" appendTo="body" class="p-d-block"  [options]="permissoes" [(ngModel)]="selectedPermissao" optionLabel="nome"
-                       [style]="{'width':'350px'}"></p-dropdown>
+                      [style]="{'width':'350px'}"></p-dropdown>
           <button class="p-ml-3 " icon="pi pi-plus-circle" pButton type="button" (click)="addPermissao(selectedPermissao)" ></button>
         </div>
       </div>
