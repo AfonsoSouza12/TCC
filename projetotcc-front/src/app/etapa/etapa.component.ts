@@ -47,15 +47,14 @@ export class EtapaComponent implements OnInit {
   ngOnInit() {
     this.findAll();
     this.carregarCombos();
-    // this.subEtapas.push(subetapaf);
-
   }
 
   carregarCombos() {
     this.subEtapas = [];
-    this.subEtapaService.findByEtapa(1).subscribe(e=> this.subEtapas = e);
+    this.subEtapaService.findByEtapa(this.etapas[0].id).subscribe(e=> this.subEtapas = e);
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
+
   findAll() {
     this.etapaService.findAll().subscribe( e => this.etapas = e);
   }
@@ -176,18 +175,9 @@ export class EtapaComponent implements OnInit {
   findSubEtapas(id: number){
     this.subEtapas = [];
       this.subEtapaService.findByEtapa(id).subscribe(e =>{this.subEtapas = e; console.log(e)} );
-
   }
 
   onRowSelect(id: number) {
-    // this.filtroEtapa = etapa.id;
     this.findSubEtapas(id);
-
-    // console.log(this.filtroEtapa);
-
-  }
-
-  teste() {
-
   }
 }

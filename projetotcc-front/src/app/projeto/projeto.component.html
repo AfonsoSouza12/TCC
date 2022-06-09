@@ -22,7 +22,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-projeto>
-      <tr>
+      <tr (click)="onRowSelect(projeto.id)">
         <td>{{projeto.id}}</td>
         <td>{{projeto.nome}}</td>
         <td>{{projeto.descricao}}</td>
@@ -44,6 +44,36 @@
     <ng-template pTemplate="emptymessage">
       <tr>
         <td colspan="8" class="p-text-center">Nenhumo projeto cadastrado</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <h1 class="d-flex p-text-center title-name" >Membros do Projeto</h1>
+
+  <p-table [value]="projetoMembros" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Cargo</th>
+        <th>Ações</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-projetoMembro>
+      <tr>
+        <td>{{projetoMembro.id}}</td>
+        <td>{{projetoMembro.nome}}</td>
+        <td>{{projetoMembro.cargo.descricao}}</td>
+        <td>
+          <button pButton type="button" class="p-ml-2" (click)="removeMembro()">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8" class="p-text-center">Nenhum membro associado a esse projeto.</td>
       </tr>
     </ng-template>
   </p-table>

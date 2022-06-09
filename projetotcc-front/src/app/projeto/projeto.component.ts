@@ -55,7 +55,9 @@ export class ProjetoComponent implements OnInit {
   }
 
   carregarCombos() {
+    this.projetoMembros = [];
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
+    this.usuarioService.findProjetoMembros(1).subscribe(e => this.projetoMembros = e );
   }
   findAll() {
     this.projetoService.findAll().subscribe( e => this.projetos = e);
@@ -149,5 +151,16 @@ export class ProjetoComponent implements OnInit {
     });
   }
 
+  findProjetoMembros(id: number){
+    this.projetoMembros = [];
+    this.usuarioService.findProjetoMembros(id).subscribe(e =>{this.projetoMembros = e; console.log(e)} );
+  }
 
+  onRowSelect(id: number) {
+    this.findProjetoMembros(id);
+  }
+
+  removeMembro() {
+
+  }
 }
