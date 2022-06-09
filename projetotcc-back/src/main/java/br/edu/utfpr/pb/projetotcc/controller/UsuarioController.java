@@ -22,6 +22,6 @@ public class UsuarioController extends CrudController<Usuario, Long>{
 
 	@GetMapping("usuariosProjeto/{projetoId}")
 	public List<Usuario> findAllByProjeto(@PathVariable("projetoId") Long projetoId){
-		return this.usuarioService.findAllByProjeto(projetoId);
+		return this.usuarioService.findUsuarioByProjetosId(projetoId);
 	}
 }

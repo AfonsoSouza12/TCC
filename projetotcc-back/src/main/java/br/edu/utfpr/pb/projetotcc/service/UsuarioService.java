@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UsuarioService extends CrudService<Usuario, Long>{
 
-    List<Usuario> findAllByProjeto(Long projetoId);
+    List<Usuario> findUsuarioByProjetosId(Long projetoId);
 }

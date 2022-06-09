@@ -48,18 +48,21 @@ public class Projeto implements Serializable {
 			referencedColumnName = "id")
 	private Usuario responsavel;
 
-	/*@OneToMany(
-			mappedBy = "solicitacao",
-			targetEntity = Solicitacao.class,
-			fetch = FetchType.LAZY,
-			cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.REMOVE})
-	@JsonIgnore
-	private List<Solicitacao> solicitacoes;*/
+//	@ManyToMany(cascade = CascadeType.ALL,
+//				fetch = FetchType.EAGER)
+//	@JoinTable(name = "projeto_membros",
+//			joinColumns = { @JoinColumn(name = "projeto_id") },
+//			inverseJoinColumns = { @JoinColumn(name = "usuario_id") })
+//	private Set<Usuario> membros;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "projeto_membro",
+	@ManyToMany(fetch = FetchType.EAGER,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	@JoinTable(name = "projeto_membros",
 			joinColumns = { @JoinColumn(name = "projeto_id") },
 			inverseJoinColumns = { @JoinColumn(name = "usuario_id") })
-	private Set<Usuario> membro;
+	private Set<Usuario> membros;
 	
 }

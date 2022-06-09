@@ -13,6 +13,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
 	Optional<Usuario> findByUsername(String username);
 
-	@Query("select u from Usuario u join u.projetos p where p.id = :projetoId")
-	List<Usuario> findAllByProjeto(@Param("projetoId") Long projetoId);
+	//@Query("select p.membros from Projeto p where p.id = :projetoId")
+	//List<Usuario> findAllByProjeto(@Param("projetoId") Long projetoId);
+
+	List<Usuario>findUsuarioByProjetosId(Long projetoId);
 }

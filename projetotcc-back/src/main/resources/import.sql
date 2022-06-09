@@ -24,11 +24,11 @@ INSERT INTO sub_etapa (nome, descricao,etapa_id) VALUES ('subetapa com etapa 2',
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO 01','CONTROLE DE PROJETOS','2021-01-01','2021-08-01',null,1)
 INSERT INTO projeto(nome,descricao,data_inicio,data_limite,data_fim,usuario_id) VALUES('PROJETO 02','CONTROLE DE PROJETOS 2','2021-01-01','2021-08-01',null,2)
 
-INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,1);
-INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(2,1);
-INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,2);
-INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,3);
-INSERT INTO projeto_membro(projeto_id,usuario_id) VALUES(1,4);
+INSERT INTO projeto_membros(projeto_id,usuario_id) VALUES(1,1);
+INSERT INTO projeto_membros(projeto_id,usuario_id) VALUES(2,1);
+INSERT INTO projeto_membros(projeto_id,usuario_id) VALUES(1,2);
+INSERT INTO projeto_membros(projeto_id,usuario_id) VALUES(1,3);
+INSERT INTO projeto_membros(projeto_id,usuario_id) VALUES(1,4);
 
 INSERT INTO sprint(nome,data_inicio,data_limite,data_fim,projeto_id,usuario_id)VALUES ('Sprint01','2021-01-01','2021-02-01',null,1,1)
 INSERT INTO sprint(nome,data_inicio,data_limite,data_fim,projeto_id,usuario_id)VALUES ('Sprint02','2021-01-01','2021-02-01',null,2,2)

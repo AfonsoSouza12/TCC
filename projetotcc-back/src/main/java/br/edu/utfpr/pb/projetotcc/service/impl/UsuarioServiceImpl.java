@@ -35,7 +35,7 @@ public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long>
 	}
 
 	@Override
-	public List<Usuario> findAllByProjeto(Long projetoId) {
-		return this.usuarioRepository.findAllByProjeto(projetoId);
+	public List<Usuario> findUsuarioByProjetosId(Long projetoId) {
+		return this.usuarioRepository.findUsuarioByProjetosId(projetoId);
 	}
 }
