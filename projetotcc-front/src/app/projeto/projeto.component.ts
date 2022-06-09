@@ -55,12 +55,14 @@ export class ProjetoComponent implements OnInit {
   }
 
   carregarCombos() {
-    this.projetoMembros = [];
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
-    this.usuarioService.findProjetoMembros(1).subscribe(e => this.projetoMembros = e );
   }
   findAll() {
-    this.projetoService.findAll().subscribe( e => this.projetos = e);
+    this.projetoService.findAll().subscribe( e => {
+      this.projetos = e
+      this.projetoMembros = [];
+      this.usuarioService.findProjetoMembros(this.projetos[0].id).subscribe(e => this.projetoMembros = e );
+    });
   }
 
   findAllPaged(page: number, size: number) {

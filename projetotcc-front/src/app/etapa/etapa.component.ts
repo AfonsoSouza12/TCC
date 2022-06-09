@@ -50,13 +50,15 @@ export class EtapaComponent implements OnInit {
   }
 
   carregarCombos() {
-    this.subEtapas = [];
-    this.subEtapaService.findByEtapa(this.etapas[0].id).subscribe(e=> this.subEtapas = e);
     this.usuarioService.findAll().subscribe(e => this.responsaveis  = e );
   }
 
   findAll() {
-    this.etapaService.findAll().subscribe( e => this.etapas = e);
+    this.etapaService.findAll().subscribe( e =>{
+      this.etapas = e
+      this.subEtapas = [];
+      this.subEtapaService.findByEtapa(this.etapas[0].id).subscribe(e=> this.subEtapas = e);
+    } );
   }
 
   findAllPaged(page: number, size: number) {
