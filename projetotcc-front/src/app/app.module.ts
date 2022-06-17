@@ -43,6 +43,8 @@ import {DragDropModule, DragDropRegistry} from '@angular/cdk/drag-drop';
 import {ScrollDispatcher, ViewportRuler} from '@angular/cdk/overlay';
 import {Platform} from '@angular/cdk/platform';
 import {CardModule} from 'primeng/card';
+import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 
@@ -58,7 +60,9 @@ import {CardModule} from 'primeng/card';
     SolicitacaoComponent,
     ProjetoComponent,
     SprintComponent,
-    QuadroComponent
+    QuadroComponent,
+    AcessoNegadoComponent,
+    PaginaNaoEncontradaComponent,
   ],
   imports: [
     LoginModule,

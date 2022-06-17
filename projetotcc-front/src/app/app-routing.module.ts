@@ -12,12 +12,16 @@ import {LoginService} from './login/login.service';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth-guard.service';
 import {QuadroComponent} from './quadro/quadro.component';
+import {AcessoNegadoComponent} from './acesso-negado/acesso-negado.component';
+import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 const routes: Routes = [
   {
     path: '', canActivate: [LoginService], children: [
       {path: 'principal', component: PrincipalComponent },
-      {path: 'cargo', component: CargoComponent},
+      {path: 'cargo', component: CargoComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ADMIN']}},
       {path: 'etapa', component: EtapaComponent},
       {path: 'subEtapa', component: SubEtapaComponent},
       {path: 'subEtapa/novo', component: SubEtapaComponent},
@@ -31,6 +35,8 @@ const routes: Routes = [
       {path: 'sprint', component: SprintComponent},
       {path: 'usuario', component: UsuarioComponent},
       {path: 'quadro', component: QuadroComponent},
+      {path: 'acesso-negado', component: AcessoNegadoComponent},
+      {path: '**', component: PaginaNaoEncontradaComponent}
     ]
   },
   { path: 'login', component: LoginComponent }

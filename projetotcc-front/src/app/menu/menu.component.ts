@@ -38,13 +38,8 @@ export class MenuComponent implements OnInit {
 
   }
   hasRole(permissao: string): boolean {
-    //console.log(this.loginService.getUserInfo());
     return this.loginService.hasRole(permissao);
 
-  }
-
-  teste(){
-    console.log(this.usuario);
   }
 
   logout(){
