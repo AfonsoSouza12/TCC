@@ -8,4 +8,5 @@ export class Projeto {
   dataLimite: Date;
   dataFim: Date;
   responsavel: Usuario;
+  membros: Usuario[];
 }

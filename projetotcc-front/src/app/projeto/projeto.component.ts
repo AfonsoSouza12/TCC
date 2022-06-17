@@ -24,6 +24,7 @@ export class ProjetoComponent implements OnInit {
 
   responsaveis: Usuario[];
   projetoMembros: Usuario[];
+  selectedMembro = new Usuario();
 
   totalRecords: number;
   maxRecords = 10;
@@ -89,6 +90,7 @@ export class ProjetoComponent implements OnInit {
   }
 
   save() {
+    this.projetoEdit.membros = this.projetoMembros;
     this.projetoService.save(this.projetoEdit).subscribe( e => {
         this.projetoEdit = new Projeto();
         this.findAll();
@@ -109,6 +111,7 @@ export class ProjetoComponent implements OnInit {
   }
 
   edit(projeto: Projeto) {
+    this.findProjetoMembros(projeto.id);
     this.projetoEdit = Object.assign({}, projeto);
 
     let dataString = this.projetoEdit.dataInicio;
@@ -128,8 +131,6 @@ export class ProjetoComponent implements OnInit {
       this.projetoEdit.dataFim = newDate3;
     }
 
-
-    console.log(this.projetoEdit);
     this.showDialog = true;
   }
 
@@ -162,7 +163,20 @@ export class ProjetoComponent implements OnInit {
     this.findProjetoMembros(id);
   }
 
-  removeMembro() {
+  removeMembro(membroRemove: Usuario) {
+    this.projetoMembros = this.projetoMembros.filter(membro => membro.nome != membroRemove.nome)
+  }
+
+  addMembro(membro: Usuario) {
+    var ehMembro = false;
+    for(let value of this.projetoMembros){
+      if(value.nome === membro.nome){
+        ehMembro = true;
+      }
+    }
+    if(ehMembro === false){
+      this.projetoMembros.push(membro);
+    }
 
   }
 }

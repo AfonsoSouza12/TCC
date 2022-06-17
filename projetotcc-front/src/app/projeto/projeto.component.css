@@ -6,3 +6,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+
+::ng-deep .projetosStyle .ui-datatable-scrollable-view .ui-datatable-scrollable-body {
+  min-height: 27vh;
+}
