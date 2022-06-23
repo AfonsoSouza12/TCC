@@ -23,5 +23,6 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Long>{
             @Param("sprintId") Long sprintId,
             @Param("responsavelId") Long responsavelId);
 
+    List<Solicitacao> findByResponsavelIdOrderByStatus(Long responsavelId);
 
 }

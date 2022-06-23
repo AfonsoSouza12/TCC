@@ -32,6 +32,7 @@ public class SolicitacaoController extends CrudController<Solicitacao, Long> {
 	public List<Solicitacao> findAllByEtapaIdOrderByNome(@RequestParam("etapa") Long etapaId) {
 		return solicitacaoService.findAllByEtapaIdOrderByNome(etapaId);
 	}
+
 	@GetMapping("busca-status/{status}")
 	public List<Solicitacao> findAllByStatus(@PathVariable("status") String status) {
 		return solicitacaoService.findByStatus(status);
@@ -53,6 +54,11 @@ public class SolicitacaoController extends CrudController<Solicitacao, Long> {
 									@RequestParam(required = false) Long responsavelId){
 
 			return (solicitacaoService.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId,sprintId,responsavelId));
+	}
+
+	@GetMapping("resp")
+	public List<Solicitacao> findAllByResponsavel(@RequestParam("responsavelId") Long responsavelId) {
+		return solicitacaoService.findAllByResponsavel(responsavelId);
 	}
 
 }

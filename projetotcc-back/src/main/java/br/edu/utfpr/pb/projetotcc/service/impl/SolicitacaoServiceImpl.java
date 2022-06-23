@@ -37,4 +37,9 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 		return solicitacaoRepository.findSolicitacaoByProjetoAndSprintAnAndResponsavel(projetoId, sprintId, responsavelId);
 	}
 
+	@Override
+	public List<Solicitacao> findAllByResponsavel(Long responsavelId) {
+		return solicitacaoRepository.findByResponsavelIdOrderByStatus(responsavelId);
+	}
+
 }
