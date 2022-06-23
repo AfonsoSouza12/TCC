@@ -36,7 +36,7 @@ const routes: Routes = [
       {path: 'usuario', component: UsuarioComponent},
       {path: 'quadro', component: QuadroComponent},
       {path: 'acesso-negado', component: AcessoNegadoComponent},
-      {path: '**', component: PaginaNaoEncontradaComponent}
+      // {path: '**', component: PaginaNaoEncontradaComponent}
     ]
   },
   { path: 'login', component: LoginComponent }

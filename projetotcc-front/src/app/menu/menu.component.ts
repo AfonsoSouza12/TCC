@@ -16,7 +16,6 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.usuario =  JSON.parse(localStorage.getItem('usuario')).principal.nome;
     this.items = [
       {
         label: 'Cadastros',

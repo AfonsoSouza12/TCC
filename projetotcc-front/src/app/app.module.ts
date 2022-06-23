@@ -45,6 +45,7 @@ import {Platform} from '@angular/cdk/platform';
 import {CardModule} from 'primeng/card';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import {ChartModule} from 'primeng/chart';
 
 
 
@@ -84,6 +85,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
     InputTextareaModule,
     DragDropModule,
     CardModule,
+    ChartModule,
 
   ],
   exports:[AppComponent],

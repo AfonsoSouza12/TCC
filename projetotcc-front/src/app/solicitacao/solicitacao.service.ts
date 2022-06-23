@@ -25,26 +25,31 @@ export class SolicitacaoService extends CrudService<Solicitacao, number>{
   }
 
   findFiltro(projetoId: number, sprintId: number, responsavelId: number) {
-    let url = `${this.getUrl()}/filtra-quadro`;
-    if (projetoId != null) {
-      url += `?projetoId=${projetoId}`;
-    }
-    if (projetoId == null && sprintId != null) {
-      url += `?sprintId=${sprintId}`;
-    }
-    else if(sprintId != null){
-      url += `&sprintId=${sprintId}`;
-    }
-    if (projetoId == null && sprintId == null && responsavelId != null) {
-      url += `?responsavelId=${responsavelId}`;
-    }
-    else if(responsavelId != null){
-      url += `&responsavelId=${responsavelId}`;
-    }
-    if(projetoId == null && sprintId == null && responsavelId == null){
-      return this.findAll();
-    }
+      let url = `${this.getUrl()}/filtra-quadro`;
+      if (projetoId != null) {
+        url += `?projetoId=${projetoId}`;
+      }
+      if (projetoId == null && sprintId != null) {
+        url += `?sprintId=${sprintId}`;
+      }
+      else if(sprintId != null){
+        url += `&sprintId=${sprintId}`;
+      }
+      if (projetoId == null && sprintId == null && responsavelId != null) {
+        url += `?responsavelId=${responsavelId}`;
+      }
+      else if(responsavelId != null){
+        url += `&responsavelId=${responsavelId}`;
+      }
+      if(projetoId == null && sprintId == null && responsavelId == null){
+        return this.findAll();
+      }
 
-    return this.http.get<Solicitacao[]>(url);
+      return this.http.get<Solicitacao[]>(url);
   }
+
+  findSolicitacoesUsuario(responsavelId: number){
+    return this.http.get<Solicitacao[]>(`${this.getUrl()}/resp?responsavelId=${responsavelId}`);
+  }
+
 }
