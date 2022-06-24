@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {SolicitacaoService} from '../solicitacao/solicitacao.service';
 import {Solicitacao} from '../model/solicitacao';
 import {cores} from '../../shared/consts/cores';
+import {ProjetoService} from '../projeto/projeto.service';
+import {SprintService} from '../sprint/sprint.service';
+import {Projeto} from '../model/projeto';
+import {Sprint} from '../model/sprint';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-principal',
@@ -18,14 +23,23 @@ export class PrincipalComponent implements OnInit {
   solicitacoesDone: Solicitacao[];
   usuarioId:  number;
   data: any;
-  cores = cores;
+  chartOptions: any;
+  projetos: Projeto[];
+  projetosAtivos: number;
+  sprints: Sprint[];
+  sprintsAtivos: number;
 
-  constructor(private solicitacaoService: SolicitacaoService) {
+  constructor(private solicitacaoService: SolicitacaoService,
+              private projetoService: ProjetoService,
+              private sprintService: SprintService,
+             ) {
     this.usuarioId =  JSON.parse(localStorage.getItem('usuario')).principal.id;
   }
 
   ngOnInit() {
     this.findSolicitacoes();
+    this.findProjetos();
+    this.findSprints();
   }
 
   findSolicitacoes(){
@@ -65,14 +79,44 @@ export class PrincipalComponent implements OnInit {
           }
         ]
       };
+      this.chartOptions = {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            fontColor: "white",
+            usePointStyle: true
+          },
+        }
+      }
 
 
     });
 
   }
 
-  teste(){
+  findProjetos(){
+    this.projetosAtivos = 0;
+    this.projetoService.findAll().subscribe(e=>{
+      this.projetos = e;
 
+      for(var projeto of this.projetos){
+        if(projeto.responsavel.id == this.usuarioId && projeto.dataFim == null){
+          this.projetosAtivos++;
+        }
+      }
+    })
   }
 
-}
+  findSprints(){
+    this.sprintsAtivos = 0;
+    this.sprintService.findAll().subscribe(e=>{
+      this.sprints = e;
+      for(var sprint of this.sprints){
+        if(sprint.responsavel.id == this.usuarioId && sprint.dataFim == null){
+          this.sprintsAtivos++;
+        }
+      }
+    })
+  }
+  }

@@ -1,5 +1,17 @@
-<p-card header="Minhas solicitações" [style]="{'width': '600px', 'margin-bottom': '2em','background-color': 'transparent'}" >
-  <ng-template pTemplate="header">
-  </ng-template>
-  <p-chart type="doughnut" [data]="data" [style]="{'width': '40%'}" [ngStyle]="{backgroundColor:'var(--green-600)'}"></p-chart>
-</p-card>
+<div class="p-d-flex p-jc-center p-mt-5">
+  <p-card header="Minhas solicitações" [style]="{'width': '600px', 'margin-bottom': '2em',
+                                                 'background-color': 'transparent', 'border': '2px solid #5e636b',
+                                                 'color':'#5e636b'}" >
+    <ng-template pTemplate="header">
+    </ng-template>
+    <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '40%', 'color':'blue'}"></p-chart>
+  </p-card>
+  <div class="p-ml-5">
+    <h1>PROJETOS ATIVOS: {{projetosAtivos}}</h1>
+    <h1>SPRINTS ATIVAS: {{sprintsAtivos}}</h1>
+  </div>
+</div>
+
+
+
+

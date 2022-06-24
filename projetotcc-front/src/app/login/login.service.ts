@@ -20,12 +20,15 @@ export class LoginService implements CanActivate {
     return this.http.get(url)
       .pipe(
         map(e => {
-          console.log("user abaixo:");
-          console.log(e);
-          localStorage.setItem('usuario', JSON.stringify(e));
-          this.userInfo = e;
-          this.isAuthenticated.next(true);
-          return true;
+          if(e==null){
+            this.logout();
+          }else{
+            localStorage.setItem('usuario', JSON.stringify(e));
+            this.userInfo = e;
+            this.isAuthenticated.next(true);
+            return true;
+          }
+
         }),
         catchError(err => {
           this.logout();

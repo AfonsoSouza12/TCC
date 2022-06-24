@@ -18,7 +18,7 @@ import {PaginaNaoEncontradaComponent} from './pagina-nao-encontrada/pagina-nao-e
 const routes: Routes = [
   {
     path: '', canActivate: [LoginService], children: [
-      {path: 'principal', component: PrincipalComponent },
+      {path: '', component: PrincipalComponent },
       {path: 'cargo', component: CargoComponent,
         canActivate: [AuthGuard],
         data: { roles: ['ADMIN']}},
