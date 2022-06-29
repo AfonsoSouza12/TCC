@@ -6,9 +6,11 @@
     </ng-template>
     <p-chart type="doughnut" [data]="data" [options]="chartOptions" [style]="{'width': '40%', 'color':'blue'}"></p-chart>
   </p-card>
-  <div class="p-ml-5">
-    <h1>PROJETOS ATIVOS: {{projetosAtivos}}</h1>
-    <h1>SPRINTS ATIVAS: {{sprintsAtivos}}</h1>
+  <div class="p-ml-5 fonte">
+    <h1 class="p-m-0">{{projetosAtivos}} Projetos ativos </h1>
+    <hr class="linha">
+    <h1 class="p-m-0">{{sprintsAtivos}} Sprints ativas</h1>
+    <hr class="linha">
   </div>
 </div>
 

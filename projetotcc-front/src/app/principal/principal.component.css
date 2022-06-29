@@ -1,3 +1,13 @@
 .p-card .p-component{
     border-color: blue;
 }
+.fonte{
+  font-size: 20px;
+  font-family:Calibri;
+  font-weight: bold;
+}
+
+.linha{
+  height: 2px;
+  background-color:gray ;
+}

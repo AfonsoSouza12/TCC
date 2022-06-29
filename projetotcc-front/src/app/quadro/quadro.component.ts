@@ -98,7 +98,13 @@ export class QuadroComponent implements OnInit {
   save() {
     this.solicitacaoService.save(this.solicitacaoEdit).subscribe( e => {
         this.solicitacaoEdit = new Solicitacao();
-        this.findSolicitacoes();
+        if(this.selectedSprint == null && this.selectedResponsavel == null && this.selectedProjeto == null){
+          this.findSolicitacoes();
+        }
+        else {
+          this.findSolicitacoesFiltrado(this.selectedProjeto.id, this.selectedSprint.id, this.selectedResponsavel.id)
+        }
+
         this.showDialog = false;
         this.msgs = [{severity: 'success', summary: 'Confirmado',
           detail: 'Registro salvo com sucesso!'}];
