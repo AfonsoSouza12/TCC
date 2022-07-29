@@ -14,8 +14,8 @@ INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 1);
 --INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (1, 2);
 INSERT INTO usuario_permissoes(usuario_id, permissoes_id) VALUES (2, 2);
 
-INSERT INTO etapa (nome, descricao,usuario_id) VALUES ('BACKLOG', 'Lista de tarefas pendentes', 1);
-INSERT INTO etapa (nome, descricao,usuario_id) VALUES ('ANALISE', 'Lista de tarefas pendentes', 1);
+INSERT INTO etapa (nome, descricao,usuario_id) VALUES ('ESTUDO', 'Lista de tarefas pendentes', 1);
+INSERT INTO etapa (nome, descricao,usuario_id) VALUES ('ANALISE', 'Lista de tarefas em análise', 1);
 
 INSERT INTO sub_etapa (nome, descricao,etapa_id) VALUES ('IMPORTANTES', 'Urgências', 1)
 INSERT INTO sub_etapa (nome, descricao,etapa_id) VALUES ('NORMAIS', 'Normal', 1)
