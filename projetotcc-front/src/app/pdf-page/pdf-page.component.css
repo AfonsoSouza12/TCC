@@ -1,0 +1,50 @@
+*{
+  font-family: Calibri !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-spacing: 0px;
+
+  border: calc(1px * 0.63) solid #dddddd !important;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+h1{
+  text-align: center;
+}
+
+h2{
+  font-size: 26px;
+  text-align: center;
+}
+
+.tit{
+ color: black;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+}
+
+hr {
+  display: block;
+  margin-before: 0.5em;
+  margin-after: 0.5em;
+  margin-start: auto;
+  margin-end: auto;
+  margin-top: 15px;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+}

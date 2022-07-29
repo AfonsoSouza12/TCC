@@ -46,6 +46,7 @@ import {CardModule} from 'primeng/card';
 import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import {ChartModule} from 'primeng/chart';
+import { PdfPageComponent } from './pdf-page/pdf-page.component';
 
 
 
@@ -64,6 +65,7 @@ import {ChartModule} from 'primeng/chart';
     QuadroComponent,
     AcessoNegadoComponent,
     PaginaNaoEncontradaComponent,
+    PdfPageComponent,
   ],
   imports: [
     LoginModule,
@@ -89,6 +91,7 @@ import {ChartModule} from 'primeng/chart';
 
   ],
   exports:[AppComponent],
+  entryComponents: [PdfPageComponent],
   providers: [
     CargoService,
     ConfirmationService,

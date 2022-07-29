@@ -3,6 +3,9 @@
   <div class="board-bar">
     <p class="board-name">QUADRO SCRUM</p>
   </div>
+  <div  class="p-mt-2 p-d-flex p-jc-end">
+    <button pButton type="button" class="p-ml-2" (click)="gerarRelatorio()">Gerar Relatório</button>
+  </div>
   <div class="board-filters">
     <div class="p-d-flex p-jc-between">
       <div class="p-d-flex">
@@ -13,6 +16,7 @@
         <p-dropdown class="p-d-block" appendTo="body" class="p-d-block p-ml-4 p-mr-4" [style]="{width: '200px'}"
                     placeholder="Responsável" [options]="responsaveis" optionLabel="nome" [(ngModel)]="selectedResponsavel" [showClear]="true" ></p-dropdown>
       </div>
+
 
      <div  class="p-mt-2">
         <p-button  class="p-mr-2" label="Limpar Filtros" icon="pi pi-times" (click)="limparFiltros()"></p-button>
@@ -227,3 +231,5 @@
 </p-dialog>
 
 
+
+<div #gerarPdf></div>

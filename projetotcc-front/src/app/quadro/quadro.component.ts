@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ComponentFactoryResolver, ElementRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Solicitacao} from '../model/solicitacao';
 import {SolicitacaoService} from '../solicitacao/solicitacao.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
@@ -13,7 +13,8 @@ import {EtapaService} from '../etapa/etapa.service';
 import {SprintService} from '../sprint/sprint.service';
 import {UsuarioService} from '../usuario/usuario.service';
 import {Dropdown} from 'primeng/dropdown';
-import {clearElement} from '@angular/cdk/testing/testbed/fake-events';
+import html2pdf from 'html2pdf.js';
+import {PdfPageComponent} from '../pdf-page/pdf-page.component';
 
 @Component({
   selector: 'app-quadro',
@@ -38,6 +39,7 @@ export class QuadroComponent implements OnInit {
   sprints: Sprint[];
   containerStatus: string;
   @ViewChild('projetoDrop', { static: true }) projetoDrop: Dropdown;
+  @ViewChild('gerarPdf', { static: true, read: ViewContainerRef }) gerarPdf: ViewContainerRef;
 
   selectedProjeto= new Projeto();
   selectedSprint= new Sprint();
@@ -48,7 +50,8 @@ export class QuadroComponent implements OnInit {
               private projetoService: ProjetoService,
               private etapaService: EtapaService,
               private sprintService: SprintService,
-              private usuarioService: UsuarioService) { }
+              private usuarioService: UsuarioService,
+              private readonly resolver: ComponentFactoryResolver,) { }
 
   ngOnInit() {
     this.findSolicitacoes();
@@ -143,6 +146,50 @@ export class QuadroComponent implements OnInit {
       this.findSolicitacoes();
 
   }
+
+  gerarRelatorio() {
+    console.log("teste.");
+    const title = 'Relatório de Solicitações';
+    this.createPDF(title,this.solicitacoesBacklog, this.solicitacoesTodo, this.solicitacoesDoing, this.solicitacoesTest, this.solicitacoesDone);
+
+  }
+
+  private createPDF(title: string, solicitacoesBacklog: Solicitacao[],
+                    solicitacoesTodo: Solicitacao[],
+                    solicitacoesDoing: Solicitacao[],
+                    solicitacoesTest: Solicitacao[],
+                    solicitacoesDone: Solicitacao[],): void {
+    this.gerarPdf.clear();
+    const factory = this.resolver.resolveComponentFactory(PdfPageComponent);
+    const componentRef = this.gerarPdf.createComponent(factory);
+
+    componentRef.instance.title = title;
+    componentRef.instance.solicitacoesBacklog = solicitacoesBacklog;
+    componentRef.instance.solicitacoesTodo = solicitacoesTodo;
+    componentRef.instance.solicitacoesDoing = solicitacoesDoing;
+    componentRef.instance.solicitacoesTest = solicitacoesTest;
+    componentRef.instance.solicitacoesDone = solicitacoesDone;
+
+    componentRef.instance.emitter.subscribe(() => {
+      const config = {
+        filename: 'relatório.pdf',
+        margin: 1,
+      };
+
+      this.print(componentRef.location.nativeElement, config);
+      componentRef.destroy();
+    });
+  }
+  private print(content: any, config: any): void {
+    console.log("teste print.");
+    html2pdf()
+      .set(config)
+      .from(content)
+      .toPdf()
+      .outputPdf('dataurlnewwindow');
+  }
+
+
 
 }
 

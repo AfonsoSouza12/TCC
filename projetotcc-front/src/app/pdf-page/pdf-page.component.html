@@ -1,0 +1,103 @@
+
+<div #gerarPdf>
+  <h1>{{title}}</h1>
+  <h2 >Solicitações Backlog</h2>
+  <table>
+    <tr>
+      <th class="tit">Solicitação</th>
+      <th class="tit">Etapa</th>
+      <th class="tit">Responsável</th>
+      <th class="tit">Projeto</th>
+      <th class="tit">Sprint</th>
+    </tr>
+    <tr *ngFor="let solicitacao of solicitacoesBacklog">
+      <th>{{solicitacao.nome}}</th>
+      <th>{{solicitacao.etapa.nome}}</th>
+      <th>{{solicitacao.responsavel.nome}}</th>
+      <th>{{solicitacao.projeto.nome}}</th>
+      <th>{{solicitacao.sprint.nome}}</th>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2 >Solicitações To Do</h2>
+  <table>
+    <tr>
+      <th class="tit">Solicitação</th>
+      <th class="tit">Etapa</th>
+      <th class="tit">Responsável</th>
+      <th class="tit">Projeto</th>
+      <th class="tit">Sprint</th>
+    </tr>
+    <tr *ngFor="let solicitacao of solicitacoesTodo">
+      <th>{{solicitacao.nome}}</th>
+      <th>{{solicitacao.etapa.nome}}</th>
+      <th>{{solicitacao.responsavel.nome}}</th>
+      <th>{{solicitacao.projeto.nome}}</th>
+      <th>{{solicitacao.sprint.nome}}</th>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2 >Solicitações Doing</h2>
+  <table>
+    <tr>
+      <th class="tit">Solicitação</th>
+      <th class="tit">Etapa</th>
+      <th class="tit">Responsável</th>
+      <th class="tit">Projeto</th>
+      <th class="tit">Sprint</th>
+    </tr>
+    <tr *ngFor="let solicitacao of solicitacoesDoing">
+      <th>{{solicitacao.nome}}</th>
+      <th>{{solicitacao.etapa.nome}}</th>
+      <th>{{solicitacao.responsavel.nome}}</th>
+      <th>{{solicitacao.projeto.nome}}</th>
+      <th>{{solicitacao.sprint.nome}}</th>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2 >Solicitações Test</h2>
+  <table>
+    <tr>
+      <th class="tit">Solicitação</th>
+      <th class="tit">Etapa</th>
+      <th class="tit">Responsável</th>
+      <th class="tit">Projeto</th>
+      <th class="tit">Sprint</th>
+    </tr>
+    <tr *ngFor="let solicitacao of solicitacoesTest">
+      <th>{{solicitacao.nome}}</th>
+      <th>{{solicitacao.etapa.nome}}</th>
+      <th>{{solicitacao.responsavel.nome}}</th>
+      <th>{{solicitacao.projeto.nome}}</th>
+      <th>{{solicitacao.sprint.nome}}</th>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h2 >Solicitações Done</h2>
+  <table>
+    <tr>
+      <th class="tit">Solicitação</th>
+      <th class="tit">Etapa</th>
+      <th class="tit">Responsável</th>
+      <th class="tit">Projeto</th>
+      <th class="tit">Sprint</th>
+    </tr>
+    <tr *ngFor="let solicitacao of solicitacoesDone">
+      <th>{{solicitacao.nome}}</th>
+      <th>{{solicitacao.etapa.nome}}</th>
+      <th>{{solicitacao.responsavel.nome}}</th>
+      <th>{{solicitacao.projeto.nome}}</th>
+      <th>{{solicitacao.sprint.nome}}</th>
+    </tr>
+  </table>
+
+</div>
+
