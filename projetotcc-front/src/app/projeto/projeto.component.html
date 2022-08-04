@@ -1,15 +1,15 @@
 <div class="container">
   <h1 class="d-flex p-text-center title-name" >Cadastro de Projetos</h1>
   <div class="p-d-flex p-jc-end">
-    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+    <button pButton type="button" class="p-mr-6 p-mb-2" (click)="newEntity()"> Novo</button>
   </div>
 
-
+<div class="p-ml-6 p-mr-6 p-mb-6">
   <p-table  #dt [value]="projetos" [paginator]="true" [rows]="5"
            [rowsPerPageOptions]="[5,10,20]"
            [lazy]="true" [totalRecords]="totalRecords"
             styleClass="p-datatable-lg"
-           (onLazyLoad)="lazyLoad($event)">
+           (onLazyLoad)="lazyLoad($event)" class="borda">
     <ng-template pTemplate="header">
       <tr>
         <th>Código</th>
@@ -31,11 +31,11 @@
         <td>{{projeto.dataLimite | date: 'dd/MM/yyyy'}}</td>
         <td>{{projeto.dataFim | date: 'dd/MM/yyyy'}}</td>
         <td>{{projeto?.responsavel?.nome || '-'}}</td>
-        <td class="p-d-flex p-flex-column  ">
-          <button pButton type="button" (click)="edit(projeto)">
+        <td class="p-d-flex p-flex-column ">
+          <button class="p-mb-2" pButton type="button" style="max-width: 100px"  (click)="edit(projeto)">
             Editar
           </button>
-          <button pButton type="button" class="p-mt-2" (click)="delete(projeto)">
+          <button pButton type="button" style="max-width: 100px"  (click)="delete(projeto)">
             Remover
           </button>
         </td>
@@ -47,6 +47,7 @@
       </tr>
     </ng-template>
   </p-table>
+</div>
 
   <p-confirmDialog></p-confirmDialog>
   <!--  <p-growl [(value)]="msgs"></p-growl>-->

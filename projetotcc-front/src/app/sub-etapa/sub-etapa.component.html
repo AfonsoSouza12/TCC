@@ -1,42 +1,43 @@
 <div class="container">
   <h1 class="d-flex p-text-center title-name" >Cadastro de Sub-Etapas</h1>
-  <div class="p-d-flex p-jc-end">
-    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  <div class="p-m-lg-5 ">
+    <div class="p-d-flex p-jc-end">
+      <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+    </div>
+
+    <p-table #dt [value]="subEtapas" [paginator]="true" [rows]="5">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Etapa</th>
+          <th>Ações</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-subEtapa>
+        <tr>
+          <td>{{subEtapa.id}}</td>
+          <td>{{subEtapa.nome}}</td>
+          <td>{{subEtapa.descricao}}</td>
+          <td>{{subEtapa.etapa.nome}}</td>
+          <td class="p-d-flex p-flex-column ">
+            <button class="p-mb-2" pButton type="button" style="max-width: 100px"  (click)="edit(subEtapa)">
+              Editar
+            </button>
+            <button pButton type="button" style="max-width: 100px"  (click)="delete(subEtapa)">
+              Remover
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" class="p-text-center">Nenhuma sub-etapa cadastrada</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-
-  <p-table #dt [value]="subEtapas" [paginator]="true" [rows]="5">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Código</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Etapa</th>
-        <th>Ações</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-subEtapa>
-      <tr>
-        <td>{{subEtapa.id}}</td>
-        <td>{{subEtapa.nome}}</td>
-        <td>{{subEtapa.descricao}}</td>
-        <td>{{subEtapa.etapa.nome}}</td>
-        <td>
-          <button pButton type="button" (click)="edit(subEtapa)">
-            Editar
-          </button>
-
-          <button pButton type="button" class="p-ml-2" (click)="delete(subEtapa)">
-            Remover
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8" class="p-text-center">Nenhuma sub-etapa cadastrada</td>
-      </tr>
-    </ng-template>
-  </p-table>
 
   <p-confirmDialog></p-confirmDialog>
   <!--  <p-growl [(value)]="msgs"></p-growl>-->

@@ -1,36 +1,41 @@
 <div class="container">
   <h1 class="d-flex p-text-center title-name" >Usuários Cadastrados</h1>
-  <p-table [value]="usuarios" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Código</th>
-        <th>Nome</th>
-        <th>Cargo</th>
-        <th>Ações</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-usuario>
-      <tr>
-        <td>{{usuario.id}}</td>
-        <td>{{usuario.nome}}</td>
-        <td>{{usuario.cargo.descricao}}</td>
-        <td>
-          <button pButton type="button" (click)="edit(usuario)">
-            Editar
-          </button>
+  <div class="p-m-lg-5 ">
+    <div class="p-d-flex p-jc-end">
+      <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+    </div>
 
-          <button pButton type="button" class="p-ml-2" (click)="delete(usuario)">
-            Remover
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8" class="p-text-center">Nenhum cargo cadastrado</td>
-      </tr>
-    </ng-template>
-  </p-table>
+    <p-table [value]="usuarios" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,15,20]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Cargo</th>
+          <th>Ações</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-usuario>
+        <tr>
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nome}}</td>
+          <td>{{usuario.cargo.descricao}}</td>
+          <td class="p-d-flex p-flex-column ">
+            <button class="p-mb-2" pButton type="button" style="max-width: 100px"  (click)="edit(usuario)">
+              Editar
+            </button>
+            <button pButton type="button" style="max-width: 100px"  (click)="delete(usuario)">
+              Remover
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" class="p-text-center">Nenhum cargo cadastrado</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 
   <p-confirmDialog></p-confirmDialog>
 

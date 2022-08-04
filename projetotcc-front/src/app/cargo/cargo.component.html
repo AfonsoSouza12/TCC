@@ -18,12 +18,11 @@
         <tr>
           <td>{{cargo.id}}</td>
           <td>{{cargo.descricao}}</td>
-          <td>
-            <button pButton type="button" (click)="edit(cargo)">
+          <td class="p-d-flex p-flex-column ">
+            <button class="p-mb-2" pButton type="button" style="max-width: 100px"  (click)="edit(cargo)">
               Editar
             </button>
-
-            <button pButton type="button" class="p-ml-2" (click)="delete(cargo)">
+            <button pButton type="button" style="max-width: 100px"  (click)="delete(cargo)">
               Remover
             </button>
           </td>

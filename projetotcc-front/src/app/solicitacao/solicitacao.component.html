@@ -1,58 +1,58 @@
 <div class="container">
   <h1 class="d-flex p-text-center title-name" >Cadastro de Solicitações</h1>
-  <div class="p-d-flex p-jc-end">
-    <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+  <div class="p-m-lg-5 ">
+    <div class="p-d-flex p-jc-end">
+      <button pButton type="button" class="p-mb-2" (click)="newEntity()"> Novo</button>
+    </div>
+
+    <p-table #dt [value]="solicitacoes" [paginator]="true" [rows]="5"
+             [rowsPerPageOptions]="[5,10,20]"
+             [lazy]="true" [totalRecords]="totalRecords"
+             (onLazyLoad)="lazyLoad($event)">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+          <th>Data Início</th>
+          <th>Data Fim</th>
+          <th>Status</th>
+          <th>Projeto</th>
+          <th>Sprint</th>
+          <th>Etapa</th>
+          <th>Responsável</th>
+          <th>Ações</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-solicitacao>
+        <tr>
+          <td>{{solicitacao.id}}</td>
+          <td>{{solicitacao.nome}}</td>
+          <td>{{solicitacao.descricao}}</td>
+          <td>{{solicitacao.dataInicio | date: 'dd/MM/yyyy'}}</td>
+          <td>{{solicitacao.dataFim | date: 'dd/MM/yyyy'}}</td>
+          <td>{{solicitacao.status}}</td>
+          <td>{{solicitacao?.projeto?.nome || '-'}}</td>
+          <td>{{solicitacao?.sprint?.nome || '-'}}</td>
+          <td>{{solicitacao.etapa.nome}}</td>
+          <td>{{solicitacao?.responsavel?.nome || '-'}}</td>
+          <td class="p-d-flex p-flex-column ">
+            <button class="p-mb-2" pButton type="button" style="max-width: 100px"  (click)="edit(solicitacao)">
+              Editar
+            </button>
+            <button pButton type="button" style="max-width: 100px"  (click)="delete(solicitacao)">
+              Remover
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" class="p-text-center">Nenhuma solicitação cadastrada</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
-
-
-  <p-table #dt [value]="solicitacoes" [paginator]="true" [rows]="5"
-           [rowsPerPageOptions]="[5,10,20]"
-           [lazy]="true" [totalRecords]="totalRecords"
-           (onLazyLoad)="lazyLoad($event)">
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Código</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Data Início</th>
-        <th>Data Fim</th>
-        <th>Status</th>
-        <th>Projeto</th>
-        <th>Sprint</th>
-        <th>Etapa</th>
-        <th>Responsável</th>
-        <th>Ações</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-solicitacao>
-      <tr>
-        <td>{{solicitacao.id}}</td>
-        <td>{{solicitacao.nome}}</td>
-        <td>{{solicitacao.descricao}}</td>
-        <td>{{solicitacao.dataInicio | date: 'dd/MM/yyyy'}}</td>
-        <td>{{solicitacao.dataFim | date: 'dd/MM/yyyy'}}</td>
-        <td>{{solicitacao.status}}</td>
-        <td>{{solicitacao?.projeto?.nome || '-'}}</td>
-        <td>{{solicitacao?.sprint?.nome || '-'}}</td>
-        <td>{{solicitacao.etapa.nome}}</td>
-        <td>{{solicitacao?.responsavel?.nome || '-'}}</td>
-        <td>
-          <button pButton type="button" (click)="edit(solicitacao)">
-            Editar
-          </button>
-
-          <button pButton type="button" class="p-ml-2" (click)="delete(solicitacao)">
-            Remover
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8" class="p-text-center">Nenhuma solicitação cadastrada</td>
-      </tr>
-    </ng-template>
-  </p-table>
 
   <p-confirmDialog></p-confirmDialog>
   <!--  <p-growl [(value)]="msgs"></p-growl>-->

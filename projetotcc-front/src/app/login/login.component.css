@@ -1,21 +1,29 @@
-
-/*.p-card{*/
-/*    width: 50%;*/
-/*}*/
-
-/*p-grid{*/
-
-/*    width:100%;*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    transform: translateY(-50%);*/
-/*  */
-/*}*/
-
 .p-grid{
     font-family: Calibri;
-      width:100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+    font-size: 25px;
+      /*width:1000px;*/
+      /*position: absolute;*/
+      /*top: 50%;*/
+      /*transform: translateY(-50%);*/
 }
+
+.p-card{
+  width: 500px;
+  height: 300px;
+
+}
+
+body{
+  background-image: url('../../assets/imagens/loginBackground.png') !important;
+}
+
+.bg-img{
+  min-height: 100vh;
+  width: 100%;
+  background: url('../../assets/imagens/loginBackground.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+

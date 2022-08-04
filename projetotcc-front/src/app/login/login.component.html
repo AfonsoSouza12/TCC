@@ -1,18 +1,29 @@
-<div class="p-grid " >
-  <div class="p-card  p-shadow-5 p-col-6 p-offset-3" >
-      <div class="p-fluid">
-        <div class="p-field">
-          <label for="username" >Usuário</label>
-          <input id="username" type="text" pInputText [(ngModel)]="username">
-        </div>
-        <div class="p-field">
-          <label for="password" class="p-col-fixed" >Senha</label>
-          <p-password id='password'[(ngModel)]="password" [toggleMask]="true" [feedback]="false" (keyup.enter)="login()"></p-password>
-        </div>
+<div class="bg-img">
+  <div class="p-d-flex p-jc-center">
+    <div class="p-d-flex p-flex-column ">
+      <div class="p-d-flex p-jc-center ">
+        <img routerLink="/" src="assets\imagens\agile.png" height="400" width="400" class="p-jc-center">
       </div>
-      <div class="p-d-flex p-jc-end p-mt-5">
-        <button pButton type="button" class="p-mb-2" (click)="login()"> login</button>
-      </div>
-  </div>
+         <div class="p-grid">
+            <div class="p-card  p-shadow-5 p-col-6 " >
+              <div class="p-fluid">
+                <div class="p-field">
+                  <label for="username" >Usuário</label>
+                  <input id="username" type="text" pInputText  [(ngModel)]="username">
+                </div>
+                <div class="p-field">
+                  <label for="password"  >Senha</label>
+                  <p-password id='password'[(ngModel)]="password" [toggleMask]="true" [feedback]="false" (keyup.enter)="login()"></p-password>
+                </div>
+              </div>
+              <div class="p-d-flex p-jc-end">
+                <button pButton type="button" class="p-mb-6" (click)="login()">Login</button>
+              </div>
+            </div>
+         </div>
+    </div>
+    </div>
+
 </div>
+
 <p-toast position="top-center"></p-toast>
