@@ -47,6 +47,7 @@ import { AcessoNegadoComponent } from './acesso-negado/acesso-negado.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import {ChartModule} from 'primeng/chart';
 import { PdfPageComponent } from './pdf-page/pdf-page.component';
+import {PasswordModule} from 'primeng/password';
 
 
 
@@ -88,6 +89,7 @@ import { PdfPageComponent } from './pdf-page/pdf-page.component';
     DragDropModule,
     CardModule,
     ChartModule,
+    PasswordModule,
 
   ],
   exports:[AppComponent],

@@ -43,11 +43,25 @@
             [responsive]="true" >
     <div class="row">
       <div class="ui-g-12 ui-fluid">
-            <span class="p-float-label p-mb-3 p-mt-3">
-                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="usuarioEdit.nome" style="width:350px">
-                <label for="nome">Nome</label>
+            <span class="p-d-flex p-flex-column p-mb-3 p-mt-3">
+              <label for="nome">Nome</label>
+              <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="usuarioEdit.nome" style="width:350px">
             </span>
       </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-d-flex p-flex-column p-mb-3 p-mt-3">
+              <label for="username">Login</label>
+              <input required="true" pInputText id="username" name="username" type="text" [(ngModel)]="usuarioEdit.username" style="width:350px">
+            </span>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+            <span class="p-d-flex p-flex-column p-mb-3 p-mt-3">
+              <label for="password">Senha</label>
+                <p-password class="p-mt-2" id='password'[(ngModel)]="usuarioEdit.password" [toggleMask]="true" [feedback]="false"></p-password>
+            </span>
+      </div>
+
+
       <div class="ui-g-12 ui-fluid" >
         <label class="p-d-block" >Cargo</label>
         <p-dropdown class="p-d-block p-mt-1" appendTo="body" class="p-d-block"  [options]="cargos" [(ngModel)]="usuarioEdit.cargo" optionLabel="descricao"

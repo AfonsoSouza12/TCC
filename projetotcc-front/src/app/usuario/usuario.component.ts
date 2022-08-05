@@ -49,6 +49,7 @@ export class UsuarioComponent implements OnInit {
   newEntity(){
     this.usuarioEdit = new Usuario();
     this.showDialog = true;
+    this.usuarioEdit.cargo = this.cargos[0];
   }
 
   save() {
@@ -98,13 +99,27 @@ export class UsuarioComponent implements OnInit {
 
   addPermissao(permissao: Permissao) {
     var temPermissao = false;
-    for(let value of this.usuarioEdit.permissoes){
-      if(value.nome === permissao.nome){
-        temPermissao = true;
-      }
-    }
-    if(temPermissao === false){
+    // for(let value of this.usuarioEdit.permissoes){
+    //   if(value.nome === permissao.nome){
+    //     temPermissao = true;
+    //   }
+    // }
+    if(this.usuarioEdit.permissoes == null ){
+      this.usuarioEdit.permissoes = [];
       this.usuarioEdit.permissoes.push(permissao);
+    }
+    else{
+      for(let value of this.usuarioEdit.permissoes){
+        if(value.nome === permissao.nome){
+          temPermissao = true;
+        }
+      }
+
+      //
+      if(temPermissao === false){
+        this.usuarioEdit.permissoes.push(permissao);
+      }
+
     }
   }
 
