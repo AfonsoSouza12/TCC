@@ -39,12 +39,12 @@
   <p-confirmDialog></p-confirmDialog>
 <!--  <p-growl [(value)]="msgs"></p-growl>-->
 
-  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal"
+  <p-dialog [style]="{width: '700px'}" header="Cadastro" [(visible)]="showDialog" modal="modal"
             [responsive]="true" >
     <div class="row">
-      <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12 ui-fluid  ">
             <span class="p-float-label p-mb-3 p-mt-3">
-                <input required="true" pInputText id="descricao" name="descricao" type="text" [(ngModel)]="cargoEdit.descricao">
+                <input   required="true" pInputText id="descricao" name="descricao" type="text" [(ngModel)]="cargoEdit.descricao">
                 <label for="descricao">Descrição</label>
             </span>
       </div>

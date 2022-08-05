@@ -6,3 +6,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.p-inputtext {
+  width: 90% !important;
+}
+
+.p-calendar p-calendar-w-btn{
+  width: 90% !important;
+}

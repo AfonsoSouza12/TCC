@@ -52,33 +52,37 @@
   <p-confirmDialog></p-confirmDialog>
   <!--  <p-growl [(value)]="msgs"></p-growl>-->
 
-  <p-dialog header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
+  <p-dialog [style]="{width: '700px'}" header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
     <div class="row">
       <div class="ui-g-12 ui-fluid">
-            <span class="p-float-label p-mb-3 p-mt-3">
-                <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="sprintEdit.nome">
-                <label for="nome">Nome</label>
-            </span>
+              <label class="p-d-block" for="nome">Nome</label>
+              <input required="true" pInputText id="nome" name="nome" type="text" [(ngModel)]="sprintEdit.nome">
       </div>
-      <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12 ui-fluid p-mt-4">
         <label class="p-d-block" for="dataInicio">Data Início</label>
-        <p-calendar required appendTo="body" class="p-d-block" id="dataInicio" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataInicio"></p-calendar>
+        <p-calendar [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"
+                    required appendTo="body" class="p-d-block" id="dataInicio"
+                    [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataInicio"></p-calendar>
       </div>
-      <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12 ui-fluid p-mt-4">
         <label class="p-d-block" for="dataLimite">Data Limite</label>
-        <p-calendar  required appendTo="body" class="p-d-block" id="dataLimite" [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataLimite"></p-calendar>
+        <p-calendar  [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"
+                     required appendTo="body" class="p-d-block" id="dataLimite"
+                     [showIcon]="true"  dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataLimite"></p-calendar>
       </div>
-      <div class="ui-g-12 ui-fluid">
+      <div class="ui-g-12 ui-fluid p-mt-4">
         <label class="p-d-block" for="dataFim">Data Fim</label>
-        <p-calendar #cal  appendTo="body" class="p-d-block" id="dataFim" [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataFim"></p-calendar>
+        <p-calendar  [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"
+                     appendTo="body" class="p-d-block" id="dataFim"
+                     [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataFim"></p-calendar>
       </div>
-      <div class="ui-g-12 ui-fluid" >
+      <div class="ui-g-12 ui-fluid p-mt-4" >
         <label class="p-d-block" >Projeto</label>
-        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="projetos" [(ngModel)]="sprintEdit.projeto" optionLabel="nome"></p-dropdown>
+        <p-dropdown [style]="{'width':'90%'}"  class="p-d-block" appendTo="body" class="p-d-block"  [options]="projetos" [(ngModel)]="sprintEdit.projeto" optionLabel="nome"></p-dropdown>
       </div>
-      <div class="ui-g-12 ui-fluid" >
+      <div class="ui-g-12 ui-fluid p-mt-4" >
         <label class="p-d-block" >Responsavel</label>
-        <p-dropdown class="p-d-block" appendTo="body" class="p-d-block"  [options]="responsaveis" [(ngModel)]="sprintEdit.responsavel" optionLabel="nome"></p-dropdown>
+        <p-dropdown [style]="{'width':'90%'}" class="p-d-block" appendTo="body" class="p-d-block"  [options]="responsaveis" [(ngModel)]="sprintEdit.responsavel" optionLabel="nome"></p-dropdown>
       </div>
     </div>
 
