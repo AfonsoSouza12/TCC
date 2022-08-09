@@ -4,10 +4,7 @@ import javax.validation.Valid;
 
 import br.edu.utfpr.pb.projetotcc.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import br.edu.utfpr.pb.projetotcc.model.Projeto;
 import br.edu.utfpr.pb.projetotcc.service.CrudService;
@@ -31,6 +28,14 @@ public class ProjetoController extends CrudController<Projeto, Long>{
 	@GetMapping("projetosMembro/{membroId}")
 	public List<Projeto> findAllByProjeto(@PathVariable("membroId") Long projetoId){
 		return this.projetoService.findProjetoByMembrosId(projetoId);
+	}
+
+	@Override
+	@DeleteMapping("{id}")
+	public void delete(@PathVariable Long id)  {
+
+		projetoService.delete(id);
+
 	}
 
 }

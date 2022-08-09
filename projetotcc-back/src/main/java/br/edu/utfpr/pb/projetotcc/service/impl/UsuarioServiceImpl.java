@@ -1,6 +1,7 @@
 package br.edu.utfpr.pb.projetotcc.service.impl;
 
 import br.edu.utfpr.pb.projetotcc.service.UsuarioService;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -37,5 +38,13 @@ public class UsuarioServiceImpl extends CrudServiceImpl<Usuario, Long>
 	@Override
 	public List<Usuario> findUsuarioByProjetosId(Long projetoId) {
 		return this.usuarioRepository.findUsuarioByProjetosId(projetoId);
+	}
+
+	@Override
+	public Usuario save(Usuario usuario) {
+
+		usuario.setPassword(usuario.getEncodedPassword(usuario.getPassword()));
+
+		return super.save(usuario);
 	}
 }
