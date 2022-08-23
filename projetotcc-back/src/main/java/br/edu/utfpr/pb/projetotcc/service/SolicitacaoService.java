@@ -12,4 +12,5 @@ public interface SolicitacaoService extends CrudService<Solicitacao, Long>{
     List<Solicitacao> findByStatus(String status);
     List<Solicitacao> findSolicitacaoByProjetoAndSprintAnAndResponsavel(Long projetoId, Long sprintId, Long responsavelId);
     List<Solicitacao> findAllByResponsavel(Long responsavelId);
+    Boolean existeSolicitacaoComProjeto(Long projetoId);
 }

@@ -1,5 +1,6 @@
 package br.edu.utfpr.pb.projetotcc.service.impl;
 
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,14 @@ public class SubEtapaServiceImpl
 	@Override
 	public List<SubEtapa> findAllByEtapaIdOrderByNome(Long etapaId) {
 		return subEtapaRepository.findByEtapaIdOrderByNome(etapaId);
+	}
+
+	@Override
+	public Boolean existeSubEtapaComEtapa(Long etapaId) {
+		var exists = subEtapaRepository.existsByEtapaId(etapaId);
+		if(!exists){
+			return false;
+		}
+		return true;
 	}
 }

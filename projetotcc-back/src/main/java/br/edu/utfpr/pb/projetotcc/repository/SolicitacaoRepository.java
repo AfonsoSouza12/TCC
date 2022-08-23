@@ -25,4 +25,6 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Long>{
 
     List<Solicitacao> findByResponsavelIdOrderByStatus(Long responsavelId);
 
+    boolean existsByProjetoId(Long projetoId);
+
 }

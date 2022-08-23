@@ -1,6 +1,7 @@
 package br.edu.utfpr.pb.projetotcc.service.impl;
 
 import br.edu.utfpr.pb.projetotcc.model.Usuario;
+import br.edu.utfpr.pb.projetotcc.service.SolicitacaoService;
 import br.edu.utfpr.pb.projetotcc.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,35 +15,38 @@ import java.util.List;
 
 @Service
 public class ProjetoServiceImpl extends CrudServiceImpl<Projeto, Long>
-																implements ProjetoService{
+        implements ProjetoService {
 
-	@Autowired
-	private ProjetoRepository projetoRepository;
+    @Autowired
+    private ProjetoRepository projetoRepository;
 
-	@Autowired
-	private SprintService sprintService;
-	
-	@Override
-	protected JpaRepository<Projeto, Long> getRepository() {
-		return projetoRepository;
-	}
+    @Autowired
+    private SprintService sprintService;
 
-	@Override
-	public List<Projeto> findProjetoByMembrosId(Long membroId) {
-		return this.projetoRepository.findProjetoByMembrosId(membroId);
-	}
+    @Autowired
+    private SolicitacaoService solicitacaoService;
 
-	@Override
-	public void delete(Long projetoId) {
-		if(!this.sprintService.existeSprintComProjeto(projetoId)){
-			super.delete(projetoId);
-		}
-		else{
-			try {
-				throw new Exception("Esse registro possui uma Sprint Vinculada a ele, delete a Sprint para prosseguir.");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
+
+    @Override
+    protected JpaRepository<Projeto, Long> getRepository() {
+        return projetoRepository;
+    }
+
+    @Override
+    public List<Projeto> findProjetoByMembrosId(Long membroId) {
+        return this.projetoRepository.findProjetoByMembrosId(membroId);
+    }
+
+    public void deleteProjeto(Long projetoId) throws Exception {
+        if (!this.sprintService.existeSprintComProjeto(projetoId)) {
+            if(!this.solicitacaoService.existeSolicitacaoComProjeto(projetoId)){
+                super.delete(projetoId);
+            }else{
+                throw new Exception("Esse registro possui uma Solicitação Vinculada a ele, delete a Solicitação para prosseguir.");
+            }
+            super.delete(projetoId);
+        } else {
+            throw new Exception("Esse registro possui uma Sprint Vinculada a ele, delete a Sprint para prosseguir.");
+        }
+    }
 }

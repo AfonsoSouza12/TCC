@@ -2,8 +2,8 @@
 INSERT INTO cargo (descricao) VALUES ('Coordenador');
 INSERT INTO cargo (descricao) VALUES ('Dev');
 
-INSERT INTO permissao (nome) values('ADMIN');
-INSERT INTO permissao (nome) values('USER');
+INSERT INTO permissao (nome) values('ROLE_ADMIN');
+INSERT INTO permissao (nome) values('ROLE_USER');
 
 INSERT INTO usuario(nome, username, password, cargo_id) VALUES ('Administrador', 'admin','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',1);
 INSERT INTO usuario(nome, username, password,cargo_id) VALUES ('Teste', 'teste','$2a$10$.PVIfB07x.SfMYTcToxL0.yxcLWU0GbS2NUO1W1QAvqMm/TsFhVem',2);

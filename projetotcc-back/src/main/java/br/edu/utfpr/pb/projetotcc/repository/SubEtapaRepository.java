@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface SubEtapaRepository	extends JpaRepository<SubEtapa, Long>{
 	List<SubEtapa> findByEtapaIdOrderByNome(Long etapaId);
+	boolean existsByEtapaId(Long etapaId);
 }

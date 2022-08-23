@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SubEtapaService extends CrudService<SubEtapa, Long>{
 	List<SubEtapa> findAllByEtapaIdOrderByNome(Long etapaId);
+	Boolean existeSubEtapaComEtapa(Long etapaId);
 }

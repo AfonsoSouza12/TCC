@@ -1,6 +1,7 @@
 package br.edu.utfpr.pb.projetotcc.service.impl;
 
 import br.edu.utfpr.pb.projetotcc.model.*;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,15 @@ public class SolicitacaoServiceImpl extends CrudServiceImpl<Solicitacao, Long> i
 	@Override
 	public List<Solicitacao> findAllByResponsavel(Long responsavelId) {
 		return solicitacaoRepository.findByResponsavelIdOrderByStatus(responsavelId);
+	}
+
+	@Override
+	public Boolean existeSolicitacaoComProjeto(Long projetoId) {
+		var exists = solicitacaoRepository.existsByProjetoId(projetoId);
+		if(!exists){
+			return false;
+		}
+		return true;
 	}
 
 }

@@ -8,4 +8,5 @@ public interface ProjetoService extends CrudService<Projeto, Long>{
 
     List<Projeto> findProjetoByMembrosId(Long membroId);
 
+    void deleteProjeto(Long projetoId) throws Exception;
 }

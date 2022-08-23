@@ -30,11 +30,10 @@ public class ProjetoController extends CrudController<Projeto, Long>{
 		return this.projetoService.findProjetoByMembrosId(projetoId);
 	}
 
-	@Override
-	@DeleteMapping("{id}")
-	public void delete(@PathVariable Long id)  {
+	@DeleteMapping("delete/{id}")
+	public void deleteProjeto(@PathVariable Long id) throws Exception {
 
-		projetoService.delete(id);
+		projetoService.deleteProjeto(id);
 
 	}
 
