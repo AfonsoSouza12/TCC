@@ -50,7 +50,7 @@
   </div>
 
   <p-confirmDialog></p-confirmDialog>
-  <!--  <p-growl [(value)]="msgs"></p-growl>-->
+  <p-toast></p-toast>
 
   <p-dialog [style]="{width: '700px'}" header="Cadastro" [(visible)]="showDialog" modal="modal" [responsive]="true">
     <div class="row">
@@ -72,7 +72,7 @@
       </div>
       <div class="ui-g-12 ui-fluid p-mt-4">
         <label class="p-d-block" for="dataFim">Data Fim</label>
-        <p-calendar  [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"
+        <p-calendar #cal [style]="{'width':'90%'}" [inputStyle]="{'width':'90%'}"
                      appendTo="body" class="p-d-block" id="dataFim"
                      [showIcon]="true" dateFormat="dd/mm/yy"  [(ngModel)]="sprintEdit.dataFim"></p-calendar>
       </div>

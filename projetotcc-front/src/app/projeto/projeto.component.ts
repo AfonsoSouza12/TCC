@@ -6,6 +6,7 @@ import {Usuario} from '../model/usuario';
 import {ProjetoService} from '../projeto/projeto.service';
 import {UsuarioService} from '../usuario/usuario.service';
 import {Calendar} from 'primeng/calendar';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-projeto',
@@ -20,7 +21,6 @@ export class ProjetoComponent implements OnInit {
   projetos: Projeto[];
   projetoEdit = new Projeto();
   showDialog = false;
-  msgs: Message[] = [];
 
   responsaveis: Usuario[];
   projetoMembros: Usuario[];
@@ -34,7 +34,8 @@ export class ProjetoComponent implements OnInit {
 
   constructor(private projetoService: ProjetoService,
               private confirmationService: ConfirmationService,
-              private usuarioService: UsuarioService) {
+              private usuarioService: UsuarioService,
+              private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -95,12 +96,12 @@ export class ProjetoComponent implements OnInit {
         this.projetoEdit = new Projeto();
         this.findAll();
         this.showDialog = false;
-        this.msgs = [{severity: 'success', summary: 'Confirmado',
-          detail: 'Registro salvo com sucesso!'}];
+        this.messageService.add({severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'});
       },
       error => {
-        this.msgs = [{severity: 'error', summary: 'Erro',
-          detail: 'Falha ao salvar o registro!'}];
+        this.messageService.add({severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'});
       }
     );
   }
@@ -141,14 +142,14 @@ export class ProjetoComponent implements OnInit {
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.projetoService.delete(projeto.id).subscribe(() => {
+        this.projetoService.deleteProjeto(projeto.id).subscribe(() => {
           this.findAll();
           this.dataTable.reset();
-          this.msgs = [{severity: 'success', summary: 'Confirmado',
-            detail: 'Registro removido com sucesso!'}];
+          this.messageService.add({severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'});
         }, error => {
-          this.msgs = [{severity: 'error', summary: 'Erro',
-            detail: 'Falha ao remover o registro!'}];
+          this.messageService.add({severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'});
         });
       }
     });

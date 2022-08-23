@@ -48,6 +48,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import {ChartModule} from 'primeng/chart';
 import { PdfPageComponent } from './pdf-page/pdf-page.component';
 import {PasswordModule} from 'primeng/password';
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -90,7 +91,7 @@ import {PasswordModule} from 'primeng/password';
     CardModule,
     ChartModule,
     PasswordModule,
-
+    ToastModule
   ],
   exports:[AppComponent],
   entryComponents: [PdfPageComponent],

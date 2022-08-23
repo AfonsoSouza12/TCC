@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
+import {ConfirmationService, LazyLoadEvent, Message, MessageService} from 'primeng/api';
 import {SubEtapa} from '../model/sub-etapa';
 import {SubEtapaService} from './sub-etapa.service';
 import {Etapa} from '../model/etapa';
 import {EtapaService} from '../etapa/etapa.service';
-import {StatusOpt} from '../../shared/consts/StatusOpt';
 import {NavigationEnd, Router} from '@angular/router';
-import {findAll} from '@angular/compiler-cli/ngcc/src/utils';
-import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sub-etapa',
@@ -19,7 +16,6 @@ export class SubEtapaComponent implements OnInit {
   subEtapas: SubEtapa[];
   subEtapaEdit = new SubEtapa();
   showDialog = false;
-  msgs: Message[] = [];
   etapas:Etapa[];
 
   totalRecords: number;
@@ -29,7 +25,9 @@ export class SubEtapaComponent implements OnInit {
   constructor(private subEtapaService: SubEtapaService,
               private etapaService: EtapaService,
               private router: Router,
-              private confirmationService: ConfirmationService) { }
+              private confirmationService: ConfirmationService,
+              private messageService: MessageService,
+              ) { }
 
   ngOnInit() {
     this.findAll();
@@ -62,7 +60,6 @@ export class SubEtapaComponent implements OnInit {
 
   newEntity() {
     this.subEtapaEdit = new SubEtapa();
-    // this.subEtapaEdit.etapa = this.etapas[0];
     this.showDialog = true;
   }
   carregarCombos() {
@@ -74,12 +71,12 @@ export class SubEtapaComponent implements OnInit {
         this.subEtapaEdit = new SubEtapa();
         this.findAll();
         this.showDialog = false;
-        this.msgs = [{severity: 'success', summary: 'Confirmado',
-          detail: 'Registro salvo com sucesso!'}];
+        this.messageService.add({severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'});
       },
       error => {
-        this.msgs = [{severity: 'error', summary: 'Erro',
-          detail: 'Falha ao salvar o registro!'}];
+        this.messageService.add({severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'});
       }
     );
   }
@@ -104,11 +101,11 @@ export class SubEtapaComponent implements OnInit {
       accept: () => {
         this.subEtapaService.delete(subEtapa.id).subscribe(() => {
           this.findAll();
-          this.msgs = [{severity: 'success', summary: 'Confirmado',
-            detail: 'Registro removido com sucesso!'}];
+          this.messageService.add({severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'});
         }, error => {
-          this.msgs = [{severity: 'error', summary: 'Erro',
-            detail: 'Falha ao remover o registro!'}];
+          this.messageService.add({severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'});
         });
       }
     });

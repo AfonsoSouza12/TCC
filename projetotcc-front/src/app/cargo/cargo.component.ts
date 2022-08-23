@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Cargo} from '../model/cargo';
-import {ConfirmationService, Message} from 'primeng/api';
+import {ConfirmationService, Message, MessageService} from 'primeng/api';
 import {CargoService} from './cargo.service';
 
 @Component({
@@ -12,10 +12,11 @@ export class CargoComponent implements OnInit {
   cargos: Cargo[];
   cargoEdit = new Cargo();
   showDialog = false;
-  msgs: Message[] = [];
 
   constructor(private cargoService: CargoService,
-              private confirmationService : ConfirmationService) { }
+              private confirmationService : ConfirmationService,
+              private messageService: MessageService
+              ) { }
 
   ngOnInit() {
     this.findAll();
@@ -35,12 +36,12 @@ export class CargoComponent implements OnInit {
         this.cargoEdit = new Cargo();
         this.findAll();
         this.showDialog = false;
-        this.msgs = [{severity: 'success', summary: 'Confirmado',
-          detail: 'Registro salvo com sucesso!'}];
+        this.messageService.add({severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'});
       },
       error => {
-        this.msgs = [{severity: 'error', summary: 'Erro',
-          detail: 'Falha ao salvar o registro!'}];
+        this.messageService.add({severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'});
       }
     );
   }
@@ -64,11 +65,11 @@ export class CargoComponent implements OnInit {
       accept: () => {
         this.cargoService.delete(Cargo.id).subscribe(() => {
           this.findAll();
-          this.msgs = [{severity: 'success', summary: 'Confirmado',
-            detail: 'Registro removido com sucesso!'}];
+          this.messageService.add({severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'});
         }, error => {
-          this.msgs = [{severity: 'error', summary: 'Erro',
-            detail: 'Falha ao remover o registro!'}];
+          this.messageService.add({severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'});
         });
       }
     });

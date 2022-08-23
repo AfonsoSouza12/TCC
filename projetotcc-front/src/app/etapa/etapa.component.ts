@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Etapa} from '../model/etapa';
-import {ConfirmationService, LazyLoadEvent, Message} from 'primeng/api';
+import {ConfirmationService, LazyLoadEvent, Message, MessageService} from 'primeng/api';
 import {SubEtapa} from '../model/sub-etapa';
 import {SubEtapaService} from '../sub-etapa/sub-etapa.service';
 import {EtapaService} from './etapa.service';
@@ -26,8 +26,6 @@ export class EtapaComponent implements OnInit {
   subEtapaEdit = new SubEtapa();
   showDialog = false;
   showDialogSub = false;
-  msgs: Message[] = [];
-
   responsaveis: Usuario[];
 
   totalRecords: number;
@@ -41,6 +39,7 @@ export class EtapaComponent implements OnInit {
               private subEtapaService: SubEtapaService,
               private confirmationService: ConfirmationService,
               private usuarioService: UsuarioService,
+              private messageService: MessageService,
               private router: Router) {
   }
 
@@ -89,12 +88,12 @@ export class EtapaComponent implements OnInit {
         this.etapaEdit = new Etapa();
         this.findAll();
         this.showDialog = false;
-        this.msgs = [{severity: 'success', summary: 'Confirmado',
-          detail: 'Registro salvo com sucesso!'}];
+        this.messageService.add({severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'});
       },
       error => {
-        this.msgs = [{severity: 'error', summary: 'Erro',
-          detail: 'Falha ao salvar o registro!'}];
+        this.messageService.add({severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'});
       }
     );
   }
@@ -105,7 +104,6 @@ export class EtapaComponent implements OnInit {
   }
 
   edit(etapa: Etapa) {
-    // this.etapaEdit = etapa;
     this.etapaEdit = Object.assign({}, etapa);
     this.showDialog = true;
   }
@@ -117,14 +115,14 @@ export class EtapaComponent implements OnInit {
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.etapaService.delete(etapa.id).subscribe(() => {
+        this.etapaService.deleteEtapa(etapa.id).subscribe(() => {
           this.findAll();
           this.dataTable.reset();
-          this.msgs = [{severity: 'success', summary: 'Confirmado',
-            detail: 'Registro removido com sucesso!'}];
+          this.messageService.add({severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'});
         }, error => {
-          this.msgs = [{severity: 'error', summary: 'Erro',
-            detail: 'Falha ao remover o registro!'}];
+          this.messageService.add({severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'});
         });
       }
     });
@@ -140,12 +138,12 @@ export class EtapaComponent implements OnInit {
       this.subEtapaEdit = new SubEtapa();
         this.findSubEtapas(id);
         this.showDialogSub = false;
-        this.msgs = [{severity: 'success', summary: 'Confirmado',
-          detail: 'Registro salvo com sucesso!'}];
+        this.messageService.add({severity: 'success', summary: 'Confirmado',
+          detail: 'Registro salvo com sucesso!'});
       },
       error => {
-        this.msgs = [{severity: 'error', summary: 'Erro',
-          detail: 'Falha ao salvar o registro!'}];
+        this.messageService.add({severity: 'error', summary: 'Erro',
+          detail: 'Falha ao salvar o registro!'});
       }
     );
   }
@@ -164,11 +162,11 @@ export class EtapaComponent implements OnInit {
       accept: () => {
         this.subEtapaService.delete(subEtapa.id).subscribe(() => {
           this.findSubEtapas(subEtapa.etapa.id);
-          this.msgs = [{severity: 'success', summary: 'Confirmado',
-            detail: 'Registro removido com sucesso!'}];
+          this.messageService.add({severity: 'success', summary: 'Confirmado',
+            detail: 'Registro removido com sucesso!'});
         }, error => {
-          this.msgs = [{severity: 'error', summary: 'Erro',
-            detail: 'Falha ao remover o registro!'}];
+          this.messageService.add({severity: 'error', summary: 'Erro',
+            detail: 'Falha ao remover o registro!'});
         });
       }
     });
