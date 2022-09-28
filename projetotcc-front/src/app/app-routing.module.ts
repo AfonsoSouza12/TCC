@@ -36,10 +36,11 @@ const routes: Routes = [
       {path: 'usuario', component: UsuarioComponent},
       {path: 'quadro', component: QuadroComponent},
       {path: 'acesso-negado', component: AcessoNegadoComponent},
-      // {path: '**', component: PaginaNaoEncontradaComponent}
-    ]
+    ],
   },
-  { path: 'login', component: LoginComponent }
+
+  { path: 'login', component: LoginComponent },
+  {path: '**', component: PaginaNaoEncontradaComponent}
 ];
 
 @NgModule({

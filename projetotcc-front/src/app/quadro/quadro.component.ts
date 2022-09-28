@@ -138,7 +138,6 @@ export class QuadroComponent implements OnInit {
 
   }
   limparFiltros(){
-    console.log("limpando");
       this.selectedProjeto = null;
       this.selectedSprint = null;
       this.selectedResponsavel = null;
@@ -148,10 +147,8 @@ export class QuadroComponent implements OnInit {
   }
 
   gerarRelatorio() {
-    console.log("teste.");
     const title = 'Relatório de Solicitações';
     this.createPDF(title,this.solicitacoesBacklog, this.solicitacoesTodo, this.solicitacoesDoing, this.solicitacoesTest, this.solicitacoesDone);
-
   }
 
   private createPDF(title: string, solicitacoesBacklog: Solicitacao[],
