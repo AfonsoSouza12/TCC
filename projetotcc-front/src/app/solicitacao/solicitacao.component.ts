@@ -29,7 +29,6 @@ export class SolicitacaoComponent implements OnInit {
   projetos: Projeto[];
   etapas: Etapa[];
   sprints: Sprint[];
-
   totalRecords: number;
   maxRecords = 10;
   currentPage = 1;
@@ -42,7 +41,6 @@ export class SolicitacaoComponent implements OnInit {
               private usuarioService: UsuarioService,
               private messageService: MessageService
               ) {
-
 }
 
   ngOnInit() {

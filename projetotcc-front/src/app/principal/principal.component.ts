@@ -45,13 +45,11 @@ export class PrincipalComponent implements OnInit {
   findSolicitacoes(){
     this.solicitacaoService.findSolicitacoesUsuario(this.usuarioId).subscribe( e => {
       this.solicitacoes = e;
-
       this.solicitacoesBacklog = this.solicitacoes.filter(solicitacao => solicitacao.status === "Backlog");
       this.solicitacoesTodo = this.solicitacoes.filter(solicitacao => solicitacao.status === "To Do");
       this.solicitacoesDoing = this.solicitacoes.filter(solicitacao => solicitacao.status === "Doing");
       this.solicitacoesTest = this.solicitacoes.filter(solicitacao => solicitacao.status === "Test");
       this.solicitacoesDone = this.solicitacoes.filter(solicitacao => solicitacao.status === "Done");
-
       this.data = {
         labels: ['Backlog','To Do','Doing','Test','Done'],
         datasets: [
@@ -67,7 +65,6 @@ export class PrincipalComponent implements OnInit {
               cores.corDoing,
               cores.corTest,
               cores.corDone,
-
             ],
             hoverBackgroundColor: [
               cores.corBacklog,
@@ -89,10 +86,7 @@ export class PrincipalComponent implements OnInit {
           },
         }
       }
-
-
     });
-
   }
 
   findProjetos(){

@@ -74,7 +74,6 @@ export class QuadroComponent implements OnInit {
       this.solicitacoesDone = this.solicitacoes.filter(solicitacao => solicitacao.status === "Done");
     }
     );
-
   }
   drop(event: CdkDragDrop<Object[]>) {
     if (event.previousContainer === event.container) {
@@ -134,8 +133,6 @@ export class QuadroComponent implements OnInit {
        this.solicitacoesDone = this.solicitacoes.filter(solicitacao => solicitacao.status === "Done");
       }
     );
-
-
   }
   limparFiltros(){
       this.selectedProjeto = null;
@@ -143,7 +140,6 @@ export class QuadroComponent implements OnInit {
       this.selectedResponsavel = null;
       this.carregarCombos();
       this.findSolicitacoes();
-
   }
 
   gerarRelatorio() {
