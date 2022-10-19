@@ -12,6 +12,7 @@ import {EtapaService} from '../etapa/etapa.service';
 import {Etapa} from '../model/etapa';
 import {SprintService} from '../sprint/sprint.service';
 import {StatusOpt} from '../../shared/consts/StatusOpt';
+import {Calendar} from 'primeng/calendar';
 
 @Component({
   selector: 'app-solicitacao',
@@ -21,6 +22,7 @@ import {StatusOpt} from '../../shared/consts/StatusOpt';
 export class SolicitacaoComponent implements OnInit {
 
   @ViewChild('dt', null) dataTable: Table;
+  @ViewChild('cal', null) calendarFrom: Calendar;
   statuss = Object.keys(StatusOpt).map(key => ({ label: StatusOpt[key], value: StatusOpt[key] }));
   solicitacoes: Solicitacao[];
   solicitacaoEdit = new Solicitacao();
@@ -108,6 +110,20 @@ export class SolicitacaoComponent implements OnInit {
   edit(solicitacao: Solicitacao) {
     this.solicitacaoEdit = Object.assign({}, solicitacao);
     this.showDialog = true;
+
+    let dataString = this.solicitacaoEdit.dataInicio;
+    let newDate = new Date(dataString);
+    this.solicitacaoEdit.dataInicio = newDate;
+
+
+    if(this.solicitacaoEdit.dataFim == null){
+      this.calendarFrom.value = null;
+      this.calendarFrom.updateInputfield();
+    }else{
+      let dataString3 = this.solicitacaoEdit.dataFim
+      let newDate3 = new Date(dataString3);
+      this.solicitacaoEdit.dataFim = newDate3;
+    }
   }
 
   delete(solicitacao: Solicitacao) {

@@ -10,3 +10,8 @@
 .p-inputtext {
   width: 90% !important;
 }
+
+tr{
+  word-break: break-all;
+  white-space: normal;
+}

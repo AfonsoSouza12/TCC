@@ -13,3 +13,8 @@
 .botaoz{
   max-width: 100px;
 }
+
+tr{
+  word-break: break-all;
+  white-space: normal;
+}

@@ -15,6 +15,7 @@ import {UsuarioService} from '../usuario/usuario.service';
 import {Dropdown} from 'primeng/dropdown';
 import html2pdf from 'html2pdf.js';
 import {PdfPageComponent} from '../pdf-page/pdf-page.component';
+import {Calendar} from 'primeng/calendar';
 
 @Component({
   selector: 'app-quadro',
@@ -40,6 +41,7 @@ export class QuadroComponent implements OnInit {
   containerStatus: string;
   @ViewChild('projetoDrop', { static: true }) projetoDrop: Dropdown;
   @ViewChild('gerarPdf', { static: true, read: ViewContainerRef }) gerarPdf: ViewContainerRef;
+  @ViewChild('cal', null) calendarFrom: Calendar;
 
   selectedProjeto= new Projeto();
   selectedSprint= new Sprint();
@@ -95,6 +97,20 @@ export class QuadroComponent implements OnInit {
   edit(solicitacao: Solicitacao) {
     this.solicitacaoEdit = Object.assign({}, solicitacao);
     this.showDialog = true;
+
+    let dataString = this.solicitacaoEdit.dataInicio;
+    let newDate = new Date(dataString);
+    this.solicitacaoEdit.dataInicio = newDate;
+
+
+    if(this.solicitacaoEdit.dataFim == null){
+      this.calendarFrom.value = null;
+      this.calendarFrom.updateInputfield();
+    }else{
+      let dataString3 = this.solicitacaoEdit.dataFim
+      let newDate3 = new Date(dataString3);
+      this.solicitacaoEdit.dataFim = newDate3;
+    }
   }
 
   save() {

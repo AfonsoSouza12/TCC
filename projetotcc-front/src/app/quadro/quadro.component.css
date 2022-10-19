@@ -1,3 +1,15 @@
+p {
+  word-break: break-all;
+  white-space: normal;
+}
+tr{
+  word-break: break-all;
+  white-space: normal;
+}
+p-card{
+  word-break: break-all;
+  white-space: normal;
+}
 
 .board {
   display: flex;

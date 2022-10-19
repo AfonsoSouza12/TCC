@@ -10,4 +10,8 @@
 ::ng-deep .projetosStyle .ui-datatable-scrollable-view .ui-datatable-scrollable-body {
   min-height: 27vh;
 }
+tr{
+  word-break: break-all;
+  white-space: normal;
+}
 
