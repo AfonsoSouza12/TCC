@@ -42,5 +42,5 @@ INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,proj
 INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 5','blablabla5', null,null,'Done',1,1,1,2)
 INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 6','blablabla2', null,null,'To Do',1,1,2,1)
 INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 7','blablabla3', null,null,'Doing',1,1,2,1)
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 8','blablabla4', null,null,'Test',1,1,2,1)
-INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 9','blablabla5', null,null,'Done',1,1,2,2)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 8','blablabla4', null,null,'Test',1,3,2,1)
+INSERT INTO solicitacao(nome,descricao,data_inicio,data_fim,status,etapa_id,projeto_id,usuario_id,sprint_id) VALUES ('Solicitação 9','blablabla5', null,null,'Done',1,2,2,2)

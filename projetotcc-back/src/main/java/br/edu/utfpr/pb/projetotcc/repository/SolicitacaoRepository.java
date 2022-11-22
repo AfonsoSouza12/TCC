@@ -28,3 +28,5 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Long>{
     boolean existsByProjetoId(Long projetoId);
 
 }
+
+
